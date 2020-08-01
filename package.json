@@ -10,10 +10,10 @@
   "dependencies": {
     "@mdx-js/loader": "^1.6.11",
     "@mdx-js/runtime": "^1.6.11",
-    "@next/mdx": "^9.4.4",
+    "@next/mdx": "^9.5.1",
     "fast-glob": "^3.2.4",
     "gray-matter": "^4.0.2",
-    "next": "9.4.4",
+    "next": "^9.5.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
