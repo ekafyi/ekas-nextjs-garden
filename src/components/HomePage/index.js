@@ -30,7 +30,6 @@ export default function HomePage ({ allMdx }) {
         </S.FeatureList>
 
         <S.GitHubButton href={githubUrl}>
-          <GitHub />
           <span>View source on GitHub</span>
         </S.GitHubButton>
 
