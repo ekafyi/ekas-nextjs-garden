@@ -1,4 +1,5 @@
-// import Link from "next/link";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { SEO, PostSnippet, GitHub } from "components";
 
 const githubUrl =
@@ -9,7 +10,9 @@ export default function HomePage({ allMdx }) {
     <>
       <SEO />
       <main>
-        <span>🌱</span>
+        <div sx={{ backgroundColor: "primary", color: "#fff", p: 4 }}>
+          🍅 tomato
+        </div>
         <h1>
           NextJS + MDX
           <br />
