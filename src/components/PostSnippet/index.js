@@ -16,6 +16,12 @@ export default function PostSnippet ({ slug, frontMatter }) {
       </Link>
       <S.Date>
         {frontMatter.date}
+        &nbsp;&nbsp;
+        {typeof frontMatter.tags !== 'undefined' && (
+          <>
+            Tagged {frontMatter.tags.join(", ")}
+          </>
+        )}
       </S.Date>
     </>
   )
