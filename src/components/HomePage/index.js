@@ -13,7 +13,7 @@ export default function HomePage({ allMdx }) {
         <div sx={{ backgroundColor: "primary", color: "#fff", p: 4 }}>
           🍅 tomato
         </div>
-        <h1>
+        <h1 className="text-green-700 text-4xl">
           NextJS + MDX
           <br />
           Digital Garden Starter
