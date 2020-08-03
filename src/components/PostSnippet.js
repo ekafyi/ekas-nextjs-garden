@@ -2,10 +2,10 @@
 import { jsx } from "theme-ui";
 import Link from 'next/link'
 
-export default function PostSnippet ({ slug, frontMatter }) {
+export default function PostSnippet ({ slug, dynHref, frontMatter }) {
   return (
     <>
-      <Link href="/[slug]" as={slug} prefetch={false} passHref>
+      <Link href={dynHref} as={slug} prefetch={false} passHref>
         <a sx={{ variant: "links.snippet" }}>{frontMatter.title}</a>
       </Link>
       <div
