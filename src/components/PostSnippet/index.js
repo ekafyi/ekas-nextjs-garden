@@ -5,10 +5,8 @@ import Link from 'next/link'
 export default function PostSnippet ({ slug, frontMatter }) {
   return (
     <>
-      <Link href={slug} prefetch={false}>
-        <a sx={{ variant: "links.snippet" }}>
-          {frontMatter.title}
-        </a>
+      <Link href="/[slug]" as={slug} prefetch={false} passHref>
+        <a sx={{ variant: "links.snippet" }}>{frontMatter.title}</a>
       </Link>
       <div
         sx={{
@@ -19,5 +17,5 @@ export default function PostSnippet ({ slug, frontMatter }) {
         {frontMatter.date}
       </div>
     </>
-  )
+  );
 }
