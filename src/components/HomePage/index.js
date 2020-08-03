@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { SEO, PostSnippet, GitHub } from "components";
+import { SEO, PostSnippet, GitHub, ColorModeSelect } from "components";
 
 const githubUrl =
   "https://github.com/RyanWarner/next-mdx-digital-garden-starter";
@@ -9,6 +9,7 @@ export default function HomePage({ allMdx }) {
   return (
     <>
       <SEO />
+      <ColorModeSelect />
       <main>
         <div sx={{ backgroundColor: "primary", color: "#fff", p: 4 }}>
           🍅 tomato
@@ -27,7 +28,14 @@ export default function HomePage({ allMdx }) {
           <li>Supports frontmatter (thanks to gray-matter).</li>
         </ul>
 
-        <a href={githubUrl}>
+        <a
+          href={githubUrl}
+          sx={{
+            mt: 4,
+            variant: "buttons.withIcon",
+          }}
+        >
+          <GitHub />
           <span>View source on GitHub</span>
         </a>
 

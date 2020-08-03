@@ -2,7 +2,7 @@ export default {
   useCustomProperties: true,
   initialColorMode: "light",
   colors: {
-    text: "#000",
+    text: "#111",
     background: "#fff",
     primary: "tomato",
     secondary: "#3f3f3f",
@@ -13,13 +13,8 @@ export default {
     modes: {
       dark: {
         text: "#fff",
-        background: "#060606",
-        primary: "#d2d2d2",
-        secondary: "#b2b2b2",
-        muted: "#191919",
-        highlight: "#3c3c3c",
-        gray: "#999",
-        accent: "#e0e0e0",
+        background: "#000",
+        primary: "tomato",
       },
     },
   },
@@ -151,6 +146,42 @@ export default {
       border: 0,
       borderBottom: "8px solid",
       borderColor: "text",
+    },
+  },
+  buttons: {
+    outlined: {
+      color: "text",
+      textDecoration: "none",
+      border: "1px solid currentColor",
+      borderRadius: 4,
+      px: 3,
+      py: 2,
+      "svg, path": {
+        fill: "currentColor",
+      },
+    },
+    withIcon: {
+      variant: "buttons.outlined",
+      display: "grid",
+      gap: "14px",
+      gridTemplateColumns: "auto auto",
+      alignSelf: "flex-start",
+      alignItems: "self-end",
+    },
+  },
+  links: {
+    snippet: {
+      fontSize: [3, 4],
+      color: "text",
+      textDecoration: "none",
+    },
+  },
+  text: {
+    date: {
+      snippet: {
+        fontSize: 1,
+        opacity: 0.6,
+      },
     },
   },
 };
