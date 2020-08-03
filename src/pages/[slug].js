@@ -7,8 +7,6 @@ import { getContentGlob, getSlug } from "../utils/get-mdx";
 
 import * as components from 'components'
 
-const contentGlob = "content/**/*.mdx";
-
 export async function getStaticPaths() {
   const files = glob.sync(getContentGlob());
   const paths = files
