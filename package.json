@@ -8,8 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.11",
-    "@mdx-js/runtime": "^1.6.11",
+    "@mdx-js/loader": "^1.6.16",
+    "@mdx-js/runtime": "^1.6.16",
     "@next/mdx": "^9.5.1",
     "fast-glob": "^3.2.4",
     "gray-matter": "^4.0.2",
