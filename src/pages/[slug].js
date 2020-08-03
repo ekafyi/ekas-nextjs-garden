@@ -1,18 +1,16 @@
-
 import fs from 'fs'
 import MDX from '@mdx-js/runtime'
 import ReactDOM from 'react-dom/server'
 import matter from 'gray-matter'
 import glob from 'fast-glob'
-import { getSlug } from "../utils/get-mdx";
+import { getContentGlob, getSlug } from "../utils/get-mdx";
 
 import * as components from 'components'
 
 const contentGlob = "content/**/*.mdx";
 
 export async function getStaticPaths() {
-  const files = glob.sync(contentGlob)
-
+  const files = glob.sync(getContentGlob());
   const paths = files
     .map(file => {
       return {
@@ -21,7 +19,6 @@ export async function getStaticPaths() {
         },
       };
     })
-
   return {
     paths,
     fallback: false
@@ -29,7 +26,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const files = glob.sync(contentGlob)
+  const files = glob.sync(getContentGlob());
 
   const fullPath = files.filter(item => {
     return getSlug(item) === slug

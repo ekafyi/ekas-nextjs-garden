@@ -1,15 +1,14 @@
 import fs from "fs";
 import matter from "gray-matter";
 import glob from "fast-glob";
-import { getSlug } from "../utils/get-mdx";
+import { getContentGlob, getSlug } from "../utils/get-mdx";
 
 import { HomePage } from "components";
 
 export default HomePage;
 
 export async function getStaticProps() {
-  const files = glob.sync("content/**/*.mdx");
-
+  const files = glob.sync(getContentGlob());
   const allMdx = files.map((file) => {
     const mdxSource = fs.readFileSync(file);
     const { data } = matter(mdxSource);
