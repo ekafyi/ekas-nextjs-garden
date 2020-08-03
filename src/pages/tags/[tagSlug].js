@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import glob from "fast-glob";
+import { getSlug } from "../../utils/get-mdx";
 
 // Make sure there's no unused import that contains fs
 // as it causes this error: https://github.com/vercel/next.js/discussions/14450
@@ -52,20 +53,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { tagSlug } }) {
-  // TODO
-
   const files = glob.sync("content/**/*.mdx");
 
   const allMdx = files.map((file) => {
-    const split = file.split("/");
-    const filename = split[split.length - 1];
-    const slug = filename.replace(".mdx", "");
-
     const mdxSource = fs.readFileSync(file);
     const { data } = matter(mdxSource);
-
     return {
-      slug,
+      slug: getSlug(file),
       frontMatter: data,
     };
   });

@@ -4,6 +4,7 @@ import MDX from '@mdx-js/runtime'
 import ReactDOM from 'react-dom/server'
 import matter from 'gray-matter'
 import glob from 'fast-glob'
+import { getSlug } from "../utils/get-mdx";
 
 import * as components from 'components'
 
@@ -14,15 +15,11 @@ export async function getStaticPaths() {
 
   const paths = files
     .map(file => {
-      const split = file.split('/')
-      const filename = split[split.length - 1]
-      const slug = filename.replace('.mdx', '')
-
       return {
         params: {
-          slug
-        }
-      }
+          slug: getSlug(file),
+        },
+      };
     })
 
   return {
@@ -35,9 +32,7 @@ export async function getStaticProps({ params: { slug } }) {
   const files = glob.sync(contentGlob)
 
   const fullPath = files.filter(item => {
-    const split = item.split('/')
-    const filename = split[split.length - 1]
-    return filename.replace('.mdx', '') === slug
+    return getSlug(item) === slug
   })[0]
 
   const mdxSource = fs.readFileSync(fullPath)
