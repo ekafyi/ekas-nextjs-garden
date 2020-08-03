@@ -31,7 +31,7 @@ const Post = ({ mdxHtml, frontMatter }) => {
 }
 
 export async function getStaticPaths() {
-  const files = glob.sync('src/content/**/*.mdx')
+  const files = glob.sync('content/**/*.mdx')
 
   const paths = files
     .map(file => {
@@ -53,7 +53,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const files = glob.sync('src/content/**/*.mdx')
+  const files = glob.sync('content/**/*.mdx')
 
   const fullPath = files.filter(item => {
     const split = item.split('/')

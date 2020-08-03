@@ -10,16 +10,20 @@
   "dependencies": {
     "@mdx-js/loader": "^1.6.11",
     "@mdx-js/runtime": "^1.6.11",
-    "@next/mdx": "^9.4.4",
+    "@next/mdx": "^9.5.1",
     "fast-glob": "^3.2.4",
     "gray-matter": "^4.0.2",
-    "next": "9.4.4",
+    "next": "^9.5.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "theme-ui": "^0.3.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
-    "babel-plugin-module-resolver": "^4.0.0"
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.6",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "tailwindcss": "^1.6.0"
   }
 }

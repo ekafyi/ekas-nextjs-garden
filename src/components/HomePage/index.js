@@ -1,50 +1,53 @@
-import Link from 'next/link'
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import { SEO, PostSnippet, GitHub, ColorModeSelect } from "components";
 
-import { SEO, PostSnippet, GitHub } from 'components'
-import * as S from './styles'
+const githubUrl =
+  "https://github.com/RyanWarner/next-mdx-digital-garden-starter";
 
-const githubUrl = 'https://github.com/RyanWarner/next-mdx-digital-garden-starter'
-
-export default function HomePage ({ allMdx }) {
+export default function HomePage({ allMdx }) {
   return (
-    <S.Wrap>
+    <>
       <SEO />
-      <S.Main>
-        <S.Seedling>🌱</S.Seedling>
-        <S.H1>
+      <ColorModeSelect />
+      <main>
+        <div sx={{ backgroundColor: "primary", color: "#fff", p: 4 }}>
+          🍅 tomato
+        </div>
+        <h1 className="text-green-700 text-4xl">
           NextJS + MDX
           <br />
           Digital Garden Starter
-        </S.H1>
+        </h1>
 
-        <S.FeatureList>
-          <S.ListItem>
+        <ul>
+          <li>
             Create top level routes from .mdx files organized however you want.
-          </S.ListItem>
-          <S.ListItem>
-            Statically generated routes using Next’s `getStaticPaths`.
-          </S.ListItem>
-          <S.ListItem>
-            Supports frontmatter (thanks to gray-matter).
-          </S.ListItem>
-        </S.FeatureList>
+          </li>
+          <li>Statically generated routes using Next’s `getStaticPaths`.</li>
+          <li>Supports frontmatter (thanks to gray-matter).</li>
+        </ul>
 
-        <S.GitHubButton href={githubUrl}>
+        <a
+          href={githubUrl}
+          sx={{
+            mt: 4,
+            variant: "buttons.withIcon",
+          }}
+        >
           <GitHub />
           <span>View source on GitHub</span>
-        </S.GitHubButton>
+        </a>
 
-        <S.H2>
-          Example posts
-        </S.H2>
-        <S.PostList>
-          {allMdx.map(item => (
+        <h2>Example posts</h2>
+        <ul>
+          {allMdx.map((item) => (
             <li key={item.slug}>
               <PostSnippet {...item} />
             </li>
           ))}
-        </S.PostList>
-      </S.Main>
-    </S.Wrap>
-  )
+        </ul>
+      </main>
+    </>
+  );
 }
