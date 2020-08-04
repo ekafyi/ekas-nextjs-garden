@@ -5,6 +5,10 @@ import glob from "fast-glob";
 
 export const CONTENT_PATH = "content"; // no trailing slash
 
+export const getContentPath = (subdir = "") => {
+  return `${CONTENT_PATH}${subdir ? `/${subdir}` : ""}`;
+};
+
 export const getContentGlob = (subdir = "") => {
   return `${CONTENT_PATH}/${subdir ? `${subdir}/` : ""}**/*.mdx`;
 };
