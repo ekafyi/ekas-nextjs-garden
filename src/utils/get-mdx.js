@@ -5,14 +5,31 @@ import glob from "fast-glob";
 
 export const CONTENT_PATH = "content"; // no trailing slash
 
+/**
+ * Get content path. Does not include file.
+ * @param {string} [subdir] - Content subdirectory, eg. "posts"
+ *
+ * Note: implement these if we ever need full path.
+ * // const a = path.join(path.join(process.cwd()), getContentPath("posts"));
+ * // const b = path.join(path.join(process.cwd()), `${getContentPath("posts")}/blah.mdx`);
+ */
 export const getContentPath = (subdir = "") => {
   return `${CONTENT_PATH}${subdir ? `/${subdir}` : ""}`;
 };
 
+/**
+ * Get mdx content file glob.
+ * @param {string} [subdir] - Content subdirectory, eg. "posts"
+ */
 export const getContentGlob = (subdir = "") => {
   return `${CONTENT_PATH}/${subdir ? `${subdir}/` : ""}**/*.mdx`;
 };
 
+/**
+ * Get slug from mdx file.
+ * @param {string} file - Filename with full path
+ * @param {string} [subdir] - Content subdirectory, eg. "posts"
+ */
 export const getSlug = (file, subdir = "") => {
   const split = file.split("/");
   const filename = split[split.length - 1];
@@ -21,34 +38,55 @@ export const getSlug = (file, subdir = "") => {
     : `${filename.replace(".mdx", "")}`; // TODO go back to this. if using initial slash, http://localhost:3000/posts/blah does not work
 };
 
+/**
+ * Create dynamic href value for Next Link component, eg. `posts/[slug]`.
+ * @param {string} paramName - Dynamic query parameter name
+ * @param {string} [subdir] - Content subdirectory, eg. "posts"
+ */
 export const getDynHref = (paramName, subdir = "") => {
   return `${subdir ? `/${subdir}` : ""}/[${paramName}]`;
 };
 
-export const getAllPosts = (subdir = "", paramName = null) => {
-  // ALTERNATIVE: files = fs.readdirSync("content/posts")
-  const files = glob.sync(getContentGlob(subdir));
-
-  const allMdx = files.map((file) => {
-    // ALTERNATIVE: path.join(path.join(process.cwd()), file); // ? Returns full path instead of relative to project root; not sure if necessary.
-    const fileContents = fs.readFileSync(file); // file vs fullPath
-    const { data } = matter(fileContents);
-    return {
-      slug: getSlug(file, subdir),
-      frontMatter: data,
-      ...(paramName && { dynHref: getDynHref(paramName, subdir) }),
-    };
-  });
-
-  return allMdx.sort((a, b) => {
+/**
+ * Sort mdx files by date.
+ * @param {array} files - Array of files that have a 'date' field in its frontmatter.
+ */
+export const sortByDate = (files = []) => {
+  return files.sort((a, b) => {
     return new Date(b.frontMatter.date) - new Date(a.frontMatter.date);
   });
 };
 
 /**
- * Check a post's frontmatter to see if it contains tag.
- * @param {string} fileContents
- * @param {string} tag
+ * Get content from all mdx files in specified content (sub)directory.
+ * @param {string} [subdir]
+ * @param {string} [paramName]
+ *
+ * Note: We can also use fs.readdirSync(getContentPath(subdir)) to get 'files'.
+ */
+export const getAllPosts = (subdir = "", paramName = null) => {
+  const files = glob.sync(getContentGlob(subdir));
+
+  const allMdx = files.map((file) => {
+    const fileContents = fs.readFileSync(file); // check note in getContentPath() if replacing file with fullPath
+    const { data } = matter(fileContents);
+    return {
+      slug: getSlug(file, subdir),
+      frontMatter: data,
+      ...(paramName && {
+        dynHref: getDynHref(paramName, subdir),
+      }),
+    };
+  });
+
+  return sortByDate(allMdx);
+  // return allMdx.sort((a, b) => { return new Date(b.frontMatter.date) - new Date(a.frontMatter.date) });
+};
+
+/**
+ * Check a post's frontmatter to see if it contains a specific tag.
+ * @param {(Buffer|string)} fileContents - data returned by fs.readFileSync() https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options
+ * @param {string} tag - tag name, eg. "nextjs"
  */
 const hasTag = (fileContents, tag) => {
   const { data } = matter(fileContents);
@@ -58,12 +96,21 @@ const hasTag = (fileContents, tag) => {
   return false;
 };
 
+/**
+ * Check a post's frontmatter to see if it contains a specific tag.
+ * @param {(Buffer|string)} fileContents - data returned by fs.readFileSync() https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options
+ */
 const hasAnyTag = (fileContents) => {
   const { data } = matter(fileContents);
   return data.tags ? true : false;
 };
 
-// Like getAllPosts, but with tag.
+/**
+ * Get posts that has a specific tag in its frontmatter. Mostly similar to getAllPosts().
+ * @param {string} tag
+ * @param {string} [subdir]
+ * @param {string} [paramName]
+ */
 export const getPostsByTag = (tag = "", subdir = "", paramName = null) => {
   const files = glob.sync(getContentGlob(subdir));
 
@@ -86,11 +133,13 @@ export const getPostsByTag = (tag = "", subdir = "", paramName = null) => {
       };
     });
 
-  return allMdx.sort((a, b) => {
-    return new Date(b.frontMatter.date) - new Date(a.frontMatter.date);
-  });
+  return sortByDate(allMdx);
 };
 
+/**
+ * Get all frontmatter 'tags' from all content files.
+ * @param {string} [subdir]
+ */
 export const getAllTags = (subdir = "") => {
   const files = glob.sync(getContentGlob(subdir));
   const tags = files
@@ -108,6 +157,10 @@ export const getAllTags = (subdir = "") => {
   return tags;
 };
 
+/**
+ * Get array of objects containing all tags for getStaticPaths().
+ * @param {string} [subdir]
+ */
 export const getAllTagsStaticPaths = (subdir = "") => {
   const tags = getAllTags(subdir);
   const tagPaths = tags.map((tag) => {
