@@ -69,12 +69,11 @@ export const getAllPosts = (subdir = "", paramName = null) => {
 
   const allMdx = files.map((file) => {
     const fileContents = fs.readFileSync(file); // check note in getContentPath() if replacing file with fullPath
-    const { data } = matter(fileContents);
-    // console.log("=========");
-    // console.log("matter", matter(fileContents));
+    const { data, content } = matter(fileContents);
     return {
       slug: getSlug(file, subdir),
       frontMatter: data,
+      mdx: content,
       ...(paramName && {
         dynHref: getDynHref(paramName, subdir),
       }),
