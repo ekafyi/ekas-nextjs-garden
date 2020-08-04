@@ -84,6 +84,31 @@ export const getAllPosts = (subdir = "", paramName = null) => {
 };
 
 /**
+ * Get a single post's frontmatter and mdx content based on slug.
+ * @param {string} slug
+ * @param {string} [subdir]
+ */
+export const getPost = (slug, subdir = "") => {
+  const files = glob.sync(getContentGlob(subdir));
+
+  // content/posts/relative-image-paths-in-mdx-with-remark.mdx
+  const fullPath = files.filter((file) => {
+    return getSlug(file) === slug;
+  })[0];
+  if (!fullPath) {
+    console.warn("No MDX file found for slug");
+    return false;
+  }
+
+  const fileContents = fs.readFileSync(fullPath);
+  const { content, data } = matter(fileContents);
+  return {
+    mdx: content,
+    frontMatter: data,
+  };
+};
+
+/**
  * Check a post's frontmatter to see if it contains a specific tag.
  * @param {(Buffer|string)} fileContents - data returned by fs.readFileSync() https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options
  * @param {string} tag - tag name, eg. "nextjs"
@@ -158,6 +183,17 @@ export const getAllTags = (subdir = "") => {
 };
 
 /**
+ * Get all content file slugs.
+ * @param {string} [subdir]
+ */
+export const getAllSlugs = (subdir = "") => {
+  const files = glob.sync(getContentGlob(subdir));
+  return files.map((file) => {
+    return getSlug(file);
+  });
+};
+
+/**
  * Get array of objects containing all tags for getStaticPaths().
  * @param {string} [subdir]
  */
@@ -169,4 +205,18 @@ export const getAllTagsStaticPaths = (subdir = "") => {
     };
   });
   return tagPaths;
+};
+
+/**
+ * Get array of objects containing all post slugs for getStaticPaths().
+ * @param {string} [subdir]
+ */
+export const getAllSlugsStaticPaths = (subdir = "") => {
+  const slugs = getAllSlugs(subdir);
+  const slugPaths = slugs.map((slug) => {
+    return {
+      params: { slug },
+    };
+  });
+  return slugPaths;
 };
