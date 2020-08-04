@@ -1,6 +1,7 @@
 import { SEO, Header } from "components";
 
 const PostPage = ({ mdxHtml, frontMatter }) => {
+  // TODO if error (if !frontMatter || !mdxHtml)
   return (
     <>
       <SEO title={frontMatter.title} />
