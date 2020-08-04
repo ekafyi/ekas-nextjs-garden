@@ -1,23 +1,11 @@
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
+import fs from "fs";
+import MDX from "@mdx-js/runtime";
+import ReactDOM from "react-dom/server";
 import matter from "gray-matter";
 import glob from "fast-glob";
-import { getContentGlob, getContentPath, getSlug } from "../../utils/get-mdx";
-
-import fs from "fs";
-import path from "path";
+import { getContentGlob, getSlug } from "../../utils/get-mdx";
 
 import * as components from "components";
-
-export default function TestPage({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource, components);
-  return (
-    <div>
-      <h1>{frontMatter.title}</h1>
-      {content}
-    </div>
-  );
-}
 
 export async function getStaticPaths() {
   const files = glob.sync(getContentGlob("posts")); // only generate paths from 'content/posts'
@@ -35,18 +23,27 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  // from https://github.com/hashicorp/next-mdx-remote
+  const files = glob.sync(getContentGlob("posts")); // only look in 'content/posts'
 
-  // prettier-ignore
-  const foo = path.join(path.join(process.cwd()), `${getContentPath("posts")}/${slug}.mdx`);
-  const source = fs.readFileSync(foo);
+  const fullPath = files.filter((item) => {
+    return getSlug(item) === slug;
+  })[0];
 
-  const { content, data } = matter(source);
-  const mdxSource = await renderToString(content, components, null, data);
+  const mdxSource = fs.readFileSync(fullPath);
+  const { content, data } = matter(mdxSource);
+
+  if (!fullPath) {
+    console.warn("No MDX file found for slug");
+  }
+
   return {
     props: {
-      mdxSource,
-      frontMatter: data,
+      mdxHtml: ReactDOM.renderToStaticMarkup(
+        <MDX components={components}>{content}</MDX>
+      ),
+      frontMatter: data || {},
     },
   };
 }
+
+export default components.PostPage;
