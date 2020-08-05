@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import Markdown from "markdown-to-jsx";
 import React from "react";
 import { render } from "react-dom";
@@ -17,12 +19,12 @@ export async function getStaticProps() {
 export default function Notes({ allMdx }) {
   return (
     <main>
-      <h1>Notes</h1>
+      <h1 sx={{ color: "primary" }}>Notes</h1>
       {allMdx && (
         <>
           {allMdx.map((item) => {
             return (
-              <article key={item.slug}>
+              <article key={item.slug} sx={{ my: 4 }}>
                 <h2>{item.frontMatter.title}</h2>
                 <Markdown>{item.mdx}</Markdown>
               </article>
