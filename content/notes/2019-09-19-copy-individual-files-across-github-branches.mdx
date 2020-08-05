@@ -1,0 +1,15 @@
+---
+title: Copy individual files or directories across branches on Github
+date: "2019-09-19"
+tags:
+  - snippets
+  - git
+---
+
+eg. I want to copy the `components/ui/button` path content from the `some-feature` branch into the current branch:
+
+```sh
+git checkout some-feature components/ui/button
+```
+
+Source: https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/
