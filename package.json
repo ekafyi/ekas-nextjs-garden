@@ -25,6 +25,7 @@
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "autoprefixer": "^9.8.6",
     "babel-plugin-module-resolver": "^4.0.0",
+    "react-kawaii": "^0.16.0",
     "tailwindcss": "^1.6.0"
   }
 }
