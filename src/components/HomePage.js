@@ -3,6 +3,8 @@ import { jsx } from "theme-ui";
 import { SEO, PostSnippet, GitHub, ColorModeSelect } from "components";
 import Link from "next/link";
 
+import { config } from "../../site.config.yml";
+
 const githubUrl =
   "https://github.com/RyanWarner/next-mdx-digital-garden-starter";
 
@@ -20,13 +22,17 @@ export default function HomePage({ allMdx }) {
           <br />
           Digital Garden Starter
         </h1>
-        <Link href="/posts" passHref>
-          <a>posts</a>
-        </Link>
-        &nbsp;
-        <Link href="/microblog" passHref>
-          <a>microblog</a>
-        </Link>
+        <ul>
+          {config.navigation.map((nav) => {
+            return (
+              <li key={nav.text}>
+                <Link href={nav.link} passHref>
+                  <a>{nav.text}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
         <hr sx={{ my: 4 }} />
         <h2>Example posts</h2>
         <ul>
