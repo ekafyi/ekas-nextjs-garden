@@ -2,15 +2,9 @@
 import { jsx } from "theme-ui";
 import Markdown from "markdown-to-jsx";
 import Link from "next/link";
-
-import { useState } from "react";
 import usePagination from "../../hooks/use-pagination";
-
-// import Link from "next/link";
-// import { PostSnippet } from "components";
 import { getAllPosts } from "../../utils/get-mdx";
-
-import * as components from "components";
+import { mdToJsxComponents } from "../../utils/get-components";
 
 const BUTTON_CSS =
   "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded";
@@ -49,15 +43,7 @@ export default function MicroblogPosts({ allMdx }) {
                   </Link>
                 </div>
                 <h2>{item.frontMatter.title}</h2>
-                <Markdown
-                  options={{
-                    overrides: {
-                      Mug: {
-                        component: components.Mug,
-                      },
-                    },
-                  }}
-                >
+                <Markdown options={{ overrides: mdToJsxComponents }}>
                   {item.mdx}
                 </Markdown>
               </article>
