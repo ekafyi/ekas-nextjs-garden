@@ -1,0 +1,25 @@
+---
+title: "Fix Github error: remote end hung up unexpectedly"
+date: "2020-08-07"
+tags:
+  - DevTips
+tech:
+  - github
+---
+
+**Problem:** Doing `git push`, runs as usual up to `Writing objects: ...`, then got this error:
+
+```
+error: RPC failed; result=56, HTTP code = 200
+fatal: The remote end hung up unexpectedly
+```
+
+**Solution:** Increase git buffer configuration.
+
+```sh
+git config http.postBuffer 524288000
+```
+
+Exact cause is unknown because I’ve pushed from the same connection and device many times and never got this error before.
+
+Reference: https://stackoverflow.com/questions/24952683/git-push-error-rpc-failed-result-56-http-code-200-fatal-the-remote-end-hun/36843260#36843260

@@ -1,0 +1,12 @@
+---
+title: "Fix Netlify deploy error: engine node incompatible with module"
+date: "2020-08-07"
+tags:
+  - DevTips
+tech:
+  - netlify-hosting
+---
+
+**Problem:** Local build works as expected, but Netlify build/deployment errors with the message `error chalk@4.1.0: The engine “node” is incompatible with this module. Expected version “>=10”`.
+
+**Solution:** By default, Netlify uses node ver 8. We can set the node version manually as env variables in **Settings > Build & deploy > Environment**, eg. `NODE_VERSION=13.10.1` (or whatever version is required).

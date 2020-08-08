@@ -1,0 +1,29 @@
+---
+title: "Download a specific folder/directory from a Github repository"
+date: "2019-07-24"
+tags:
+  - DevTips
+tech:
+  - git
+---
+
+I use this whenever I needed to download a specific directory but I'm on a slow connection and the whole repository is _waaay too large_ and takes too long to clone. 😫
+
+Install [Gyumeijie/github-files-fetcher](https://github.com/Gyumeijie/github-files-fetcher) as a global package.
+
+```sh
+npm install -g github-files-fetcher
+```
+
+Usage example:
+
+```sh
+fetcher --url="https://github.com/gatsbyjs/gatsby/tree/master/themes/gatsby-theme-blog/" --out=/Users/eka
+```
+
+- Download only the directory specified in `--url`.
+- Download to the directory specified in `--out`.
+
+Don’t forget the trailing slash `/` if you are downloading a subdirectory.
+
+This package is also available as a browser extension if you prefer doing this from the browser.

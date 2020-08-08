@@ -1,0 +1,91 @@
+---
+title: Set up optional image field from Contentful in Gatsby GraphQL
+date: "2020-08-08"
+tags:
+  - DevTips
+tech:
+  - gatsby
+  - contentful
+  - jamstack
+---
+
+## Background/Problem
+
+- We pull data from Contentful.
+- Out data model has an _optional_ image field. **At least one entry/node must have an image**, otherwise **the query breaks**. 🙀
+- Old solution: Force user/ourselves to have at least an entry with an image. 🙃
+- New solution: Use Gatsby’s schema customization as follows.
+
+## Solution
+
+Add in `gatsby-node.js` before `exports.createPages`.
+
+```js
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions;
+  const typeDefs = [
+    schema.buildObjectType({
+      name: "ContentfulFoo",
+      fields: {
+        optionalImage: "ContentfulAsset",
+      },
+      interfaces: ["Node"],
+    }),
+  ];
+  createTypes(typeDefs);
+};
+```
+
+- Our content model name in Contentful is `Foo`.
+- The optional field ID under `Foo` is `optionalImage`.
+- `ContentfulAsset` is a type created by the Contentful source plugin, which resembles a Sharp image.
+
+If we check Gatsby’s GraphQL interface (`localhost:8000/___graphql`), we’ll see our type `allContentfulFoo` has an `optionalImage` object that resembles any other Contentful image field (`ContentfulAsset`).
+
+Even if no entries have any image, nothing breaks; `optionalImage` simply returns null. See this example query:
+
+```
+query MyQuery {
+  allContentfulFoo {
+    nodes {
+      # other fields, eg. title
+      optionalImage {
+        description
+        resize {
+          src
+        }
+        fluid {
+          src
+        }
+      }
+    }
+  }
+}
+```
+
+The result is:
+
+```json
+{
+  "data": {
+    "allContentfulFoo": {
+      "nodes": [
+        {
+          "title": "Wow! no more errors!",
+          "optionalImage": null
+        },
+        {
+          "title": "No posts have an image but we're good!",
+          "optionalImage": null
+        }
+      ]
+    }
+  },
+  "extensions": {}
+}
+```
+
+## References
+
+- https://www.gatsbyjs.org/docs/schema-customization/#creating-type-definitions
+- https://www.gatsbyjs.org/docs/running-queries-with-graphiql/#how-to-use-graphiql — investigate your data model/types here

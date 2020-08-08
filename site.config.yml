@@ -17,6 +17,7 @@ config:
   navigation:
     - { text: Home, link: / }
     - { text: Posts, link: /posts }
+    - { text: Notes, link: /notes }
     - { text: Microblog, link: /microblog }
 
   css:
