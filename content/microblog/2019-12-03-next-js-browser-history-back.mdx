@@ -1,0 +1,19 @@
+---
+title: Emulate browser back behaviour with NextJS
+date: "2019-12-03"
+tags:
+  - snippets
+  - nextjs
+---
+
+We can emulate `window.history.back()` with NextJS’s Router with the following code.
+
+```js
+import Router from "next/router";
+
+// This behaves like window.history.back()
+const handleBack = (e: any) => {
+  e.preventDefault();
+  Router.back();
+};
+```

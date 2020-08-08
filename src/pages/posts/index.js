@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import Link from "next/link";
 import { PostSnippet } from "components";
 import { getAllPosts, getAllTags } from "../../utils/get-mdx";
@@ -14,7 +16,7 @@ export async function getStaticProps() {
 export default function Posts({ allMdx, allTags }) {
   return (
     <main>
-      <h1>Posts</h1>
+      <h1 sx={{ color: "primary" }}>Posts</h1>
       {allMdx && (
         <ul>
           {allMdx.map((item) => (

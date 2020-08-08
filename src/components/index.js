@@ -7,3 +7,5 @@ export HomePage from './HomePage'
 export PostPage from './PostPage'
 export ColorModeSelect from "./ColorModeSelect";
 export * from "./MDXOverrideComponents";
+
+export { Mug } from "react-kawaii";
