@@ -11,11 +11,7 @@ export default function HomePage({ allMdx }) {
       <SEO />
       <ColorModeSelect />
       <main>
-        <h1 className="text-green-700 text-4xl">
-          NextJS + MDX
-          <br />
-          Digital Garden Starter
-        </h1>
+        <h1 className="text-green-700 text-4xl">{config.siteName || ""}</h1>
         <ul>
           {config.navigation.map((nav) => {
             return (

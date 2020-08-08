@@ -3,12 +3,13 @@ config:
   author: Eka
   siteName: "Eka's Digital Garden"
   siteDescription: My digital garden in NextJS (in progress)
-  defaultPageTitle: "Eka's Digital Garden"
   baseUrl: https://ekas-nextjs-garden.vercel.app
 
-  # For Twitter cards, this logo must be a hosted url, not a relative path.
-  # Must be square. Minimum size is 144x144; maximum size 4096x4096.
-  websiteLogo: "https://cdn.auth0.com/blog/logos/nextjs-logo.png"
+  # Each social card type has its own size and dimensions requirements. TODO complete this.
+  # OpenGraph images should be 1200x630 px.
+  socialImgOg: "/og.jpg"
+  socialImgTwitter: "/og.jpg"
+  favicon: "/favicon.png"
 
   twitterHandle: "@ekafyi"
   twitterCardType: summary
