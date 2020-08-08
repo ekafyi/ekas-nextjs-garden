@@ -1,0 +1,27 @@
+config:
+  # Modified from: https://github.com/lorenseanstewart/nextjs-mdx-blog-kit/blob/master/config/config.yml
+  author: Eka
+  siteName: "Eka's Digital Garden"
+  siteDescription: My digital garden in NextJS (in progress)
+  baseUrl: https://ekas-nextjs-garden.vercel.app
+
+  # Each social card type has its own size and dimensions requirements. TODO complete this.
+  # OpenGraph images should be 1200x630 px.
+  socialImgOg: "/og.jpg"
+  socialImgTwitter: "/og.jpg"
+  favicon: "/favicon.png"
+
+  twitterHandle: "@ekafyi"
+  twitterCardType: summary
+
+  navigation:
+    - { text: Home, link: / }
+    - { text: Posts, link: /posts }
+    - { text: Microblog, link: /microblog }
+
+  css:
+    primaryColor: "#536DFE"
+    accentColor: "#455A64"
+    lightGray: "#eeeeee"
+    backgroundColor: "#ffffff"
+    black: "#333"
