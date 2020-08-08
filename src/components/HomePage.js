@@ -24,8 +24,8 @@ export default function HomePage({ allMdx }) {
           <a>posts</a>
         </Link>
         &nbsp;
-        <Link href="/notes" passHref>
-          <a>notes</a>
+        <Link href="/microblog" passHref>
+          <a>microblog</a>
         </Link>
         <hr sx={{ my: 4 }} />
         <h2>Example posts</h2>
