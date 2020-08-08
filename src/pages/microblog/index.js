@@ -18,12 +18,12 @@ const BUTTON_CSS =
 export async function getStaticProps() {
   return {
     props: {
-      allMdx: getAllPosts("notes", "slug"),
+      allMdx: getAllPosts("microblog", "slug"),
     },
   };
 }
 
-export default function Notes({ allMdx }) {
+export default function MicroblogPosts({ allMdx }) {
   const { getNext, currentPage, currentData, maxPage } = usePagination(allMdx);
   const currentPosts = currentData();
 
@@ -31,9 +31,8 @@ export default function Notes({ allMdx }) {
 
   return (
     <main>
-      <h1 sx={{ color: "primary" }}>
-        Notes (Microblog?) (what do i want to call this?)
-      </h1>
+      <h1 sx={{ color: "primary" }}>Microblog</h1>
+      <p>short, ephemeral, mostly trivial, often personal updates.</p>
       {allMdx && (
         <>
           {currentPosts.map((item) => {

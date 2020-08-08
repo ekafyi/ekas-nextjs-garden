@@ -5,7 +5,7 @@ import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
 import * as components from "components";
 
 export async function getStaticPaths() {
-  const paths = getAllSlugsStaticPaths("notes");
+  const paths = getAllSlugsStaticPaths("microblog");
   return {
     paths,
     fallback: false,
@@ -13,16 +13,16 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const note = getPost(slug, "notes");
-  if (!note) {
+  const post = getPost(slug, "microblog");
+  if (!post) {
     return { props: { mdxHtml: null, frontMatter: {} } };
   }
   return {
     props: {
       mdxHtml: ReactDOM.renderToStaticMarkup(
-        <MDX components={components}>{note.mdx}</MDX>
+        <MDX components={components}>{post.mdx}</MDX>
       ),
-      frontMatter: note.frontMatter || {},
+      frontMatter: post.frontMatter || {},
     },
   };
 }
