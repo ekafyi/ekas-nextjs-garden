@@ -4,6 +4,7 @@ import { SEO, PostSnippet, ColorModeSelect } from "components";
 import Link from "next/link";
 
 import { config } from "../../site.config.yml";
+// import { talks } from "../../content/me/talks.yml"; // Don't remove, YAML data example.
 
 export default function HomePage({ allMdx }) {
   return (
