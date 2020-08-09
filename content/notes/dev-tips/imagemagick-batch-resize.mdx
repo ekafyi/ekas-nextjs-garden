@@ -1,0 +1,36 @@
+---
+title: "Batch resize images in ImageMagick"
+date: "2019-09-18"
+tags:
+  - DevTips
+tech:
+  - imagemagick
+---
+
+❌ Attempt 1, failed.
+
+```sh
+# Does not work
+convert "images/*.png[150x]" -set filename:base "%[base]" "images/new_folder/%[filename:base].png"
+```
+
+❌ Attempt 2, failed.
+
+```sh
+# Does not work
+mogrify -path small/ 200x *.png
+```
+
+✅ Attempt 3, WORKS!
+
+```sh
+mogrify -resize 300x -quality 70 *.png
+mogrify -resize 300x -quality 70 */*.png # inside folder
+```
+
+This command replaces the original images, so make a copy first.
+
+References:
+
+- https://askubuntu.com/questions/135477/how-can-i-scale-all-images-in-a-folder-to-the-same-width
+- https://gordonlesti.com/imagemagick-resize-all-images-in-a-directory/

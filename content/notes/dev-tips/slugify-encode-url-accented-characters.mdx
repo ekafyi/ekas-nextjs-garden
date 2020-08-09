@@ -1,0 +1,55 @@
+---
+title: "Slugify and encode accented unicode characters in JS and PHP"
+date: "2019-09-06"
+tags:
+  - DevTips
+tech:
+  - javascript
+  - php
+  - i18n
+---
+
+Be careful when “slugify”-ing string for URL that’s also used for queries. Make sure accented characters are encoded correctly.
+
+`ü`, for example, is a different unicode character from `u`. If we slugify the footballer Jürgen Klinsmann’s name with the incorrect encoding as `jurgen-klinsmann`, it becomes `Jurgen Klinsmann` when decoded. Unless the API we use has been specifically configured to accommodate this fuzzy search scenario, requesting for a player named `Jurgen Klinsmann` from our API might not return the correct data, since there is no footballer by that name❊.
+
+There are libraries we can use for more complex use cases, but for basic purposes we can use these snippets.
+
+```js
+function slugifyEncode(string) {
+  return encodeURI(string.toLowerCase().replace(/[^a-zà-ü0-9\-]+/g, "-"));
+}
+
+slugify("Gobernador Piñero"); // "gobernador-pi%C3%B1ero"
+slugify("Jürgen Klinsmann"); // "j%C3%BCrgen-klinsmann"
+```
+
+PHP
+
+```php
+public function slugifyEncode($string)
+{
+	if (!$string) return false;
+
+	// lowercase
+	$string = strtolower($string);
+
+	// replace non letter or digits by -
+	$string = preg_replace('~[^\pL\d]+~u', '-', $string);
+
+	// remove unwanted characters
+	// $string = preg_replace('~[^-\w]+~', '', $string); // Not sure what this does, try at your own risk. 😛
+
+	// trim
+	$string = trim($string, '-');
+
+	// remove duplicate -
+	$string = preg_replace('~-+~', '-', $string);
+
+	return urlencode($string);
+}
+```
+
+<aside>
+  ❊) Or maybe there is, but that won’t be the player we’re looking for.
+</aside>

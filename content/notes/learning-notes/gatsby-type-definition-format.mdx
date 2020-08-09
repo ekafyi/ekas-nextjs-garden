@@ -1,0 +1,24 @@
+---
+title: Convert gatsby type definition format from object literals to Gatsby Type Builders 📝👩🏽‍🎓
+date: "2020-05-30"
+tags:
+  - Learning Notes
+tech:
+  - gatsby
+---
+
+**what are type definitions for?**
+to customize node type. explain briefly about custom types. (lengkapnya di Gatsby docs)
+
+especially important when the data source is unreliable and/or hard to enforce format, eg. Markdown as opposed to eg. CMS
+
+yang bisa didefinisikan : `buildObjectType`, `buildInputType`, `buildInterfaceType`, and `buildUnionType`. this article focuses on the first one, but the syntax is mostly similar.
+
+ada dua cara untuk mendefinisikan: sebagai template literals dan sebagai array of `buildObjectType` (etc) methods/actions ::ini namanya Type Builders::. fungsinya sama, cuma beda sintaks. (briefly describe) - template literals lebih simpel. karena lebih dulu ada, lebih banyak contohnya hehehehe. - array bisa berisi mix antara object literal dan type builder methods. with the latter, we can add custom field resolvers.
+
+**what are custom field resolvers for?**
+in a nutshell complex manipulation of source data. common use cases: - set default value (eg. property from optional frontmatter field, so it won’t break the GraphQL query even if it does not exist) - enforce format (eg. birthday in docs) - other custom resolvers such as slugify, MDX resolvers - Side note on why custom resolvers are esp. needed for MDX data: [Chris Biscardi’s Digital Garden](https://www.christopherbiscardi.com/post/sourcing-data-from-multiple-locations-in-gatsby)
+
+hubungan antara interface dan type (eg.) = “a note item _must_ have id, slug, title, etc (they will be called in the query)”. ini didefinisikan di interface. in practice, the data source might not satisfy those requirements; so we process it in the type definition, to be precise through the type builder’s field resolvers.
+
+baru tau createTypes dijalanin beberapa kali juga bisa (see Chris’ post above)
