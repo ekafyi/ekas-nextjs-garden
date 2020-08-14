@@ -3,8 +3,7 @@ export const p = ({ children }) => {
     <p
       style={{
         fontSize: "18px",
-        lineHeight: "180%",
-        marginBottom: "3rem",
+        marginBottom: "1rem",
       }}
     >
       {children}

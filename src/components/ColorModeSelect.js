@@ -2,23 +2,22 @@
 import { jsx } from "theme-ui";
 import { useColorMode } from "theme-ui";
 
-const styleObj = {
-  position: "absolute",
-  top: ".5rem",
-  right: ".5rem",
-  zIndex: 1,
-};
-
 const ColorModeSelect = (props) => {
   const [colorMode, setColorMode] = useColorMode();
   return (
     <button
-      sx={styleObj}
+      sx={{ variant: "buttons.colorMode" }}
+      aria-label={`${colorMode === "default" ? `dark` : `light`} mode`}
       onClick={(e) => {
         setColorMode(colorMode === "default" ? "dark" : "default");
       }}
+      {...props}
     >
-      Toggle {colorMode === "default" ? "Dark" : "Light"}
+      {colorMode === "default" ? (
+        <>&#9790;&nbsp; dark</>
+      ) : (
+        <>&#9788;&#xFE0E;&nbsp; light</>
+      )}
     </button>
   );
 };

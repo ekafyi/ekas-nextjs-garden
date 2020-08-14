@@ -1,7 +1,7 @@
 config:
   # Modified from: https://github.com/lorenseanstewart/nextjs-mdx-blog-kit/blob/master/config/config.yml
   author: Eka
-  siteName: "Eka's Digital Garden"
+  siteName: "Eka’s Digital Garden"
   siteDescription: My digital garden in NextJS (in progress)
   baseUrl: https://ekas-nextjs-garden.vercel.app
 
@@ -20,9 +20,9 @@ config:
     - { text: Notes, link: /notes }
     - { text: Microblog, link: /microblog }
 
-  css:
-    primaryColor: "#536DFE"
-    accentColor: "#455A64"
-    lightGray: "#eeeeee"
-    backgroundColor: "#ffffff"
-    black: "#333"
+  typography:
+    BASE_SIZE: 16
+    RATIO: 1.125
+    SCALE_FROM: -2
+    SCALE_TO: 20
+    SPACING: 4

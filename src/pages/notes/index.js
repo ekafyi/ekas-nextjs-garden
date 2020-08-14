@@ -1,46 +1,61 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-// import Link from "next/link";
-import { NoteSnippet } from "components";
-import {
-  getAllPosts,
-  // getAllTags
-} from "../../utils/get-mdx";
+import { Styled } from "theme-ui";
+import { SEO, NoteSnippet } from "components";
+import { getAllPosts } from "../../utils/get-mdx";
+
+import * as dummyData from "../../../content/dummy/dummy-notes";
+import TempNoteHeader from "../../components/TempNoteHeader";
 
 export async function getStaticProps() {
   return {
     props: {
       allMdx: getAllPosts("notes", "slug"),
-      // allTags: getAllTags("posts"),
     },
   };
 }
 
 export default function Notes({ allMdx }) {
   return (
-    <main>
-      <h1 sx={{ color: "primary" }}>Notes</h1>
-      <hr />
-      <h2>Tags:</h2>
-      <ul>
-        <li sx={{ my: 2 }}>
-          <strong>DevTips</strong>
-          <div>web development and tooling tips</div>
-        </li>
-        <li sx={{ my: 2 }}>Learning Notes</li>
-        <li sx={{ my: 2 }}>Media Notes</li>
-        <li sx={{ my: 2 }}>Bookmarks</li>
-      </ul>
-      <hr />
-      {allMdx && (
-        <ul>
-          {allMdx.map((item) => (
-            <li key={item.slug} sx={{ my: 4 }}>
-              <NoteSnippet {...item} />
-            </li>
+    <main sx={{ py: 4, px: [2, null, 6] }}>
+      <SEO title="Notes" />
+      <TempNoteHeader />
+      <div sx={{ variant: "components.note.container" }}>
+        <header sx={{ variant: "components.note.header" }}>
+          <Styled.h1>Notes</Styled.h1>
+          <p sx={{ variant: "components.note.subheader" }}>{dummyData.about}</p>
+        </header>
+        <div sx={{ variant: "components.note.side" }}>
+          <button sx={{ variant: "components.note.tag" }} className="is-active">
+            All
+          </button>
+          {dummyData.sections.map((s) => (
+            <button key={s} sx={{ variant: "components.note.tag" }}>
+              {s}
+            </button>
           ))}
-        </ul>
-      )}
+        </div>
+        <div sx={{ variant: "components.note.entries" }}>
+          {allMdx && (
+            <>
+              {allMdx.map((item) => (
+                <NoteSnippet
+                  key={item.slug}
+                  {...item}
+                  variant="components.note.snippet"
+                />
+              ))}
+              {allMdx.map((item) => (
+                <NoteSnippet
+                  key={item.slug}
+                  {...item}
+                  variant="components.note.snippet"
+                />
+              ))}
+            </>
+          )}
+        </div>
+      </div>
     </main>
   );
 }

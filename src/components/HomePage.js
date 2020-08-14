@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { Styled } from "theme-ui";
 import { SEO, PostSnippet, ColorModeSelect } from "components";
 import Link from "next/link";
 
@@ -11,8 +12,8 @@ export default function HomePage({ allMdx }) {
     <>
       <SEO />
       <ColorModeSelect />
-      <main>
-        <h1 className="text-green-700 text-4xl">{config.siteName || ""}</h1>
+      <main sx={{ p: 4 }}>
+        <Styled.h1 sx={{ mb: 8 }}>{config.siteName || ""}</Styled.h1>
         <ul>
           {config.navigation.map((nav) => {
             return (
