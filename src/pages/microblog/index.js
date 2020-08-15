@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { Styled } from "theme-ui";
 import Markdown from "markdown-to-jsx";
 import Link from "next/link";
 import usePagination from "../../hooks/use-pagination";
@@ -25,8 +26,12 @@ export default function MicroblogPosts({ allMdx }) {
 
   return (
     <main>
-      <h1 sx={{ color: "primary" }}>Microblog</h1>
-      <p>short, ephemeral, mostly trivial, often personal updates.</p>
+      <Styled.h2 as="h1">
+        eka’s microblog.{" "}
+        <span sx={{ color: "muted" }}>
+          short, ephemeral, mostly trivial, often personal updates.
+        </span>
+      </Styled.h2>
       {allMdx && (
         <>
           {currentPosts.map((item) => {

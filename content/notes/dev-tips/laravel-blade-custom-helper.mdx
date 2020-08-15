@@ -1,0 +1,44 @@
+---
+title: "Laravel Blade custom helper function, a basic example"
+date: "2019-09-25"
+tags:
+  - DevTips
+tech:
+  - laravel
+---
+
+In this example, we are making a helper to format text in our Blade template.
+
+1. Create a file in `app/Helpers/MyCustomHelper.php`
+
+```php
+<?php
+namespace App\Helpers;
+
+class MyCustomHelper
+{
+	static function shout($string)
+	{
+		return ucwords($string);
+	}
+}
+```
+
+2. Add to `config/app.php` in the `aliases` array
+
+```php
+'aliases' => [
+  // ...
+  'MyCustomHelper' => App\Helpers\MyCustomHelper::class
+],
+```
+
+3. Use it in your Blade template
+
+```php
+{!! MyCustomHelper::shout("Your text here") !!}
+
+// YOUR TEXT HERE
+```
+
+Reference: https://stackoverflow.com/questions/28290332/best-practices-for-custom-helpers-in-laravel-5#36888067

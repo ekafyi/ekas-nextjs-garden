@@ -4,60 +4,57 @@ export default {
   colors: {
     text: "#111",
     background: "#fff",
-    primary: "tomato",
-    secondary: "#3f3f3f",
+    primary: "#111", // simplify colour palette; primary === text colours.
+    accent: "tomato",
     muted: "#696969", // nice nice nice. also passes WCAG AA contrast.
-    highlight: "#9f9f9f",
-    accent: "#3f3f3f",
+    highlight: "#eee",
     modes: {
       dark: {
         text: "#fff",
         background: "#000",
-        primary: "tomato",
+        primary: "#fff",
+        accent: "tomato",
       },
     },
   },
   fonts: {
-    body: "Silom, monospace",
-    heading: "Silom, monospace",
+    body: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+    heading: "inherit",
     monospace: "Silom, monospace",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
     body: 400,
     heading: 700,
-    display: 900,
+    bold: 700,
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.25,
+    heading: 1.125,
   },
   textStyles: {
     heading: {
-      fontFamily: "heading",
-      fontWeight: "heading",
-      lineHeight: "heading",
-    },
-    display: {
-      variant: "textStyles.heading",
-      fontSize: [5, 6],
-      fontWeight: "display",
-      letterSpacing: "-0.03em",
-      mt: 3,
+      fontWeight: 700,
+      h1: {
+        fontWeight: 700,
+        fontSize: [6, 8],
+      },
     },
   },
   styles: {
-    Container: {
-      p: 3,
-      maxWidth: 1024,
-    },
     root: {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      "a:hover, a:focus": {
+        color: "accent",
+      },
     },
+    // other than root, none of this works
     h1: {
-      variant: "textStyles.display",
+      variant: "textStyles.heading",
+      border: "3px dotted rebeccapurple",
+      fontSize: 8,
     },
     h2: {
       variant: "textStyles.heading",
@@ -83,9 +80,9 @@ export default {
       fontSize: 2,
     },
     a: {
-      color: "primary",
+      color: "orange",
       "&:hover": {
-        color: "secondary",
+        color: "green",
       },
     },
     pre: {
@@ -144,43 +141,7 @@ export default {
     hr: {
       border: 0,
       borderBottom: "8px solid",
-      borderColor: "text",
-    },
-  },
-  buttons: {
-    outlined: {
-      color: "text",
-      textDecoration: "none",
-      border: "1px solid currentColor",
-      borderRadius: 4,
-      px: 3,
-      py: 2,
-      "svg, path": {
-        fill: "currentColor",
-      },
-    },
-    withIcon: {
-      variant: "buttons.outlined",
-      display: "grid",
-      gap: "14px",
-      gridTemplateColumns: "auto auto",
-      alignSelf: "flex-start",
-      alignItems: "self-end",
-    },
-  },
-  links: {
-    snippet: {
-      fontSize: [3, 4],
-      color: "text",
-      textDecoration: "none",
-    },
-  },
-  text: {
-    date: {
-      snippet: {
-        fontSize: 1,
-        opacity: 0.6,
-      },
+      borderColor: "accent",
     },
   },
 };
