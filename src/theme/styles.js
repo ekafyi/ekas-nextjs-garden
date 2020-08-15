@@ -1,4 +1,15 @@
+import { getLhByFontIndex, convertToRem } from "../utils/calc-type";
 // import reusable from "./variants/reusable";
+
+const UL_MARGIN = 24;
+const OL_MARGIN = 32;
+const OL_NUMBER_SIZE = 18;
+
+const blockContentCommon = {
+  fontSize: [2, 3],
+  lineHeight: [getLhByFontIndex(3), getLhByFontIndex(3)], // Repeat so it does not get overridden.
+  "& + p, & + ul, & + ol": { mt: [4] },
+};
 
 export default {
   root: {
@@ -15,33 +26,35 @@ export default {
   },
   h2: {
     variant: "text.heading",
-    fontSize: [10, null, 12, null, 14],
+    // fontSize: [10, null, 12, null, 14],
+    display: "none", // TODO balikin & adjust alignment
   },
   h3: {
     variant: "text.heading",
-    fontSize: [8, 10, 12, 14, 16],
+    // fontSize: [8, 10, 12, 14, 16],
   },
   h4: {
     variant: "text.heading",
-    fontSize: [6, 8, 10, 12, 14],
+    // fontSize: [6, 8, 10, 12, 14],
   },
   h5: {
     variant: "text.heading",
-    fontSize: 2,
+    // fontSize: 2,
   },
   h6: {
     variant: "text.heading",
-    fontSize: 1,
+    // fontSize: 1,
   },
   p: {
+    ...blockContentCommon,
     variant: "text.paragraph",
-    fontSize: 2,
   },
   a: {
-    color: "currentColor",
-    textDecoration: "underline",
+    color: "primary",
+    borderBottom: "2px solid currentColor",
+    fontWeight: "medium",
     "&:hover, &:focus": {
-      color: "primary",
+      borderBottomColor: "text",
     },
   },
   img: {
@@ -54,17 +67,61 @@ export default {
     code: {
       color: "inherit",
     },
+    display: "none", // TODO balikin & adjust alignment
   },
   code: {
     variant: "text.code",
-    fontSize: "inherit",
   },
   inlineCode: {
     variant: "text.code",
+    fontSize: 1,
+    lineHeight: 1, // Must be 1 so it does not affect surrounding paragraph.
+    backgroundColor: "codeBg",
+    color: "codeFg",
+    px: 1,
+    py: "2px",
+    borderRadius: 4,
   },
-  ol: {},
-  ul: {},
-  li: {},
+  ol: {
+    ...blockContentCommon,
+    counterReset: "steps",
+    li: {
+      counterIncrement: "steps",
+      ml: convertToRem(OL_MARGIN),
+    },
+    "li::before": {
+      content: 'counter(steps)', // prettier-ignore
+      display: "inline-block",
+      width: convertToRem(OL_NUMBER_SIZE),
+      height: convertToRem(OL_NUMBER_SIZE),
+      lineHeight: convertToRem(OL_NUMBER_SIZE),
+      borderRadius: "50%",
+      textAlign: "center",
+      fontSize: 0,
+      fontWeight: "bold",
+      color: "background",
+      backgroundColor: "primary",
+      ml: convertToRem(OL_MARGIN * -1),
+      mr: convertToRem(OL_MARGIN - OL_NUMBER_SIZE),
+    },
+  },
+  ul: {
+    ...blockContentCommon,
+    li: {
+      ml: convertToRem(UL_MARGIN),
+    },
+    "li::before": {
+      content: '"\\2022"',
+      display: "inline-block",
+      color: "primary",
+      width: convertToRem(UL_MARGIN),
+      ml: convertToRem(UL_MARGIN * -1),
+      pl: 1,
+    },
+  },
+  li: {
+    "&:not(:last-child)": { mb: 1 },
+  },
   blockquote: {},
   hr: {
     border: 0,

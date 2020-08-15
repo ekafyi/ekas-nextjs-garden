@@ -6,15 +6,16 @@ const light = {
 
   // Accent colour that's closer to "text" (must pass WCAG contrast check)
   primary: "#e64a19",
-  // primary: "#80d8ff",
-  // primary: "#6ccfff",
-  // primary: "#006cde",
 
   // Slightly weaker than "text"
   muted: "hsla(236, 76%, 35%, 75%)",
 
   // Slightly stronger than "background"
   border: "hsl(54, 57%, 81%)",
+
+  // Others
+  codeBg: "hsla(210, 94%, 88%, 50%)",
+  codeFg: "#ad006f",
 };
 
 const dark = {
@@ -23,6 +24,8 @@ const dark = {
   primary: "#64C7FF",
   muted: "hsla(45, 70%, 90%, 80%)",
   border: "hsl(233, 15%, 25%)",
+  codeBg: "hsl(0, 0%, 22%)",
+  codeFg: "#1cff1c",
 };
 
 const colors = {
