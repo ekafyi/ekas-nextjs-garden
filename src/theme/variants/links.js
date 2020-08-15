@@ -11,12 +11,34 @@ const coverParent = {
   },
 };
 
+const skip = {
+  backgroundColor: "text",
+  color: "background",
+  fontWeight: "bold",
+  fontSize: 1,
+  p: 2,
+  borderRadius: 4,
+  border: "2px solid",
+  borderColor: "primary",
+  display: "inline-block",
+  left: "0",
+  position: "absolute",
+  zIndex: 2,
+  height: "2rem",
+  transform: "translateY(-100%)",
+  transition: "transform .2s",
+  "&:focus": {
+    transform: "translateY(0%)",
+  },
+};
+
 export default {
   // Looks like button but is a link.
   button: {
     ...basicStyles,
   },
   coverParent,
+  skip,
 };
 
 // a: {
