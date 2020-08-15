@@ -17,12 +17,10 @@ export async function getStaticProps() {
 export default function Notes({ allMdx }) {
   return (
     <>
+      <SEO title="Notes" />
       <SkipLink />
       <SkipLink href="#posts">Skip to posts</SkipLink>
-      {/*  */}
       <main sx={{ py: 4, px: [2, null, 6] }}>
-        <SEO title="Notes" />
-        {/* TODO add "skip to posts" */}
         <Nav />
         <div id="main" sx={{ variant: "components.note.container" }}>
           <header sx={{ variant: "components.note.header" }}>

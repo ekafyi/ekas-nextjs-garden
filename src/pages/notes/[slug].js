@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Styled } from "theme-ui";
+import renderToString from "next-mdx-remote/render-to-string";
+import hydrate from "next-mdx-remote/hydrate";
 import { useRouter } from "next/router";
-import MDX from "@mdx-js/runtime";
-import ReactDOM from "react-dom/server";
+
 import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
-
-import { SEO, Nav } from "components";
-
-import * as components from "components";
+import { SEO, SkipLink, Nav, ErrorPage } from "components";
+// import * as components from "components";
 
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");
@@ -20,38 +19,33 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const post = getPost(slug, "notes");
-  if (!post) {
-    return { props: { mdxHtml: null, frontMatter: {} } };
-  }
+  if (!post) return { props: { mdxContent: null, frontMatter: {} } };
+  const mdxContent = await renderToString(post.mdx);
   return {
     props: {
-      mdxHtml: ReactDOM.renderToStaticMarkup(
-        <MDX components={components}>{post.mdx}</MDX>
-      ),
+      mdxContent,
       frontMatter: post.frontMatter || {},
     },
   };
 }
 
-// ! coba
-export default function NotePage({ mdxHtml, frontMatter }) {
+export default function NotePage({ mdxContent, frontMatter }) {
   const router = useRouter();
 
-  // TODO if error (if !frontMatter || !mdxHtml)
+  if (!frontMatter || !mdxContent) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   return (
     <>
       <SEO title={frontMatter.title} />
+      <SkipLink />
       <main sx={{ py: 4, px: [2, null, 6] }}>
         <Nav curPath={router.asPath} />
         <Styled.h4 as="h1" sx={{ mt: [4, null, 8, 12], mb: [4, null, 8] }}>
           {frontMatter.title}
         </Styled.h4>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: mdxHtml,
-          }}
-        />
+        <div>{hydrate(mdxContent)}</div>
       </main>
     </>
   );
