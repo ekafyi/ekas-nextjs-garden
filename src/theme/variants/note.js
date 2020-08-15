@@ -1,4 +1,4 @@
-import { getLhByFontIndex } from "../../utils/calc";
+import { getLhByFontIndex } from "../../utils/calc-type";
 
 // Why? https://css-tricks.com/equal-width-columns-in-css-grid-are-kinda-weird/
 const getGridCol = (col) => {
@@ -21,6 +21,7 @@ const grid12 = {
   gridTemplateColumns: getGridColsArr([null, 12]),
 };
 
+// TODO move to separate component?
 const snippetLink = {
   display: "block",
   pt: 2,
@@ -29,7 +30,6 @@ const snippetLink = {
   borderTop: ".125rem solid currentColor",
   borderBottom: ".375rem solid transparent",
   transition: "border .2s",
-  // background: [null, "aliceblue", "greenyellow", "salmon", "transparent"], // check
   "&:hover,&:focus": {
     color: "primary",
     borderTopWidth: ".375rem",
@@ -50,7 +50,7 @@ export default {
       "13rem auto",
       "16rem auto",
       "17rem auto",
-    ],
+    ], // set header row height manually
   },
   header: {
     gridColumn: ["-1 / 1", null, null, "-1 / 4", "-1 / 3"],
@@ -90,6 +90,7 @@ export default {
     variant: "buttons.pill",
   },
   entries: {
+    // background: [null, "aliceblue", "greenyellow", "salmon", "transparent"], // check
     gridColumn: ["1 / -1", null, "-1 / 4", null, "-1 / 3"],
     display: "grid",
     gridColumnGap,
@@ -115,28 +116,10 @@ export default {
       // Clamp at 3 lines to fit gridAutoRows
       display: ["block", "-webkit-box"],
       overflow: [null, "hidden"],
-      "-webkit-line-clamp": "4",
-      "-webkit-box-orient": "vertical",
-    },
-  },
-
-  // ! = = = old version
-
-  nav: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: 32,
-    mt: -2,
-    fontSize: 1,
-    mb: 2,
-    ">*": {
-      display: "flex",
-      justifyContent: "center",
-      fontWeight: "medium",
-      ">*:not(:last-child)": {
-        mr: 3,
-      },
+      // "-webkit-line-clamp": "4",
+      WebkitLineClamp: "4",
+      // "-webkit-box-orient": "vertical",
+      WebkitBoxOrient: "vertical",
     },
   },
 };

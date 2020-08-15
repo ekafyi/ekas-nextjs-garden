@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Styled } from "theme-ui";
-import { SEO, NoteSnippet } from "components";
+import { SEO, Nav, NoteSnippet } from "components";
 import { getAllPosts } from "../../utils/get-mdx";
 
 import * as dummyData from "../../../content/dummy/dummy-notes";
-import TempNoteHeader from "../../components/TempNoteHeader";
 
 export async function getStaticProps() {
   return {
@@ -19,7 +18,8 @@ export default function Notes({ allMdx }) {
   return (
     <main sx={{ py: 4, px: [2, null, 6] }}>
       <SEO title="Notes" />
-      <TempNoteHeader />
+      {/* TODO add "skip to posts" */}
+      <Nav />
       <div sx={{ variant: "components.note.container" }}>
         <header sx={{ variant: "components.note.header" }}>
           <Styled.h1>Notes</Styled.h1>

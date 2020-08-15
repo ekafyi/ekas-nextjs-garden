@@ -1,7 +1,5 @@
-import { fontSizesPx, convertToRem } from "../utils/calc";
+import { fontSizesPx, convertToRem } from "../utils/calc-type";
 import { config } from "../../site.config.yml";
-
-const { SCALE_FROM, SCALE_TO } = config.typography;
 
 // Define font-family.
 const body = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Styled } from "theme-ui";
-import { SEO, PostSnippet, ColorModeSelect } from "components";
+import { SEO, Nav, PostSnippet } from "components";
 import Link from "next/link";
 
 import { config } from "../../site.config.yml";
@@ -11,8 +11,8 @@ export default function HomePage({ allMdx }) {
   return (
     <>
       <SEO />
-      <ColorModeSelect />
       <main sx={{ p: 4 }}>
+        <Nav hideBc />
         <Styled.h1 sx={{ mb: 8 }}>{config.siteName || ""}</Styled.h1>
         <ul>
           {config.navigation.map((nav) => {

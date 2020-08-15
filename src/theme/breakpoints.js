@@ -1,4 +1,4 @@
-import { convertToRem } from "../utils/calc";
+import { convertToRem } from "../utils/calc-type";
 
 export default [
   convertToRem(480),

@@ -7,6 +7,7 @@
 import footer from "./footer";
 import header from "./header";
 import tomato from "./tomato";
+import nav from "./nav";
 import note from "./note";
 
 // Shared/Utility
@@ -23,7 +24,8 @@ export default {
   components: {
     footer,
     header,
-    tomato,
+    // tomato,
+    nav,
     note,
   },
   // Shared/Utility
