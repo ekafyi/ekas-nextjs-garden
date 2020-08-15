@@ -15,7 +15,7 @@ export default {
   },
   h2: {
     variant: "text.heading",
-    fontSize: [10, 12, 14, 16, 18],
+    fontSize: [10, null, 12, null, 14],
   },
   h3: {
     variant: "text.heading",
@@ -36,11 +36,6 @@ export default {
   p: {
     variant: "text.paragraph",
     fontSize: 2,
-    lineHeight: "paragraph",
-    background: "aliceblue", // coba
-    "+p": {
-      mt: 3,
-    },
   },
   a: {
     color: "currentColor",

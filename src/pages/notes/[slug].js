@@ -7,7 +7,9 @@ import { useRouter } from "next/router";
 
 import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
+
 // import * as components from "components";
+import * as components from "components/mdx";
 
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");
@@ -20,7 +22,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const post = getPost(slug, "notes");
   if (!post) return { props: { mdxContent: null, frontMatter: {} } };
-  const mdxContent = await renderToString(post.mdx);
+  const mdxContent = await renderToString(post.mdx, components);
   return {
     props: {
       mdxContent,
@@ -45,7 +47,7 @@ export default function NotePage({ mdxContent, frontMatter }) {
         <Styled.h4 as="h1" sx={{ mt: [4, null, 8, 12], mb: [4, null, 8] }}>
           {frontMatter.title}
         </Styled.h4>
-        <div>{hydrate(mdxContent)}</div>
+        <div>{hydrate(mdxContent, components)}</div>
       </main>
     </>
   );

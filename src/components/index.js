@@ -9,6 +9,6 @@ export PostPage from "./PostPage";
 export SEO from "./SEO";
 export SkipLink from "./SkipLink";
 
-export * from "./MDXComponents";
+// export * from "./MDXComponents";
 
 export { Mug } from "react-kawaii";
