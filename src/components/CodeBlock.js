@@ -35,8 +35,8 @@ export default function CodeBlock({
         {...props}
         code={children.trim()}
         language={language}
-        // theme={theme}
-        theme={undefined}
+        theme={theme}
+        // theme={undefined}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Styled.pre
