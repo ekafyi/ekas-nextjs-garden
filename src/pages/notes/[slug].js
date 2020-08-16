@@ -2,11 +2,10 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
 import { NotePage } from "components";
 
-// import components from "components/mdx";
-
-import mdxComponents from "components/mdx";
 import dynamic from "next/dynamic";
-const CodeBlock = dynamic(() => import("../../components/mdx/CodeBlock"));
+import mdxComponents from "components/mdx";
+
+const CodeBlock = dynamic(() => import("../../components/mdx/CodeBlock")); // It's somehow faster when imported here vs from components/mdx 🤔.
 const components = {
   pre: ({ children }) => <>{children}</>,
   code: CodeBlock,

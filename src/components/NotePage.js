@@ -1,14 +1,13 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui";
+import { jsx } from "theme-ui";
 import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
 
-// import components from "components/mdx";
-
-import mdxComponents from "components/mdx";
 import dynamic from "next/dynamic";
-const CodeBlock = dynamic(() => import("./mdx/CodeBlock"));
+import mdxComponents from "components/mdx";
+
+const CodeBlock = dynamic(() => import("./mdx/CodeBlock")); // It's somehow faster when imported here vs from components/mdx 🤔.
 const components = {
   pre: ({ children }) => <>{children}</>,
   code: CodeBlock,
