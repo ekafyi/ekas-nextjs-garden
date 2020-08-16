@@ -44,7 +44,7 @@ If we check Gatsby’s GraphQL interface (`localhost:8000/___graphql`), we’ll 
 
 Even if no entries have any image, nothing breaks; `optionalImage` simply returns null. See this example query:
 
-```
+```graphql
 query MyQuery {
   allContentfulFoo {
     nodes {

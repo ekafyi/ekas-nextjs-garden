@@ -25,7 +25,7 @@ const dark = {
   muted: "hsla(45, 70%, 90%, 80%)",
   border: "hsl(233, 15%, 25%)",
   codeBg: "hsl(0, 0%, 22%)",
-  codeFg: "#1cff1c",
+  codeFg: "hsl(84, 62%, 63%)",
 };
 
 const colors = {

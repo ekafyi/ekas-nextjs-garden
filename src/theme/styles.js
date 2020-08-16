@@ -1,3 +1,4 @@
+// import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 import { getLhByFontIndex, convertToRem } from "../utils/calc-type";
 // import reusable from "./variants/reusable";
 
@@ -27,7 +28,6 @@ export default {
   h2: {
     variant: "text.heading",
     // fontSize: [10, null, 12, null, 14],
-    display: "none", // TODO balikin & adjust alignment
   },
   h3: {
     variant: "text.heading",
@@ -62,15 +62,19 @@ export default {
     height: "auto",
   },
   pre: {
+    my: [6, 8],
+    pt: 5,
+    pb: 4, // heheheheh
+    px: 3,
+    lineHeight: "pre",
+    fontSize: 1,
+    borderRadius: 4,
     variant: "text.code",
-    overflowX: "auto",
-    code: {
-      color: "inherit",
-    },
-    display: "none", // TODO balikin & adjust alignment
+    // code: { color: "inherit" },
   },
   code: {
     variant: "text.code",
+    // ...nightOwl, // from @theme-ui/prism
   },
   inlineCode: {
     variant: "text.code",
@@ -120,7 +124,7 @@ export default {
     },
   },
   li: {
-    "&:not(:last-child)": { mb: 1 },
+    "&:not(:last-child)": { mb: 2 },
   },
   blockquote: {},
   hr: {

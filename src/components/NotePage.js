@@ -5,6 +5,17 @@ import hydrate from "next-mdx-remote/hydrate";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
 import * as components from "components/mdx";
 
+const nitip = {
+  maxWidth: 1088,
+  mx: "auto",
+  h2: {
+    mb: 6,
+    "&:not(:first-child)": {
+      mt: 8,
+    },
+  },
+};
+
 export default function NotePage({ mdxContent, frontMatter }) {
   const router = useRouter();
 
@@ -18,7 +29,7 @@ export default function NotePage({ mdxContent, frontMatter }) {
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
-        <article sx={{ maxWidth: 1088, mx: "auto" }}>
+        <article sx={{ ...nitip }}>
           <h1 sx={{ variant: "components.note.single.title" }}>
             {frontMatter.title}
           </h1>
