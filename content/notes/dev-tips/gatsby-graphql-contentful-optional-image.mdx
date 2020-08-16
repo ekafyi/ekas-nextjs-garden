@@ -20,7 +20,7 @@ tech:
 
 Add in `gatsby-node.js` before `exports.createPages`.
 
-```js
+```js title=gatsby-node.js hl=5,7
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   const typeDefs = [

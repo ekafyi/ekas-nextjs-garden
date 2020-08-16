@@ -75,6 +75,9 @@ export default {
   code: {
     variant: "text.code",
     // ...nightOwl, // from @theme-ui/prism
+    hl: {
+      background: "rgba(255,255,255,0.15)",
+    },
   },
   inlineCode: {
     variant: "text.code",
