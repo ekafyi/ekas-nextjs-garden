@@ -7,11 +7,14 @@ import { SEO, SkipLink, Nav, ErrorPage } from "components";
 
 import dynamic from "next/dynamic";
 const CodeBlock = dynamic(() => import("./CodeBlock"));
-// import CodeBlock from "components/CodeBlock";
-const components = { code: CodeBlock };
+const components = {
+  pre: ({ children }) => <>{children}</>,
+  code: CodeBlock,
+};
 
 const tempStyle = {
-  maxWidth: 1088,
+  // maxWidth: 1088,
+  maxWidth: 720,
   mx: "auto",
   h2: {
     mb: 6,

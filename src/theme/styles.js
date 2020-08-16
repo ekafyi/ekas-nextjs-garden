@@ -5,6 +5,8 @@ import { getLhByFontIndex, convertToRem } from "../utils/calc-type";
 const UL_MARGIN = 24;
 const OL_MARGIN = 32;
 const OL_NUMBER_SIZE = 18;
+const CODEBLOCK_P_X = 4;
+const CODEBLOCK_RADIUS = 4;
 
 const blockContentCommon = {
   fontSize: [2, 3],
@@ -62,28 +64,43 @@ export default {
     height: "auto",
   },
   pre: {
-    my: [6, 8],
-    pt: 5,
-    pb: 4, // heheheheh
-    px: 3,
+    variant: "text.code",
     lineHeight: "pre",
     fontSize: 1,
-    borderRadius: 4,
-    variant: "text.code",
-    // code: { color: "inherit" },
   },
-  code: {
-    // ...nightOwl, // from @theme-ui/prism
+  code: { variant: "text.code" },
+  blockCode: {
+    ...nightOwl,
     variant: "text.code",
-    customBlock: {
-      ...nightOwl,
-      title: {
-        backgroundColor: "border",
-        p: 2,
-      },
+    position: "relative",
+    overflow: "auto",
+    my: [6, 8],
+    mx: [-2, null, 0],
+    borderRadius: CODEBLOCK_RADIUS,
+    lang: {
+      background: "yellow",
+      color: "black",
+      fontSize: "0.75rem",
+      textTransform: "uppercase",
+      padding: "2px 4px",
+      position: "absolute",
+      right: 0,
+      top: `${CODEBLOCK_RADIUS}px`,
     },
+    title: {
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      lineHeight: "pre",
+      fontSize: 0,
+      fontWeight: "bold",
+      px: CODEBLOCK_P_X,
+      py: 2,
+      mb: -1,
+      // "& + *": {},
+    },
+    pre: { py: 5 },
+    ".token-line": { px: CODEBLOCK_P_X },
     highlight: {
-      background: "rgba(255,255,255,0.15)",
+      backgroundColor: "hsla(0, 0%, 30%, .5)", // from https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
     },
   },
   inlineCode: {
