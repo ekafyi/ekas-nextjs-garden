@@ -1,7 +1,8 @@
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
 import { Mug } from "react-kawaii";
-const Example = dynamic(() => import("../Example"));
+import Example from "../Example";
+// const Example = dynamic(() => import("../Example"));
 
 const components = {
   Mug,
