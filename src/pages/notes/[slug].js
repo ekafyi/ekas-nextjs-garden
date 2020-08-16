@@ -2,16 +2,16 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
 import { NotePage } from "components";
 
-import components from "components/mdx";
+// import components from "components/mdx";
 
-// import * as mdxComponents from "components/mdx";
-// import dynamic from "next/dynamic";
-// const CodeBlock = dynamic(() => import("../../components/mdx/CodeBlock"));
-// const components = {
-//   pre: ({ children }) => <>{children}</>,
-//   code: CodeBlock,
-//   Mug: mdxComponents.Mug,
-// };
+import mdxComponents from "components/mdx";
+import dynamic from "next/dynamic";
+const CodeBlock = dynamic(() => import("../../components/mdx/CodeBlock"));
+const components = {
+  pre: ({ children }) => <>{children}</>,
+  code: CodeBlock,
+  ...mdxComponents,
+};
 
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");
