@@ -3,12 +3,12 @@ import { jsx, Styled } from "theme-ui";
 import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
-// import * as components from "components/mdx";
+import * as components from "components/mdx";
 
-import CodeBlock from "components/CodeBlock";
-const components = { code: CodeBlock };
+// import CodeBlock from "components/CodeBlock";
+// const components = { code: CodeBlock };
 
-const nitip = {
+const tempStyle = {
   maxWidth: 1088,
   mx: "auto",
   h2: {
@@ -32,7 +32,7 @@ export default function NotePage({ mdxContent, frontMatter }) {
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
-        <article sx={{ ...nitip }}>
+        <article sx={{ ...tempStyle }}>
           <h1 sx={{ variant: "components.note.single.title" }}>
             {frontMatter.title}
           </h1>
