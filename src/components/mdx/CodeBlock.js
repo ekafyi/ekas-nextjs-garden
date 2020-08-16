@@ -25,7 +25,10 @@ export default function CodeBlock({
   hl,
   ...props
 }) {
-  const [language] = outerClassName.replace(/language-/, ``).split(` `);
+  let language;
+  if (typeof outerClassName !== "undefined") {
+    [language] = outerClassName.replace(/language-/, ``).split(` `);
+  }
   if (typeof children !== `string`) return null; // MDX will pass in the code string as children
   const shouldHighlightLine = getShouldHighlightLine(hl);
   return (
