@@ -4,14 +4,16 @@ import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
 
-import * as mdxComponents from "components/mdx";
-import dynamic from "next/dynamic";
-const CodeBlock = dynamic(() => import("./mdx/CodeBlock"));
-const components = {
-  pre: ({ children }) => <>{children}</>,
-  code: CodeBlock,
-  Mug: mdxComponents.Mug,
-};
+import components from "components/mdx";
+
+// import * as mdxComponents from "components/mdx";
+// import dynamic from "next/dynamic";
+// const CodeBlock = dynamic(() => import("./mdx/CodeBlock"));
+// const components = {
+//   pre: ({ children }) => <>{children}</>,
+//   code: CodeBlock,
+//   Mug: mdxComponents.Mug,
+// };
 
 const tempStyle = {
   maxWidth: 720,
