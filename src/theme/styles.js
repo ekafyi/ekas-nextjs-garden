@@ -73,9 +73,15 @@ export default {
     // code: { color: "inherit" },
   },
   code: {
-    variant: "text.code",
     // ...nightOwl, // from @theme-ui/prism
-    hl: {
+    variant: "text.code",
+    customBlock: {
+      title: {
+        backgroundColor: "border",
+        p: 2,
+      },
+    },
+    highlight: {
       background: "rgba(255,255,255,0.15)",
     },
   },

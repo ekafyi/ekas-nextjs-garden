@@ -28,8 +28,10 @@ export default function CodeBlock({
   }
   const shouldHighlightLine = getShouldHighlightLine(hl);
   return (
-    <div sx={{ variant: `styles.CodeBlock` }}>
-      {title && <div sx={{ variant: `styles.CodeBlock.title` }}>{title}</div>}
+    <div sx={{ variant: `styles.code.customBlock` }}>
+      {title && (
+        <div sx={{ variant: `styles.code.customBlock.title` }}>{title}</div>
+      )}
       <Highlight
         {...defaultProps}
         {...props}
@@ -49,7 +51,7 @@ export default function CodeBlock({
                 {...getLineProps({ line, key: index })}
                 sx={
                   shouldHighlightLine(index)
-                    ? { variant: `styles.code.hl` }
+                    ? { variant: `styles.code.highlight` }
                     : undefined
                 }
               >

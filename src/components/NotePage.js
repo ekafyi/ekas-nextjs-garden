@@ -3,7 +3,10 @@ import { jsx, Styled } from "theme-ui";
 import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
-import * as components from "components/mdx";
+// import * as components from "components/mdx";
+
+import CodeBlock from "components/CodeBlock";
+const components = { code: CodeBlock };
 
 const nitip = {
   maxWidth: 1088,
