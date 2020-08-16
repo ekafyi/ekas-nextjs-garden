@@ -6,7 +6,7 @@ import { SEO, SkipLink, Nav, ErrorPage } from "components";
 // import * as components from "components/mdx";
 
 import dynamic from "next/dynamic";
-const CodeBlock = dynamic(() => import("./CodeBlock"));
+const CodeBlock = dynamic(() => import("./mdx/CodeBlock"));
 const components = {
   pre: ({ children }) => <>{children}</>,
   code: CodeBlock,
