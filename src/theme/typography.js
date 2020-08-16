@@ -24,6 +24,7 @@ export const lineHeights = {
   body: 1,
   heading: 1,
   paragraph: "1.25rem",
+  pre: "1.5rem",
 };
 
 // Default theme-ui values.

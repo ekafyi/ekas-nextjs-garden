@@ -8,7 +8,7 @@ const PostPage = ({ mdxHtml, frontMatter }) => {
   return (
     <>
       <SEO title={frontMatter.title} />
-      <main sx={{ py: 4, px: [2, null, 6] }}>
+      <main>
         <Nav />
         <Styled.h4 as="h1" sx={{ mt: [4, null, 8, 12], mb: [4, null, 8] }}>
           {frontMatter.title}

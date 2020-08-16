@@ -1,13 +1,17 @@
+const heading = {
+  fontFamily: "heading",
+  fontWeight: "heading",
+  lineHeight: "heading",
+};
+
+// Breakpoints are buggy here; don't use breakpoint-related styles.
+
 export default {
-  heading: {
-    fontFamily: "heading",
-    fontWeight: "heading",
-    lineHeight: "heading",
-  },
+  heading,
   paragraph: {
     fontFamily: "body",
     fontWeight: "body",
-    lineHeight: "body",
+    lineHeight: "paragraph",
   },
   code: {
     fontFamily: "monospace",

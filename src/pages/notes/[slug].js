@@ -1,14 +1,16 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-import { Styled } from "theme-ui";
-import { useRouter } from "next/router";
-import MDX from "@mdx-js/runtime";
-import ReactDOM from "react-dom/server";
+import renderToString from "next-mdx-remote/render-to-string";
 import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
+import { NotePage } from "components";
 
-import { SEO, Nav } from "components";
+import dynamic from "next/dynamic";
+import mdxComponents from "components/mdx";
 
-import * as components from "components";
+const CodeBlock = dynamic(() => import("../../components/mdx/CodeBlock")); // It's somehow faster when imported here vs from components/mdx 🤔.
+const components = {
+  pre: ({ children }) => <>{children}</>,
+  code: CodeBlock,
+  ...mdxComponents,
+};
 
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");
@@ -20,39 +22,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const post = getPost(slug, "notes");
-  if (!post) {
-    return { props: { mdxHtml: null, frontMatter: {} } };
-  }
+  if (!post) return { props: { mdxContent: null, frontMatter: {} } };
+  const mdxContent = await renderToString(post.mdx, components);
   return {
     props: {
-      mdxHtml: ReactDOM.renderToStaticMarkup(
-        <MDX components={components}>{post.mdx}</MDX>
-      ),
+      mdxContent,
       frontMatter: post.frontMatter || {},
     },
   };
 }
 
-// ! coba
-export default function NotePage({ mdxHtml, frontMatter }) {
-  const router = useRouter();
-
-  // TODO if error (if !frontMatter || !mdxHtml)
-
-  return (
-    <>
-      <SEO title={frontMatter.title} />
-      <main sx={{ py: 4, px: [2, null, 6] }}>
-        <Nav curPath={router.asPath} />
-        <Styled.h4 as="h1" sx={{ mt: [4, null, 8, 12], mb: [4, null, 8] }}>
-          {frontMatter.title}
-        </Styled.h4>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: mdxHtml,
-          }}
-        />
-      </main>
-    </>
-  );
-}
+export default NotePage;

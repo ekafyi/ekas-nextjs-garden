@@ -20,7 +20,7 @@ tech:
 
 Add in `gatsby-node.js` before `exports.createPages`.
 
-```js
+```js title=gatsby-node.js hl=5,7
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   const typeDefs = [
@@ -36,7 +36,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 };
 ```
 
-- Our content model name in Contentful is `Foo`.
+- Our content model name in Contentful is `Foo`, so the GraphQL object type is `ContentfulFoo`.
 - The optional field ID under `Foo` is `optionalImage`.
 - `ContentfulAsset` is a type created by the Contentful source plugin, which resembles a Sharp image.
 
@@ -44,7 +44,7 @@ If we check Gatsby’s GraphQL interface (`localhost:8000/___graphql`), we’ll 
 
 Even if no entries have any image, nothing breaks; `optionalImage` simply returns null. See this example query:
 
-```
+```graphql
 query MyQuery {
   allContentfulFoo {
     nodes {

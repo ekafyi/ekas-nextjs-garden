@@ -1,12 +1,12 @@
 export default {
   // Default Container component. Meanwhile, max-width is defined in theme.sizes.container.
   // https://theme-ui.com/components/container
+
+  // Currently used in Notes.
   container: {
-    px: [2, 4],
-    py: ["1.5rem", 4],
+    wordWrap: "break-word",
+    py: 4,
+    px: [2, null, 6],
   },
   //
-  main: {
-    wordWrap: "break-word",
-  },
 };
