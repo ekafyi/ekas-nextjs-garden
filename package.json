@@ -11,6 +11,7 @@
     "@mdx-js/loader": "^1.6.16",
     "@mdx-js/runtime": "^1.6.16",
     "@next/mdx": "^9.5.1",
+    "@theme-ui/prism": "^0.3.0",
     "fast-glob": "^3.2.4",
     "gray-matter": "^4.0.2",
     "markdown-to-jsx": "^6.11.4",

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/nightOwl";
+// import theme from "prism-react-renderer/themes/nightOwl";
 import rangeParser from "parse-numeric-range";
 import { jsx, Styled } from "theme-ui";
 
@@ -37,8 +37,8 @@ export default function CodeBlock({
         {...props}
         code={children.trim()}
         language={language}
-        theme={theme}
-        // theme={undefined}
+        // theme={theme}
+        theme={undefined}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Styled.pre

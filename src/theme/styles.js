@@ -1,4 +1,4 @@
-// import nightOwl from "@theme-ui/prism/presets/night-owl.json";
+import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 import { getLhByFontIndex, convertToRem } from "../utils/calc-type";
 // import reusable from "./variants/reusable";
 
@@ -76,6 +76,7 @@ export default {
     // ...nightOwl, // from @theme-ui/prism
     variant: "text.code",
     customBlock: {
+      ...nightOwl,
       title: {
         backgroundColor: "border",
         p: 2,

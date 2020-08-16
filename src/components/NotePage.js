@@ -15,7 +15,7 @@ const tempStyle = {
   mx: "auto",
   h2: {
     mb: 6,
-    "&:not(:first-child)": {
+    "&:not(:first-of-type)": {
       mt: 8,
     },
   },
