@@ -67,13 +67,14 @@ export default {
     variant: "text.code",
     lineHeight: "pre",
     fontSize: 1,
+    overflow: "auto",
+    background: "#011627",
   },
   code: { variant: "text.code" },
   blockCode: {
     ...nightOwl,
     variant: "text.code",
     position: "relative",
-    overflow: "auto",
     my: [6, 8],
     mx: [-2, null, 0],
     borderRadius: CODEBLOCK_RADIUS,
@@ -97,10 +98,20 @@ export default {
       mb: -1,
       // "& + *": {},
     },
-    pre: { py: 5 },
+    pre: { py: 5, backgroundColor: "hsla(0, 0%, 30%, .5)" },
     ".token-line": { px: CODEBLOCK_P_X },
     highlight: {
-      backgroundColor: "hsla(0, 0%, 30%, .5)", // from https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        left: 0,
+        right: 0,
+        height: "1.5rem", // lineHeight.pre
+        backgroundColor: "hsla(0, 0%, 30%, .5)", // from https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
+      },
+      ">*": {
+        position: "relative",
+      },
     },
   },
   inlineCode: {
