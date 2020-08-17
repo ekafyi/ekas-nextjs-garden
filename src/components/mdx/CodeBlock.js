@@ -45,7 +45,7 @@ export default function CodeBlock({
         <div
           sx={{ variant: "styles.blockCode.title" }}
           aria-hidden="true"
-          className="py-2 -mb-1 bg-black text-white"
+          className="py-2 -mb-2 bg-black text-white"
         >
           {title}
         </div>

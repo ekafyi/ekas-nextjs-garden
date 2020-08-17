@@ -17,10 +17,6 @@ const components = {
 const tempStyle = {
   maxWidth: 720,
   mx: "auto",
-  h2: {
-    mb: 6,
-    "&:not(:first-of-type)": { mt: 8 },
-  },
 };
 
 export default function NotePage({ mdxContent, frontMatter }) {
@@ -36,7 +32,7 @@ export default function NotePage({ mdxContent, frontMatter }) {
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
-        <article sx={{ ...tempStyle }}>
+        <article sx={{ ...tempStyle }} className="leading-6 md:leading-7">
           <h1 sx={{ variant: "components.note.single.title" }}>
             {frontMatter.title}
           </h1>
