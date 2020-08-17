@@ -13,7 +13,7 @@ const components = {
 };
 
 const options = {
-  remarkPlugins: [require("remark-slug"), require("remark-emoji")],
+  remarkPlugins: [require("remark-slug")],
 };
 
 export async function getStaticPaths() {
