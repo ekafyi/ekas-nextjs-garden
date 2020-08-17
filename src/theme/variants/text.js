@@ -7,7 +7,10 @@ const heading = {
 // Breakpoints are buggy here; don't use breakpoint-related styles.
 
 export default {
-  heading,
+  heading: {
+    ...heading,
+    a: { ...heading, color: "inherit" },
+  },
   paragraph: {
     fontFamily: "body",
     fontWeight: "body",

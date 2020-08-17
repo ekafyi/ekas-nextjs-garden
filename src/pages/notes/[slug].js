@@ -12,6 +12,10 @@ const components = {
   ...mdxComponents,
 };
 
+const options = {
+  remarkPlugins: [require("remark-slug"), require("remark-emoji")],
+};
+
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");
   return {
@@ -23,7 +27,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const post = getPost(slug, "notes");
   if (!post) return { props: { mdxContent: null, frontMatter: {} } };
-  const mdxContent = await renderToString(post.mdx, components);
+  const mdxContent = await renderToString(post.mdx, components, options);
   return {
     props: {
       mdxContent,

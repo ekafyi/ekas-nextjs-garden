@@ -29,19 +29,19 @@ export default {
   },
   h2: {
     variant: "text.heading",
-    // fontSize: [10, null, 12, null, 14],
+    fontSize: [5, null, null, 6],
   },
   h3: {
     variant: "text.heading",
-    // fontSize: [8, 10, 12, 14, 16],
+    fontSize: [4, null, null, 5],
   },
   h4: {
     variant: "text.heading",
-    // fontSize: [6, 8, 10, 12, 14],
+    fontSize: [3, null, null, 4],
   },
   h5: {
     variant: "text.heading",
-    // fontSize: 2,
+    fontSize: [3, null, null, 4],
   },
   h6: {
     variant: "text.heading",
