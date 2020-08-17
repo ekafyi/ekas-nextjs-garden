@@ -94,11 +94,9 @@ export default {
       fontSize: 0,
       fontWeight: "bold",
       px: CODEBLOCK_P_X,
-      py: 2,
-      mb: -1,
       // "& + *": {},
     },
-    pre: { py: 5, backgroundColor: "hsla(0, 0%, 30%, .5)" },
+    pre: { py: 5 },
     ".token-line": { px: CODEBLOCK_P_X },
     highlight: {
       "&::before": {
