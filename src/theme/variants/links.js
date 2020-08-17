@@ -32,13 +32,17 @@ const skip = {
   },
 };
 
+const backToTop = {
+  mt: 6,
+  display: "inline-block",
+  borderBottom: "2px solid currentColor",
+};
+
 export default {
-  // Looks like button but is a link.
-  button: {
-    ...basicStyles,
-  },
+  button: { ...basicStyles }, // Looks like button but is a link.
   coverParent,
   skip,
+  backToTop,
 };
 
 // a: {
