@@ -38,7 +38,10 @@ export default function NotePage({ mdxContent, frontMatter }) {
           <h1 sx={{ variant: "components.note.single.title" }}>
             {frontMatter.title}
           </h1>
-          <div sx={{ variant: "components.note.single.body" }}>
+          <div
+            className="eka-mdx"
+            sx={{ variant: "components.note.single.body" }}
+          >
             {hydrate(mdxContent, components)}
           </div>
           <a href="#main" sx={{ variant: "links.backToTop" }}>
