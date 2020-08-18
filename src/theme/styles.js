@@ -159,6 +159,8 @@ export default {
   ol: {
     ...blockContentCommon,
     counterReset: "steps",
+    listStyle: "none",
+    pl: 0,
     li: {
       counterIncrement: "steps",
       ml: convertToRem(OL_MARGIN),
