@@ -16,7 +16,7 @@ const getAriaLabel = (lang = "", title = "") => {
   return `${lang} code block ${title ? `for ${title}` : ""}`;
 };
 
-const highlightSx = { variant: `styles.blockCode.highlight` };
+const highlightSx = { variant: `components.mdx.blockCode.highlight` };
 
 export default function CodeBlock({
   children,
@@ -37,13 +37,16 @@ export default function CodeBlock({
       aria-label={getAriaLabel(language, title)}
     >
       {language && (
-        <div sx={{ variant: "styles.blockCode.lang" }} aria-hidden="true">
+        <div
+          sx={{ variant: "components.mdx.blockCode.lang" }}
+          aria-hidden="true"
+        >
           {language}
         </div>
       )}
       {title && (
         <div
-          sx={{ variant: "styles.blockCode.title" }}
+          sx={{ variant: "components.mdx.blockCode.title" }}
           aria-hidden="true"
           className="py-2 -mb-2 bg-black text-white"
         >

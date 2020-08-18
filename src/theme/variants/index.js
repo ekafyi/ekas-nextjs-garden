@@ -7,6 +7,7 @@
 import footer from "./footer";
 import header from "./header";
 import tomato from "./tomato";
+import mdx from "./mdx";
 import nav from "./nav";
 import note from "./note";
 
@@ -25,6 +26,7 @@ export default {
     footer,
     header,
     // tomato,
+    mdx,
     nav,
     note,
   },

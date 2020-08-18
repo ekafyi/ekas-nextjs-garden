@@ -9,6 +9,10 @@ const CODEBLOCK_P_X = 4;
 const CODEBLOCK_RADIUS = 8;
 const ANCHOR_ICON_MARGIN = -6;
 
+// TODO [low priority] move mdx typography styling from the main export,
+// export as variable and use it from components.mdx so we dont send
+// the styles twice.
+
 const blockContentCommon = {
   fontSize: [2, null, 3],
   lineHeight: [getLhByFontIndex(3), null, getLhByFontIndex(4)], // Repeat so it does not get overridden.
