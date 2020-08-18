@@ -1,41 +1,17 @@
 import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 import { getLhByFontIndex, convertToRem } from "../utils/calc-type";
-// import reusable from "./variants/reusable";
+import { hCommon, h2, h3, h4, h5 } from "./typography";
 
 const UL_MARGIN = 24;
 const OL_MARGIN = 32;
 const OL_NUMBER_SIZE = 18;
 const CODEBLOCK_P_X = 4;
 const CODEBLOCK_RADIUS = 8;
-const ANCHOR_ICON_MARGIN = -6;
-
-// TODO [low priority] move mdx typography styling from the main export,
-// export as variable and use it from components.mdx so we dont send
-// the styles twice.
 
 const blockContentCommon = {
   fontSize: [2, null, 3],
   lineHeight: [getLhByFontIndex(3), null, getLhByFontIndex(4)], // Repeat so it does not get overridden.
   "& + p, & + ul, & + ol": { mt: [4, null, 5] },
-};
-
-const headingCommon = {
-  variant: "text.heading",
-  "a:hover,a:focus,a:active": {
-    textDecoration: "underline",
-  },
-};
-
-const headingAnchorCommon = {
-  a: { position: "relative" },
-  "a:hover,a:focus": {
-    svg: {
-      visibility: "visible",
-      height: "1em", // match heading size
-      left: [null, null, ANCHOR_ICON_MARGIN],
-      right: [ANCHOR_ICON_MARGIN, null, "unset"],
-    },
-  },
 };
 
 export default {
@@ -46,43 +22,16 @@ export default {
     svg: { fill: "currentColor" },
   },
   h1: {
-    ...headingCommon,
+    ...hCommon,
     fontSize: [12, 14, 16, 19, 20],
     lineHeight: 1,
     letterSpacing: "-0.0125em",
   },
-  h2: {
-    ...headingCommon,
-    fontSize: [5, null, null, 6],
-    "&[id]": {
-      ...headingAnchorCommon,
-      "&:not(:first-child)": { mt: [9, null, 10] },
-    },
-  },
-  h3: {
-    ...headingCommon,
-    fontSize: [4],
-    "&[id]": {
-      ...headingAnchorCommon,
-      "&:not(:first-child)": { mt: [7, null, 8] },
-    },
-  },
-  h4: {
-    ...headingCommon,
-    fontSize: [3],
-    "&[id]": {
-      ...headingAnchorCommon,
-      "&:not(:first-child)": { mt: [6, null, 7], mb: 3 },
-    },
-  },
-  h5: {
-    ...headingCommon,
-    fontSize: [2, null, null, 3],
-  },
-  h6: {
-    ...headingCommon,
-    // fontSize: 1,
-  },
+  h2,
+  h3,
+  h4,
+  h5,
+  h6: hCommon,
   p: {
     variant: "text.paragraph",
     ...blockContentCommon,
@@ -205,23 +154,11 @@ export default {
   blockquote: {},
   hr: {
     border: 0,
-    borderBottom: "1px solid",
-    borderColor: "muted",
+    borderBottom: "4px solid",
+    borderColor: "border",
+    my: 8,
   },
-  table: {
-    width: "100%",
-    borderCollapse: "separate",
-    borderSpacing: 0,
-  },
-  th: {
-    textAlign: "left",
-    borderBottomStyle: "solid",
-  },
-  td: {
-    textAlign: "left",
-    borderBottomStyle: "solid",
-  },
+  table: {},
+  th: {},
+  td: {},
 };
-
-// ? [low priority] add font-size: calc(1rem + 0.125vw) in html (root) for fluid typography?
-// https://css-tricks.com/simplified-fluid-typography/
