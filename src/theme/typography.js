@@ -36,26 +36,21 @@ export const lineHeights = {
 // See www.modularscale.com. Current ratio 8:9 (major second) = 9 / 8 = 1.125.
 export const fontSizes = fontSizesPx.map((size) => convertToRem(size));
 
-/**
- * Define here, import from elsewhere.
- */
+// = = =
 
-// Headings
+// * Define heading styles here, import from elsewhere.
+// (variants.text was buggy with breakpoints last time I tried?)
 
 const h2Sizes = [5, null, null, 6];
 const h2M = { "&:not(:first-child)": { mt: [9, null, 10] } };
 const h3Sizes = 4;
 const h3M = { "&:not(:first-child)": { mt: [7, null, 8] } };
 const h4Sizes = 3;
-const h4M = { "&:not(:first-child)": { mt: [6, null, 7], mb: 3 } };
-const h5Sizes = [2, null, null, 3];
-
-export const hCommon = {
-  variant: "text.heading",
-  "a:hover,a:focus,a:active": {
-    textDecoration: "underline",
-  },
+const h4M = {
+  "&:not(:first-child)": { mt: [6, null, 7] },
+  // "+p,+ul,+ol": { mt: 3 }, // use for h5 maybe
 };
+const h5Sizes = [2, null, null, 3];
 
 const ANCHOR_ICON_MARGIN = -6;
 const hAnchorCommon = {
@@ -71,27 +66,27 @@ const hAnchorCommon = {
 };
 
 export const h2 = {
-  ...hCommon,
-  ...h2M,
+  variant: "text.heading",
   fontSize: h2Sizes,
+  ...h2M,
   "&[id]": hAnchorCommon,
 };
 
 export const h3 = {
-  ...hCommon,
-  ...h3M,
+  variant: "text.heading",
   fontSize: h3Sizes,
+  ...h3M,
   "&[id]": hAnchorCommon,
 };
 
 export const h4 = {
-  ...hCommon,
-  ...h4M,
+  variant: "text.heading",
   fontSize: h4Sizes,
+  ...h4M,
   "&[id]": hAnchorCommon,
 };
 
 export const h5 = {
-  ...hCommon,
+  variant: "text.heading",
   fontSize: h5Sizes,
 };

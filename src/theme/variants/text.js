@@ -1,15 +1,12 @@
-const heading = {
-  fontFamily: "heading",
-  fontWeight: "heading",
-  lineHeight: "heading",
-};
-
 // Breakpoints are buggy here; don't use breakpoint-related styles.
 
 export default {
   heading: {
-    ...heading,
-    a: { ...heading, color: "inherit" },
+    fontFamily: "heading",
+    fontWeight: "heading",
+    lineHeight: "heading",
+    a: { color: "inherit" },
+    "a:hover,a:focus,a:active": { textDecoration: "underline" },
   },
   paragraph: {
     fontFamily: "body",
@@ -18,6 +15,7 @@ export default {
   },
   code: {
     fontFamily: "monospace",
+    fontSize: 1,
   },
   // check check 1-2-3.
   pinky: {

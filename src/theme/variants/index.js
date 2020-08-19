@@ -4,6 +4,7 @@
  */
 
 // Components
+import code from "./code";
 import footer from "./footer";
 import header from "./header";
 import tomato from "./tomato";
@@ -23,6 +24,7 @@ import text from "./text";
 
 export default {
   components: {
+    code,
     footer,
     header,
     // tomato,

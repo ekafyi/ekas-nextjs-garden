@@ -5,7 +5,7 @@ const light = {
   text: "#16209f",
 
   // Accent colour that's closer to "text" (must pass WCAG contrast check)
-  primary: "#e64a19",
+  primary: "#d20027",
 
   // Slightly weaker than "text"
   muted: "hsla(236, 76%, 35%, 75%)",
