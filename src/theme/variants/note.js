@@ -55,7 +55,7 @@ export default {
       // background: ["tomato", "purple", "aliceblue", "greenyellow", "hotpink"],
     },
     body: {
-      // variant: "layout.singleContent",
+      variant: "components.mdx",
       // background: "aliceblue",
       // display: "none",
     },

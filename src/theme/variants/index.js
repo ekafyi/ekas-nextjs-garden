@@ -4,9 +4,11 @@
  */
 
 // Components
+import code from "./code";
 import footer from "./footer";
 import header from "./header";
 import tomato from "./tomato";
+import mdx from "./mdx";
 import nav from "./nav";
 import note from "./note";
 
@@ -22,9 +24,11 @@ import text from "./text";
 
 export default {
   components: {
+    code,
     footer,
     header,
     // tomato,
+    mdx,
     nav,
     note,
   },

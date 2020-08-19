@@ -16,7 +16,13 @@ const getAriaLabel = (lang = "", title = "") => {
   return `${lang} code block ${title ? `for ${title}` : ""}`;
 };
 
-const highlightSx = { variant: `styles.blockCode.highlight` };
+const containerSx = { variant: "components.mdx.blockCode.container" };
+const highlightSx = { variant: "components.mdx.blockCode.highlight" };
+const langSx = { variant: "components.mdx.blockCode.lang" };
+const titleSx = { variant: "components.mdx.blockCode.title" };
+
+const langTw = "absolute right-0";
+const titleTw = "py-2 -mb-2";
 
 export default function CodeBlock({
   children,
@@ -33,20 +39,17 @@ export default function CodeBlock({
   const shouldHighlightLine = getShouldHighlightLine(hl);
   return (
     <div
-      sx={{ variant: "styles.blockCode" }}
+      className="eka-cb"
+      sx={containerSx}
       aria-label={getAriaLabel(language, title)}
     >
       {language && (
-        <div sx={{ variant: "styles.blockCode.lang" }} aria-hidden="true">
+        <div sx={langSx} className={langTw} aria-hidden="true">
           {language}
         </div>
       )}
       {title && (
-        <div
-          sx={{ variant: "styles.blockCode.title" }}
-          aria-hidden="true"
-          className="py-2 -mb-2 bg-black text-white"
-        >
+        <div sx={titleSx} className={titleTw} aria-hidden="true">
           {title}
         </div>
       )}
