@@ -8,7 +8,7 @@ const blockContentCommon = {
   mt: [4, null, 5],
   "&:first-child": { mt: 0 },
   a: { variant: "links.inBody" },
-  // code: { variant: "components.code.inline" },
+  code: { variant: "components.code.inline" },
 };
 
 export default {

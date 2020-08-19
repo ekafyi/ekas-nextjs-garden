@@ -69,6 +69,7 @@ export default {
   fallback: {
     backgroundColor: nightOwl.backgroundColor,
     color: nightOwl.color,
+    my: [6, 8],
   },
   block: blockCode,
   inline: inlineCode,

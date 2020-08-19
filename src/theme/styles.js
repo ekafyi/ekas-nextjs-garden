@@ -20,7 +20,7 @@ export default {
   // a: {},
   // img: {},
   // pre: {},
-  inlineCode: { variant: "components.code.inline" },
+  // inlineCode: { variant: "components.code.inline" },
   // ol: {},
   // ul: {},
   // blockquote: {},
