@@ -2,7 +2,8 @@ import { getLhByFontIndex } from "../../utils/calc-type";
 
 const blockquote = {
   mt: 8,
-  py: 2,
+  pt: 2,
+  pb: 3, // heheheheh
   pl: [4, null, 6],
   borderLeft: "1rem double",
   borderLeftColor: "text", // FF does not like currentColor for border.
