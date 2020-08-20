@@ -22,7 +22,7 @@ export default {
     },
     "*[aria-hidden]": {
       mx: 1,
-      color: "muted",
+      color: "mutedFg",
       opacity: 0.75,
     },
   },

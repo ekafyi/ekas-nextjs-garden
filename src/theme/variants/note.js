@@ -91,7 +91,7 @@ export default {
     subheader: {
       fontSize: [1, 2, 4],
       lineHeight: ["paragraph", getLhByFontIndex(3), getLhByFontIndex(4)],
-      color: "muted",
+      color: "mutedFg",
       maxWidth: [null, null, "27em", null, "36vw"],
       pt: [1, 0, 4, 8, 4],
     },

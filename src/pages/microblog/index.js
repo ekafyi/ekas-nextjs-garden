@@ -28,7 +28,7 @@ export default function MicroblogPosts({ allMdx }) {
     <main>
       <Styled.h2 as="h1">
         eka’s microblog.{" "}
-        <span sx={{ color: "muted" }}>
+        <span sx={{ color: "mutedFg" }}>
           short, ephemeral, mostly trivial, often personal updates.
         </span>
       </Styled.h2>
@@ -37,7 +37,7 @@ export default function MicroblogPosts({ allMdx }) {
           {currentPosts.map((item) => {
             return (
               <article key={item.slug} sx={{ my: 5 }}>
-                <div sx={{ color: "muted" }}>
+                <div sx={{ color: "mutedFg" }}>
                   <Link
                     href={item.dynHref}
                     as={item.slug}
