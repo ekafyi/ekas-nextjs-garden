@@ -10,6 +10,7 @@ const bulletList = {
   li: {
     ...commonLi,
     ml: convertToRem(UL_MARGIN),
+    "ul,ul:first-child": { mt: 2 },
   },
   "li::before": {
     content: '"\\2022"',
@@ -45,6 +46,8 @@ const numberedList = {
     ml: convertToRem(OL_MARGIN * -1),
     mr: convertToRem(OL_MARGIN - OL_NUMBER_SIZE),
   },
+  // If needed, make a function to loop these.
+  "&[start='2']": { counterReset: "steps 1" },
 };
 
 export default {
