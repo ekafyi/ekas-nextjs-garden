@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui";
+import { jsx } from "theme-ui";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
 import { getAllPosts } from "../../utils/get-mdx";
 
@@ -23,7 +23,7 @@ export default function Notes({ allMdx }) {
         <Nav />
         <div id="main" sx={{ variant: "components.note.index.container" }}>
           <header sx={{ variant: "components.note.index.header" }}>
-            <Styled.h1>Notes</Styled.h1>
+            <h1 sx={{ variant: "text.pageHeading" }}>Notes</h1>
             <p sx={{ variant: "components.note.index.subheader" }}>
               {dummyData.about}
             </p>

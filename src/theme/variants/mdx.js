@@ -1,6 +1,4 @@
 import { getLhByFontIndex } from "../../utils/calc-type";
-import { h2, h3, h4, h5 } from "../typography";
-import { blockCode, pre } from "./code";
 
 const blockContentCommon = {
   fontSize: [2, null, 3],
@@ -8,21 +6,19 @@ const blockContentCommon = {
   mt: [4, null, 5],
   "&:first-child": { mt: 0 },
   a: { variant: "links.inBody" },
-  code: { variant: "components.code.inline" },
+  code: { variant: "components.code.inline" }, // = inlineCode in theme.styles
 };
 
 export default {
-  h2,
-  h3,
-  h4,
-  h5,
+  h2: { variant: "text.subheading.h2" },
+  h3: { variant: "text.subheading.h3" },
+  h4: { variant: "text.subheading.h4" },
+  h5: { variant: "text.subheading.h5" },
   //
   p: { variant: "text.paragraph" },
   ul: { variant: "list.bullet" },
   ol: { variant: "list.numbered" },
   "p,ul,ol": blockContentCommon,
   //
-  pre,
-  blockCode,
-  ".eka-cb": { variant: "components.code.fallback" },
+  ".eka-cblock": { variant: "components.code.block.container" },
 };

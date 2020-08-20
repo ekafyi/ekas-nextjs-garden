@@ -41,18 +41,11 @@ const snippetLink = {
 export default {
   single: {
     title: {
-      variant: "text.heading",
+      variant: "text.entryHeading",
       // Sizes & top margin done!
       mt: [6, null, 9, null, 12],
       mb: [8, null, 12], // sementara
-      fontSize: [8, 9, 10],
-      lineHeight: [
-        getLhByFontIndex(7),
-        getLhByFontIndex(8),
-        getLhByFontIndex(9),
-        getLhByFontIndex(10),
-      ],
-      // background: ["tomato", "purple", "aliceblue", "greenyellow", "hotpink"],
+      // background: ["tomato", "purple", "aliceblue", "greenyellow", "hotpink"], // leave for checking
     },
     body: {
       variant: "components.mdx",

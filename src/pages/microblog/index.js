@@ -26,12 +26,12 @@ export default function MicroblogPosts({ allMdx }) {
 
   return (
     <main>
-      <Styled.h2 as="h1">
-        eka’s microblog.{" "}
+      <header>
+        <h1>eka’s microblog.</h1>
         <span sx={{ color: "mutedFg" }}>
           short, ephemeral, mostly trivial, often personal updates.
         </span>
-      </Styled.h2>
+      </header>
       {allMdx && (
         <>
           {currentPosts.map((item) => {

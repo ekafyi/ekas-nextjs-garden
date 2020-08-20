@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
+import { jsx, Styled } from "theme-ui";
 import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
 import { SEO, SkipLink, Nav, ErrorPage } from "components";
@@ -35,9 +35,9 @@ export default function NotePage({ mdxContent, frontMatter }) {
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
         <article id="main" sx={{ ...tempStyle }} className={fallbackCss}>
-          <h1 sx={{ variant: "components.note.single.title" }}>
+          <Styled.h1 sx={{ variant: "components.note.single.title" }}>
             {frontMatter.title}
-          </h1>
+          </Styled.h1>
           <div sx={{ variant: "components.note.single.body" }}>
             {hydrate(mdxContent, components)}
           </div>

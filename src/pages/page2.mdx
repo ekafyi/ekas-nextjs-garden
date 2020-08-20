@@ -6,10 +6,27 @@ const code = {}
 
 _wow._ mdx page.
 
-lorem ipsum dolor sit amet. Laravel provides an API middleware and routing out of the box, which enables us to set up REST APIs. We can then access the endpoints from our JavaScript layer, whether it’s vanilla JS or any frontend library/framework.
+lorem ipsum dolor sit amet. Laravel provides an API middleware and routing out of the box, which enables us to set up REST APIs. We can then access the endpoints from our JavaScript layer, whether it’s vanilla JS or any frontend library/framework. testing inline code, eg. `gatsby-node.js`.
 
 aa
 
 ## test test
 
 adasdasdas
+
+```js
+// what about some code?
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions;
+  const typeDefs = [
+    schema.buildObjectType({
+      name: "ContentfulFoo",
+      fields: {
+        optionalImage: "ContentfulAsset",
+      },
+      interfaces: ["Node"],
+    }),
+  ];
+  createTypes(typeDefs);
+};
+```

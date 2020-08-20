@@ -10,9 +10,9 @@ const PostPage = ({ mdxHtml, frontMatter }) => {
       <SEO title={frontMatter.title} />
       <main>
         <Nav />
-        <Styled.h4 as="h1" sx={{ mt: [4, null, 8, 12], mb: [4, null, 8] }}>
+        <h1 sx={{ mt: [4, null, 8, 12], mb: [4, null, 8] }}>
           {frontMatter.title}
-        </Styled.h4>
+        </h1>
         <div dangerouslySetInnerHTML={{ __html: mdxHtml }} />
       </main>
     </>

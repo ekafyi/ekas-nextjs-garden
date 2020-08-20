@@ -3,8 +3,52 @@ import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 const CODEBLOCK_P_X = 4;
 const CODEBLOCK_RADIUS = 8;
 
+export const pre = {
+  variant: "text.code",
+  lineHeight: "pre",
+  overflow: "auto",
+  py: 5,
+};
+
+const cBlockLang = {
+  background: "yellow",
+  color: "black",
+  fontSize: "0.75rem",
+  lineHeight: "body",
+  textTransform: "uppercase",
+  padding: "2px 4px",
+  position: "absolute",
+  top: `${CODEBLOCK_RADIUS}px`,
+};
+
+const cBlockTitle = {
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  lineHeight: "pre",
+  fontSize: 0,
+  fontWeight: "bold",
+  px: CODEBLOCK_P_X,
+  borderTopLeftRadius: CODEBLOCK_RADIUS,
+  borderTopRightRadius: CODEBLOCK_RADIUS,
+  // "& + *": {},
+};
+
+const cBlockHl = {
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    right: 0,
+    height: "1.5rem", // lineHeight.pre
+    backgroundColor: "hsla(0, 0%, 30%, .5)", // from https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
+  },
+  ">*": {
+    position: "relative",
+  },
+};
+
 export const blockCode = {
   container: {
+    pre,
     ...nightOwl,
     variant: "text.code",
     position: "relative",
@@ -12,40 +56,12 @@ export const blockCode = {
     mx: [-2, null, 0],
     borderRadius: CODEBLOCK_RADIUS,
     ".token-line": { px: CODEBLOCK_P_X },
+    ".eka-cblock__lang": cBlockLang,
+    ".eka-cblock__title": cBlockTitle,
   },
-  lang: {
-    background: "yellow",
-    color: "black",
-    fontSize: "0.75rem",
-    lineHeight: "body",
-    textTransform: "uppercase",
-    padding: "2px 4px",
-    position: "absolute",
-    top: `${CODEBLOCK_RADIUS}px`,
-  },
-  title: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    lineHeight: "pre",
-    fontSize: 0,
-    fontWeight: "bold",
-    px: CODEBLOCK_P_X,
-    borderTopLeftRadius: CODEBLOCK_RADIUS,
-    borderTopRightRadius: CODEBLOCK_RADIUS,
-    // "& + *": {},
-  },
-  highlight: {
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      left: 0,
-      right: 0,
-      height: "1.5rem", // lineHeight.pre
-      backgroundColor: "hsla(0, 0%, 30%, .5)", // from https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
-    },
-    ">*": {
-      position: "relative",
-    },
-  },
+  // lang: cBlockLang,
+  // title: cBlockTitle,
+  hl: cBlockHl,
 };
 
 const inlineCode = {
@@ -58,20 +74,16 @@ const inlineCode = {
   borderRadius: 4,
 };
 
-export const pre = {
-  variant: "text.code",
-  lineHeight: "pre",
-  overflow: "auto",
-  py: 5,
-};
-
 export default {
+  pre,
+  block: blockCode,
+  inline: inlineCode,
+
+  // Called from eg. variants.mdx to prevent FOUC.
   fallback: {
     backgroundColor: nightOwl.backgroundColor,
     color: nightOwl.color,
     my: [6, 8],
   },
-  block: blockCode,
-  inline: inlineCode,
-  pre,
+  //
 };

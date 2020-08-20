@@ -16,13 +16,15 @@ const getAriaLabel = (lang = "", title = "") => {
   return `${lang} code block ${title ? `for ${title}` : ""}`;
 };
 
-const containerSx = { variant: "components.mdx.blockCode.container" };
-const highlightSx = { variant: "components.mdx.blockCode.highlight" };
-const langSx = { variant: "components.mdx.blockCode.lang" };
-const titleSx = { variant: "components.mdx.blockCode.title" };
+// const contSx = { variant: "components.code.block.container" };
+// const langSx = { variant: "components.code.block.lang" };
+// const titleSx = { variant: "components.code.block.title" };
+const hlSx = { variant: "components.code.block.hl" };
 
-const langTw = "absolute right-0";
-const titleTw = "py-2 -mb-2";
+const contCss = "eka-cblock";
+const langCss = "eka-cblock__lang absolute right-0";
+const titleCss = "eka-cblock__title py-2 -mb-2";
+// const hlCss = "eka-cblock__hl";
 
 export default function CodeBlock({
   children,
@@ -38,18 +40,14 @@ export default function CodeBlock({
   if (typeof children !== `string`) return null; // MDX will pass in the code string as children
   const shouldHighlightLine = getShouldHighlightLine(hl);
   return (
-    <div
-      className="eka-cb"
-      sx={containerSx}
-      aria-label={getAriaLabel(language, title)}
-    >
+    <div className={contCss} aria-label={getAriaLabel(language, title)}>
       {language && (
-        <div sx={langSx} className={langTw} aria-hidden="true">
+        <div className={langCss} aria-hidden="true">
           {language}
         </div>
       )}
       {title && (
-        <div sx={titleSx} className={titleTw} aria-hidden="true">
+        <div className={titleCss} aria-hidden="true">
           {title}
         </div>
       )}
@@ -65,11 +63,11 @@ export default function CodeBlock({
             className={`${outerClassName} ${className}`}
             style={style}
           >
-            {tokens.map((line, index) => (
+            {tokens.map((line, index, className) => (
               <div
                 key={index}
                 {...getLineProps({ line, key: index })}
-                sx={shouldHighlightLine(index) ? highlightSx : undefined}
+                sx={shouldHighlightLine(index) ? hlSx : undefined}
               >
                 {line.map((token, key) => (
                   <span
