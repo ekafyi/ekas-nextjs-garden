@@ -15,7 +15,7 @@ export default {
   // inlineCode: { variant: "components.code.inline" },
   // ol: {},
   // ul: {},
-  // blockquote: {},
+  // blockquote: { variant: "text.blockquote" },
   hr: {
     // borderTop: "none",
     // borderBottom: "8px solid",

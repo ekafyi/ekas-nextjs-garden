@@ -1,5 +1,17 @@
 import { getLhByFontIndex } from "../../utils/calc-type";
 
+const blockquote = {
+  mt: 8,
+  py: 2,
+  pl: [4, null, 6],
+  borderLeft: "1rem double",
+  borderLeftColor: "text", // FF does not like currentColor for border.
+  "&,p": {
+    fontSize: [4],
+    lineHeight: [getLhByFontIndex(4)],
+  },
+};
+
 export const h2Sizes = [5, null, null, 6];
 export const h2M = { "&:not(:first-child)": { mt: [9, null, 10] } };
 export const h3Sizes = 4;
@@ -70,6 +82,7 @@ export default {
     fontSize: 1,
   },
   subheading: { h2, h3, h4, h5 },
+  blockquote,
   // Used on top-level page eg. "Notes" and "Posts"
   pageHeading: {
     variant: "text.heading",

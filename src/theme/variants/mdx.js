@@ -20,5 +20,6 @@ export default {
   ol: { variant: "list.numbered" },
   "p,ul,ol": blockContentCommon,
   //
+  blockquote: { variant: "text.blockquote" },
   ".eka-cblock": { variant: "components.code.block.container" },
 };
