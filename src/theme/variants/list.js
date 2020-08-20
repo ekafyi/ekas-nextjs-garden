@@ -19,7 +19,10 @@ const bulletList = {
     width: convertToRem(UL_MARGIN),
     ml: convertToRem(UL_MARGIN * -1),
     pl: 1,
+    lineHeight: "1em", // Don't stretch line height
   },
+  "li li::before": { content: '"\\25AB"', fontSize: "1.25em" },
+  "li li li::before": { content: '"\\25B8"' },
 };
 
 const numberedList = {
