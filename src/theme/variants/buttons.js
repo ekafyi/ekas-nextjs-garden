@@ -18,6 +18,7 @@ const pill = {
   fontWeight: "medium",
   borderRadius: 32,
   backgroundColor: "muted",
+  whiteSpace: "nowrap",
   py: 1,
   px: 3,
   mr: 2,

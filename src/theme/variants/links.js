@@ -22,7 +22,7 @@ const inBody = {
   borderBottom: "2px solid currentColor",
   fontWeight: "medium",
   "&:hover, &:focus": {
-    borderBottomColor: "text",
+    color: "text",
   },
 };
 

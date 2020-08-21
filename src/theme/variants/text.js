@@ -14,7 +14,7 @@ const blockquote = {
 };
 
 export const h2Sizes = [5, null, null, 6];
-export const h2M = { "&:not(:first-child)": { mt: [9, null, 10] } };
+export const h2M = { "&:not(:first-child)": { mt: [9, null, 12] } };
 export const h3Sizes = 4;
 export const h3M = { "&:not(:first-child)": { mt: [7, null, 8] } };
 export const h4Sizes = 3;

@@ -40,12 +40,34 @@ const snippetLink = {
 
 export default {
   single: {
+    header: {
+      pt: [8, null, 12],
+      pb: [8, null, 12],
+    },
     title: {
       variant: "text.entryHeading",
-      // Sizes & top margin done!
-      mt: [6, null, 9, null, 12],
-      mb: [8, null, 12], // sementara
-      // background: ["tomato", "purple", "aliceblue", "greenyellow", "hotpink"], // leave for checking
+    },
+    excerpt: {
+      // background: ["tomato", "purple", "aliceblue", "greenyellow", "magenta"], // leave for checking
+      mt: [4],
+      fontSize: [4, null, null, null, 5],
+      lineHeight: [getLhByFontIndex(4), null, null, null, getLhByFontIndex(5)],
+      color: "mutedFg",
+    },
+    byline: {
+      mt: [8],
+      mb: [4, null],
+      // my: [4], // ? use this or not????
+      display: "flex",
+      alignItems: "center",
+    },
+    tagsList: {
+      lineHeight: getLhByFontIndex(3),
+      my: 8,
+    },
+    tag: {
+      variant: "buttons.pill",
+      fontSize: "0.702rem", // heheheh
     },
     body: {
       variant: "components.mdx",
