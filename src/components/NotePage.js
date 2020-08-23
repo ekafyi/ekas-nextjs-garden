@@ -2,7 +2,15 @@
 import { jsx, Styled } from "theme-ui";
 import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
-import { SEO, SkipLink, Nav, ErrorPage } from "components";
+import { SEO, SkipLink, Nav, ErrorPage, Footer } from "components";
+
+import TOC from "./NoteTemp/TOC";
+import Tags from "./NoteTemp/Tags";
+import Byline from "./NoteTemp/Byline";
+import Share from "./NoteTemp/Share";
+import Series from "./NoteTemp/Series";
+import Related from "./NoteTemp/Related";
+import BackLinks from "./NoteTemp/BackLinks";
 
 import dynamic from "next/dynamic";
 import mdxComponents from "components/mdx";
@@ -14,12 +22,14 @@ const components = {
   ...mdxComponents,
 };
 
-const tempStyle = {
-  maxWidth: 672,
-  mx: "auto",
-};
-
 const fallbackCss = "leading-6 md:leading-7";
+
+const TEMP_TEST_TITLE = "GraphQL Adventure Club at the Party-Corgi Discord";
+const TEMP_TEST_EXCERPT = "Learning GraphQL from zero to project with friends!";
+const TEMP_HAS_TOC = [
+  TEMP_TEST_TITLE,
+  "Set up optional image field from Contentful in Gatsby GraphQL",
+];
 
 export default function NotePage({ mdxContent, frontMatter }) {
   const router = useRouter();
@@ -34,68 +44,52 @@ export default function NotePage({ mdxContent, frontMatter }) {
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
-        <article id="main" className={fallbackCss}>
-          <header
-            sx={{ variant: "components.note.single.header", ...tempStyle }}
-          >
+
+        <article id="main" sx={{ variant: "components.note.single.container" }}>
+          <header sx={{ variant: "components.note.single.header" }}>
             <Styled.h1 sx={{ variant: "components.note.single.title" }}>
               {frontMatter.title}
             </Styled.h1>
-            <p sx={{ variant: "components.note.single.excerpt" }}>
-              Learning GraphQL from zero to project with friends!
-            </p>
-            <div sx={{ variant: "components.note.single.byline" }}>
-              <div
-                sx={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: "50%",
-                  backgroundColor: "muted",
-                  mr: 2,
-                }}
-              />
-              <strong sx={{ fontSize: 2, mr: 3 }}>Eka</strong>
-              <span sx={{ fontSize: 1, color: "mutedFg" }}>
-                20 Aug 2020&nbsp;
-                {/* <em>updated 24 Aug 2020</em> */}
-              </span>
-            </div>
+            {frontMatter.title === TEMP_TEST_TITLE && (
+              <p sx={{ variant: "components.note.single.excerpt" }}>
+                {TEMP_TEST_EXCERPT}
+              </p>
+            )}
+            <Byline />
           </header>
 
-          <div sx={{ variant: "components.note.single.body", ...tempStyle }}>
+          {TEMP_HAS_TOC.includes(frontMatter.title) && (
+            <div sx={{ variant: "components.note.single.tocBlock" }}>
+              <TOC />
+            </div>
+          )}
+
+          <div
+            sx={{ variant: "components.note.single.body" }}
+            className={fallbackCss}
+          >
             {hydrate(mdxContent, components)}
           </div>
 
-          {/* tags */}
-          <div
-            sx={{ variant: "components.note.single.tagsList", ...tempStyle }}
-          >
-            {["learning notes", "book club", "some other tag"].map((tag) => (
-              <a sx={{ variant: "components.note.single.tag" }} href="#">
-                {tag}
-              </a>
-            ))}
-            <a
-              sx={{
-                variant: "components.note.single.tag",
-                background: "#d43088",
-                color: "#fff",
-              }}
-              href="#"
-            >
-              graphql
-            </a>
+          <div sx={{ variant: "components.note.single.metaBlock" }}>
+            <Tags />
+            <Share />
           </div>
-          {/* /tags */}
 
-          <a href="#main" sx={{ variant: "links.backToTop" }}>
-            &uarr; to top
-          </a>
-          <a href="#main" sx={{ variant: "links.backToTop", ml: 4 }}>
-            &larr; notes
-          </a>
+          <div sx={{ variant: "components.note.single.bottomBlock" }}>
+            <BackLinks />
+            {/* add other stuff here (newsletter signup, webmentions) */}
+          </div>
+
+          <div sx={{ gridArea: "gside3" }}>
+            {/* <Series /> */}
+            <Related />
+          </div>
+
+          {/* yay, we're done! */}
         </article>
       </main>
+      <Footer />
     </>
   );
 }

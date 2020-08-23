@@ -8,7 +8,7 @@ const light = {
   primary: "#d01a1a",
 
   // Slightly weaker than "text"
-  mutedFg: "hsla(236, 76%, 35%, 75%)",
+  mutedFg: "hsla(236, 76%, 42%, 75%)",
 
   // Slightly stronger than "background"
   muted: "hsl(54, 57%, 81%)",

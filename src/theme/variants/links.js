@@ -1,9 +1,22 @@
 import { basicStyles } from "./buttons";
 
 const backToTop = {
-  mt: 6,
   display: "inline-block",
-  borderBottom: "2px solid currentColor",
+  lineHeight: "1rem",
+  // borderBottom: "2px solid currentColor",
+  "&:hover,&:focus": { color: "primary" },
+};
+
+const boxyInList = {
+  display: "block",
+  fontSize: 1,
+  fontWeight: "medium",
+  "&:hover": { backgroundColor: "muted", color: "text" },
+  "&:focus, &:active, &.is-active": {
+    backgroundColor: "text",
+    color: "background",
+  },
+  // Set paddings from the extending components.
 };
 
 const coverParent = {
@@ -19,11 +32,16 @@ const coverParent = {
 
 const inBody = {
   color: "primary",
-  borderBottom: "2px solid currentColor",
   fontWeight: "medium",
-  "&:hover, &:focus": {
-    color: "text",
-  },
+  borderBottom: "2px solid currentColor",
+  "&:hover, &:focus": { color: "text" },
+};
+
+const inBodySecondary = {
+  color: "text",
+  fontWeight: "bold",
+  borderBottom: "2px solid currentColor",
+  "&:hover, &:focus": { color: "primary" },
 };
 
 const skip = {
@@ -49,9 +67,11 @@ const skip = {
 
 export default {
   backToTop,
+  boxyInList,
   button: { ...basicStyles }, // Looks like button but is a link.
   coverParent,
   inBody,
+  inBodySecondary,
   skip,
 };
 

@@ -7,10 +7,11 @@
 import code from "./code";
 import footer from "./footer";
 import header from "./header";
-import tomato from "./tomato";
 import mdx from "./mdx";
 import nav from "./nav";
 import note from "./note";
+import toc from "./toc";
+import tomato from "./tomato";
 
 // Shared/Utility
 import buttons from "./buttons";
@@ -27,10 +28,11 @@ export default {
     code,
     footer,
     header,
-    // tomato,
     mdx,
     nav,
     note,
+    toc,
+    // tomato,
   },
   // Shared/Utility
   buttons,

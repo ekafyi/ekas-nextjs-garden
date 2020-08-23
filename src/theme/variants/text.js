@@ -93,14 +93,14 @@ export default {
   // Used on entry page, eg. a single note/post
   entryHeading: {
     variant: "text.heading",
-    fontSize: [8, null, 10, null, 11],
+    fontSize: [8, null, 10, 11, 12],
     letterSpacing: "-0.005em",
     lineHeight: [
       getLhByFontIndex(7),
       getLhByFontIndex(8),
-      getLhByFontIndex(9),
       getLhByFontIndex(10),
       getLhByFontIndex(11),
+      getLhByFontIndex(12),
     ],
   },
   // check check 1-2-3.
