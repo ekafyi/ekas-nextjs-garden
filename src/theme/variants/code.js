@@ -48,6 +48,7 @@ const cBlockHl = {
 
 export const blockCode = {
   container: {
+    display: "none", // ! bentar
     pre,
     ...nightOwl,
     variant: "text.code",

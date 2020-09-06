@@ -1,21 +1,24 @@
 import { getLhByFontIndex } from "../../utils/calc-type";
 
 const basicSingleGrid = {
-  mx: ["auto"],
-  maxWidth: ["42rem", null, null, "100%"],
   display: [null, null, null, "grid"],
 };
 
-const side992 = "minmax(11rem,16.67vw)";
-const grid992 = `${side992} 1fr ${side992}`;
-const gap992 = "calc(1.5rem + 3vw)";
-const area992 =
-  // '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" ". gbottom ."';
-  '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" "gside1 gbody gside4" ". gbottom ."';
+const left992 = "8rem";
+const right992 = "minmax(12rem,16.67vw)";
+const grid992 = `${left992} 1fr ${right992}`;
+const gap992 = "calc(1rem + 3vw)";
 
-const side1280 = "minmax(16rem,16.67vw)";
-const grid1280 = `${side1280} 1fr ${side1280}`;
-const gap1280 = "calc(2rem + 3vw)";
+const area992 = '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" "gside1 gbody gside4" ". gbottom ."'; // prettier-ignore
+
+// TODO [low priority] choose one
+// const left1280 = "minmax(10rem,6.25vw)";
+// const right1280 = "minmax(16rem,18.75vw)";
+const left1280 = "minmax(12rem,16.67vw)";
+const right1280 = "minmax(12rem,16.67vw)";
+const grid1280 = `${left1280} 1fr ${right1280}`;
+
+const gap1280 = "calc(3rem + 3vw)";
 const area1280 = area992;
 
 // = = =
@@ -58,12 +61,17 @@ export default {
     mb: [8, 12, null, 16],
     gridArea: "gbody",
   },
-  // tocBlock: {
-  //   // ...stickyInLarge,
-  //   // ml: [null, null, null, -6, null],
-  // },
-  metaBlock: { gridArea: "gside1", mb: [12] },
+  metaBlock: {
+    gridArea: "gside1",
+    mb: [12],
+    position: [null, null, null, "sticky"],
+    top: [null, null, null, "1rem"],
+    maxHeight: "66vh",
+  },
   bottomBlock: { gridArea: "gbottom", mb: [6] }, // Adjust as needed if adding eg. webmentions in this block.
+
+  //
+
   ctaShare: {
     // TODO [low priority] move to separate component
     fontSize: 1,

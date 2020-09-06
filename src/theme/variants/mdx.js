@@ -20,6 +20,6 @@ export default {
   ol: { variant: "list.numbered" },
   "p,ul,ol": blockContentCommon,
   //
-  blockquote: { variant: "text.blockquote" },
+  blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
   ".eka-cblock": { variant: "components.code.block.container" },
 };
