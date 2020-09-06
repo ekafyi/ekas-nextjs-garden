@@ -21,5 +21,10 @@ export default {
   "p,ul,ol": blockContentCommon,
   //
   blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
-  ".eka-cblock": { variant: "components.code.block.container" },
+  //
+  // ".eka-cblock": { variant: "components.code.block.container" },
+  // ".eka-cblock": {
+  //   mt: [8, null, 10],
+  //   mb: [8, null, 10],
+  // },
 };
