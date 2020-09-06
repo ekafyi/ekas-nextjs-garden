@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import rangeParser from "parse-numeric-range";
 import { jsx, Styled } from "theme-ui";
 import theme from "prism-react-renderer/themes/nightOwl"; // Use theme from @theme-ui/prism in theme.styles instead of here.
+import { lang as langStyles } from "../../../taxonomies.yml";
 
 const checkShouldHl = (hl) => {
   if (hl) {
@@ -16,6 +17,11 @@ const getAriaLabel = (lang = "", title = "") => {
   return `${lang} code block ${title ? `for ${title}` : ""}`;
 };
 
+const getSxFoo = (lang) => {
+  const hasStyle = Object.keys(langStyles).includes(lang);
+  return hasStyle ? { ...langStyles[lang] } : { background: "#ffffff00" };
+};
+
 // = = =
 // Styles stuff
 // = = =
@@ -23,10 +29,9 @@ const getAriaLabel = (lang = "", title = "") => {
 const headerSx = { variant: "components.code.prismHeader" };
 const hlSx = { variant: "components.code.prismHl" };
 
-const outerCss = "eka-cblockkk my-8";
-const preCss = "relative overflow-auto py-4";
-const headerCss = "flex justify-between px-4 py-2";
-// const langCss = "eka-cblock__lang";
+const outerCss = "my-8 rounded";
+const preCss = "relative overflow-auto py-4 rounded-b";
+const headerCss = "flex justify-between px-4 py-2 rounded-t";
 
 // = = =
 
@@ -47,7 +52,7 @@ export default function CodeBlock({
   const shouldHl = checkShouldHl(hl);
 
   const languageEl = (
-    <div className={`${language} mr-2`} aria-hidden="true">
+    <div sx={getSxFoo(language)} className={`px-1 mr-2`} aria-hidden="true">
       {language}
     </div>
   );

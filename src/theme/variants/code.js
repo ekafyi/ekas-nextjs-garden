@@ -1,7 +1,6 @@
 import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 
 const CODEBLOCK_P_X = 4;
-// const CODEBLOCK_RADIUS = 8;
 
 export const pre = {
   variant: "text.code",
@@ -75,10 +74,20 @@ const inlineCode = {
   borderRadius: 4,
 };
 
+const lang = {
+  textTransform: "uppercase",
+  fontWeight: "medium",
+  height: "1.25rem",
+  lineHeight: "1.25rem",
+  fontSize: "0.7rem",
+};
+
 const bgFgColors = {
   backgroundColor: nightOwl.backgroundColor,
   color: nightOwl.color,
 };
+
+// = = =
 
 export default {
   pre,
@@ -89,6 +98,13 @@ export default {
   prismHeader: {
     ...bgFgColors,
     fontSize: 0,
+    ">div:first-child": { alignItems: "center" },
+    ">div>div[class]": lang,
+    borderBottom: "1px solid",
+    borderBottomColor: nightOwl[".comment"]["color"],
+    position: "relative",
+    zIndex: 1,
+    mb: -1,
   },
 
   // Called from eg. variants.mdx to prevent FOUC.

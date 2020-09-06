@@ -6,7 +6,7 @@ const basicSingleGrid = {
 
 const left992 = "8rem";
 const right992 = "minmax(12rem,16.67vw)";
-const grid992 = `${left992} 1fr ${right992}`;
+const grid992 = `${left992} minmax(0,1fr) ${right992}`;
 const gap992 = "calc(1rem + 3vw)";
 
 const area992 = '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" "gside1 gbody gside4" ". gbottom ."'; // prettier-ignore
@@ -16,7 +16,7 @@ const area992 = '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" "gside
 // const right1280 = "minmax(16rem,18.75vw)";
 const left1280 = "minmax(12rem,16.67vw)";
 const right1280 = "minmax(12rem,16.67vw)";
-const grid1280 = `${left1280} 1fr ${right1280}`;
+const grid1280 = `${left1280} minmax(0,1fr) ${right1280}`;
 
 const gap1280 = "calc(3rem + 3vw)";
 const area1280 = area992;
