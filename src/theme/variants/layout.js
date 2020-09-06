@@ -7,6 +7,7 @@ export default {
     wordWrap: "break-word",
     py: 4,
     px: [2, null, 6],
+    minHeight: "calc(100vh - 4rem)",
   },
   //
 };

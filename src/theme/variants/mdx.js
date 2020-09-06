@@ -3,7 +3,7 @@ import { getLhByFontIndex } from "../../utils/calc-type";
 const blockContentCommon = {
   fontSize: [2, null, 3],
   lineHeight: [getLhByFontIndex(3), null, getLhByFontIndex(4)], // Repeat so it does not get overridden.
-  mt: [4, null, 5],
+  mt: [4, 5, 8],
   "&:first-child": { mt: 0 },
   a: { variant: "links.inBody" },
   code: { variant: "components.code.inline" }, // = inlineCode in theme.styles
@@ -20,5 +20,6 @@ export default {
   ol: { variant: "list.numbered" },
   "p,ul,ol": blockContentCommon,
   //
+  blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
   ".eka-cblock": { variant: "components.code.block.container" },
 };

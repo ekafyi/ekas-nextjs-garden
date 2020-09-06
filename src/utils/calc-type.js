@@ -33,11 +33,13 @@ export const getLhByFontSize = (fontSize) => {
   const modulus = fontSize % SPACING;
 
   // eg. fontSize 16. 16 + 4 = 20.
-  if (modulus === 0) return fontSize + SPACING;
+  // if (modulus === 0) return fontSize + SPACING; // ? coba bentar
+  if (modulus === 0) return fontSize + 2 * SPACING;
   // fontSize 18 ====> 18 + 4 = 22 ====> round up to 24.
   // fontSize 20.25 ====> 20.25 + 4 = 24.25 ====> round up to 28.
   else if (modulus > 0) {
-    return fontSize - modulus + 2 * SPACING;
+    // return fontSize - modulus + 2 * SPACING; // ? coba bentar
+    return fontSize - modulus + 3 * SPACING;
   }
   return false;
 };

@@ -34,6 +34,9 @@ function testPostRoute(id = "") {
 ```
 
 - Here we make an API call to `/api/foo/123` where `123` is the id. I also set the method and headers like we normally do with REST API requests. I use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), but any library should work.
+  - testing nested list, not part of the post here.
+  - another nested list item.
+    - what about a deeper level of nested list item?
 - We send the stringified payload in the `body`, then we log the response payload.
 - Note that this request is not a good RESTful practice. `POST` requests should be sent to the list of resources, eg. `/api/posts` (to create a new post); whereas `PUT` requests are sent to the single resource, eg. `/api/posts/123` (to update an existing post). I use this endpoint here to demonstrate how the Laravel API route URL slug parameter works.
 

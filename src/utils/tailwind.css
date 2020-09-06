@@ -5,3 +5,6 @@
 svg {
   fill: currentColor;
 }
+hr {
+  margin: 2.5rem auto;
+}

@@ -1,7 +1,7 @@
 import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 
 const CODEBLOCK_P_X = 4;
-const CODEBLOCK_RADIUS = 8;
+// const CODEBLOCK_RADIUS = 8;
 
 export const pre = {
   variant: "text.code",
@@ -18,7 +18,7 @@ const cBlockLang = {
   textTransform: "uppercase",
   padding: "2px 4px",
   position: "absolute",
-  top: `${CODEBLOCK_RADIUS}px`,
+  top: "4px",
 };
 
 const cBlockTitle = {
@@ -27,8 +27,8 @@ const cBlockTitle = {
   fontSize: 0,
   fontWeight: "bold",
   px: CODEBLOCK_P_X,
-  borderTopLeftRadius: CODEBLOCK_RADIUS,
-  borderTopRightRadius: CODEBLOCK_RADIUS,
+  // borderTopLeftRadius: CODEBLOCK_RADIUS,
+  // borderTopRightRadius: CODEBLOCK_RADIUS,
   // "& + *": {},
 };
 
@@ -48,13 +48,15 @@ const cBlockHl = {
 
 export const blockCode = {
   container: {
+    display: "none", // ! bentar
     pre,
     ...nightOwl,
     variant: "text.code",
     position: "relative",
-    my: [6, 8],
+    mt: [8, null, 10],
+    mb: [8, null, 10],
     mx: [-2, null, 0],
-    borderRadius: CODEBLOCK_RADIUS,
+    // borderRadius: CODEBLOCK_RADIUS,
     ".token-line": { px: CODEBLOCK_P_X },
     ".eka-cblock__lang": cBlockLang,
     ".eka-cblock__title": cBlockTitle,
@@ -62,6 +64,7 @@ export const blockCode = {
   // lang: cBlockLang,
   // title: cBlockTitle,
   hl: cBlockHl,
+  maxWidth: "50%", // tes tes
 };
 
 const inlineCode = {
