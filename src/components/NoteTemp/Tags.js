@@ -3,10 +3,10 @@ import { jsx, Styled } from "theme-ui";
 
 export default function Tags() {
   return (
-    <div sx={{ variant: "components.note.single.tagsList" }}>
+    <div sx={{ variant: "components.note.tagsList" }}>
       <a
         sx={{
-          variant: "components.note.single.tag",
+          variant: "buttons.pill",
           background: "#d43088",
           color: "#fff",
         }}
@@ -15,7 +15,7 @@ export default function Tags() {
         graphql
       </a>
       {["learning notes", "some other tag"].map((tag) => (
-        <a sx={{ variant: "components.note.single.tag" }} href="#">
+        <a sx={{ variant: "buttons.pill" }} href="#">
           {tag}
         </a>
       ))}

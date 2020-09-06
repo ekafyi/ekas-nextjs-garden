@@ -8,11 +8,11 @@ import {
   DisclosurePanel,
 } from "@reach/disclosure";
 
-export default function TOC() {
+export default function TOC(props) {
   const [isTocOpen, setTocOpen] = useState(true);
   return (
     <Disclosure open={isTocOpen} onChange={() => setTocOpen(!isTocOpen)}>
-      <div sx={{ variant: "components.toc" }}>
+      <div sx={{ variant: "components.toc" }} {...props}>
         <DisclosureButton
           className={isTocOpen ? "is-open" : ""}
           aria-label={`${isTocOpen ? "close" : "open"} table of contents`}

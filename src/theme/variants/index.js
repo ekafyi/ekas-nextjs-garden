@@ -10,6 +10,7 @@ import header from "./header";
 import mdx from "./mdx";
 import nav from "./nav";
 import note from "./note";
+import notes from "./notes";
 import toc from "./toc";
 import tomato from "./tomato";
 
@@ -31,6 +32,7 @@ export default {
     mdx,
     nav,
     note,
+    notes,
     toc,
     // tomato,
   },

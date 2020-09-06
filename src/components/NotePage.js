@@ -8,9 +8,9 @@ import TOC from "./NoteTemp/TOC";
 import Tags from "./NoteTemp/Tags";
 import Byline from "./NoteTemp/Byline";
 import Share from "./NoteTemp/Share";
-import Series from "./NoteTemp/Series";
 import Related from "./NoteTemp/Related";
 import BackLinks from "./NoteTemp/BackLinks";
+import StatusOrWhatever from "./NoteTemp/StatusOrWhatever";
 
 import dynamic from "next/dynamic";
 import mdxComponents from "components/mdx";
@@ -45,44 +45,49 @@ export default function NotePage({ mdxContent, frontMatter }) {
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
 
-        <article id="main" sx={{ variant: "components.note.single.container" }}>
-          <header sx={{ variant: "components.note.single.header" }}>
-            <Styled.h1 sx={{ variant: "components.note.single.title" }}>
+        <article id="main" sx={{ variant: "components.note.container" }}>
+          <header sx={{ variant: "components.note.header" }}>
+            <Styled.h1 sx={{ variant: "components.note.title" }}>
               {frontMatter.title}
             </Styled.h1>
             {frontMatter.title === TEMP_TEST_TITLE && (
-              <p sx={{ variant: "components.note.single.excerpt" }}>
+              <p sx={{ variant: "components.note.excerpt" }}>
                 {TEMP_TEST_EXCERPT}
               </p>
             )}
             <Byline />
           </header>
 
-          {TEMP_HAS_TOC.includes(frontMatter.title) && (
-            <div sx={{ variant: "components.note.single.tocBlock" }}>
-              <TOC />
-            </div>
-          )}
+          <div sx={{ gridArea: "gside2" }}>
+            <StatusOrWhatever />
+          </div>
 
-          <div
-            sx={{ variant: "components.note.single.body" }}
-            className={fallbackCss}
-          >
+          <div sx={{ gridArea: "gside3" }}>
+            {TEMP_HAS_TOC.includes(frontMatter.title) && (
+              <TOC
+                sx={{
+                  position: [null, null, null, "sticky"],
+                  top: [null, null, null, "1rem"],
+                }}
+              />
+            )}
+          </div>
+
+          <div sx={{ variant: "components.note.body" }} className={fallbackCss}>
             {hydrate(mdxContent, components)}
           </div>
 
-          <div sx={{ variant: "components.note.single.metaBlock" }}>
+          <div sx={{ variant: "components.note.metaBlock" }}>
             <Tags />
             <Share />
           </div>
 
-          <div sx={{ variant: "components.note.single.bottomBlock" }}>
+          <div sx={{ variant: "components.note.bottomBlock" }}>
             <BackLinks />
             {/* add other stuff here (newsletter signup, webmentions) */}
           </div>
 
-          <div sx={{ gridArea: "gside3" }}>
-            {/* <Series /> */}
+          <div sx={{ gridArea: "gside4" }}>
             <Related />
           </div>
 

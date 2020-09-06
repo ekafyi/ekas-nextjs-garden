@@ -86,7 +86,7 @@ export default function Footer() {
         <span>
           Made by <a href="#">Eka</a> with <Emoji label="coffee">☕️</Emoji>,{" "}
           <Emoji label="headphones">🎧</Emoji>, and <a href="#">magic</a> (not).{" "}
-          <a href="#">License, disclaimer, privacy.</a>
+          See license and site information <a href="#">here.</a>
         </span>
       </div>
     </div>

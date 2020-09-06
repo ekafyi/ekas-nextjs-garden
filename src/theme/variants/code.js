@@ -63,6 +63,7 @@ export const blockCode = {
   // lang: cBlockLang,
   // title: cBlockTitle,
   hl: cBlockHl,
+  maxWidth: "50%", // tes tes
 };
 
 const inlineCode = {

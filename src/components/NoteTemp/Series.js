@@ -18,7 +18,7 @@ const EX_SERIES_JUNGLE = [
 
 export default function Series() {
   return (
-    <nav sx={{ variant: "components.note.single.series" }}>
+    <nav sx={{ variant: "components.note.series" }}>
       <header>
         <h2 className="h">{EX_SERIES_GQL_TITLE}</h2>
         <div className="sub">

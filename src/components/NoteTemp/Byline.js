@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui";
 
 export default function Byline() {
   return (
-    <div sx={{ variant: "components.note.single.byline" }}>
+    <div sx={{ variant: "components.note.byline" }}>
       <div
         sx={{
           width: 24,

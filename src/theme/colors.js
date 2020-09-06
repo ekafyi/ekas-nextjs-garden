@@ -16,6 +16,8 @@ const light = {
   // Others
   codeBg: "hsla(210, 94%, 88%, 50%)",
   codeFg: "#ad006f",
+  childListBullet: "#0066ff",
+  temp_postStatus: "#e6ff98", // green
 };
 
 const dark = {
@@ -23,9 +25,11 @@ const dark = {
   background: "hsl(233, 25%, 15%)",
   primary: "#64C7FF",
   mutedFg: "hsla(45, 70%, 90%, 80%)",
-  muted: "hsl(233, 15%, 25%)",
+  muted: "hsl(233, 15%, 20%)",
   codeBg: "hsl(0, 0%, 22%)",
   codeFg: "hsl(84, 62%, 63%)",
+  childListBullet: "red",
+  temp_postStatus: "#153316",
 };
 
 const colors = {

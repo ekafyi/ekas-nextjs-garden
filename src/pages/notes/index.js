@@ -21,34 +21,31 @@ export default function Notes({ allMdx }) {
       <SkipLink href="#posts">Skip to posts</SkipLink>
       <main sx={{ variant: "layout.container" }}>
         <Nav />
-        <div id="main" sx={{ variant: "components.note.index.container" }}>
-          <header sx={{ variant: "components.note.index.header" }}>
+        <div id="main" sx={{ variant: "components.notes.container" }}>
+          <header sx={{ variant: "components.notes.header" }}>
             <h1 sx={{ variant: "text.pageHeading" }}>Notes</h1>
-            <p sx={{ variant: "components.note.index.subheader" }}>
+            <p sx={{ variant: "components.notes.subheader" }}>
               {dummyData.about}
             </p>
           </header>
-          <div sx={{ variant: "components.note.index.side" }}>
-            <button
-              sx={{ variant: "components.note.index.tag" }}
-              className="is-active"
-            >
+          <div sx={{ variant: "components.notes.side" }}>
+            <button sx={{ variant: "buttons.pill" }} className="is-active">
               All
             </button>
             {dummyData.sections.map((s) => (
-              <button key={s} sx={{ variant: "components.note.index.tag" }}>
+              <button key={s} sx={{ variant: "components.notes.tag" }}>
                 {s}
               </button>
             ))}
           </div>
-          <div id="posts" sx={{ variant: "components.note.index.entries" }}>
+          <div id="posts" sx={{ variant: "components.notes.entries" }}>
             {allMdx && (
               <>
                 {allMdx.map((item) => (
                   <NoteSnippet
                     key={item.slug}
                     {...item}
-                    variant="components.note.index.snippet"
+                    variant="components.notes.snippet"
                   />
                 ))}
               </>

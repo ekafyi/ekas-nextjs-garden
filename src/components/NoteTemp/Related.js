@@ -6,7 +6,6 @@ const EX_TOPIC = "github";
 const EX_SERIES_GQL = [
   "GraphQL Adventure Club at the Party-Corgi Discord",
   "GraphQL Adventure Club Week 1: GraphQL Fundamentals",
-  "GraphQL Adventure Club Advanced GraphQL Notes",
   "GraphQL Adventure Club Week 2: React + Apollo Tutorial",
 ];
 const EX_SERIES_JUNGLE = [
@@ -15,14 +14,15 @@ const EX_SERIES_JUNGLE = [
   "Go serverless with this JungleJS + Netlify functions starter site",
 ];
 
-export default function Related() {
+export default function Related(props) {
   return (
     <nav
       sx={{
-        variant: "components.note.single.series",
+        variant: "components.note.series",
         ".h": { fontWeight: "body" },
       }}
       aria-label={`Other entries tagged ${EX_TOPIC}`}
+      {...props}
     >
       <header aria-hidden="true">
         <span className="h">
