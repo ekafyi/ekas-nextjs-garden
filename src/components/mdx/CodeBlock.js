@@ -5,6 +5,9 @@ import { jsx, Styled } from "theme-ui";
 import theme from "prism-react-renderer/themes/nightOwl"; // Use theme from @theme-ui/prism in theme.styles instead of here.
 import { lang as langStyles } from "../../../taxonomies.yml";
 
+const COPY_BTN_TEXT = "copy?";
+const COPIED_BTN_TEXT = "copied ✨";
+
 const checkShouldHl = (hl) => {
   if (hl) {
     const lineNumbers = rangeParser(hl);
@@ -29,7 +32,7 @@ const getSxFoo = (lang) => {
 const headerSx = { variant: "components.code.prismHeader" };
 const hlSx = { variant: "components.code.prismHl" };
 
-const outerCss = "my-8 rounded";
+const outerCss = "my-8 md:my-12 rounded";
 const preCss = "relative overflow-auto py-4 rounded-b";
 const headerCss = "flex justify-between px-4 py-2 rounded-t";
 
@@ -77,7 +80,7 @@ export default function CodeBlock({
               {language && languageEl}
               {title && titleEl}
             </div>
-            <button>copy?</button>
+            <button>{COPY_BTN_TEXT}</button>
           </div>
           <Styled.pre className={`${className} ${preCss}`} style={style}>
             {tokens.map((line, i) => {

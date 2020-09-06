@@ -100,6 +100,7 @@ export default {
     fontSize: 0,
     ">div:first-child": { alignItems: "center" },
     ">div>div[class]": lang,
+    button: { fontWeight: "bold" },
     borderBottom: "1px solid",
     borderBottomColor: nightOwl[".comment"]["color"],
     position: "relative",
