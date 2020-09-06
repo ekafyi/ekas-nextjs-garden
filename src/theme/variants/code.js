@@ -1,7 +1,6 @@
 import nightOwl from "@theme-ui/prism/presets/night-owl.json";
 
 const CODEBLOCK_P_X = 4;
-// const CODEBLOCK_RADIUS = 8;
 
 export const pre = {
   variant: "text.code",
@@ -34,16 +33,14 @@ const cBlockTitle = {
 
 const cBlockHl = {
   "&::before": {
-    content: '""',
+    content: '"👉🏼"',
     position: "absolute",
     left: 0,
     right: 0,
     height: "1.5rem", // lineHeight.pre
     backgroundColor: "hsla(0, 0%, 30%, .5)", // from https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
   },
-  ">*": {
-    position: "relative",
-  },
+  ">*": { position: "relative" },
 };
 
 export const blockCode = {
@@ -63,7 +60,7 @@ export const blockCode = {
   },
   // lang: cBlockLang,
   // title: cBlockTitle,
-  hl: cBlockHl,
+  // hl: cBlockHl,
   maxWidth: "50%", // tes tes
 };
 
@@ -77,15 +74,43 @@ const inlineCode = {
   borderRadius: 4,
 };
 
+const lang = {
+  textTransform: "uppercase",
+  fontWeight: "medium",
+  height: "1.25rem",
+  lineHeight: "1.25rem",
+  fontSize: "0.7rem",
+};
+
+const bgFgColors = {
+  backgroundColor: nightOwl.backgroundColor,
+  color: nightOwl.color,
+};
+
+// = = =
+
 export default {
   pre,
-  block: blockCode,
+  block: blockCode, // coba gak pake
   inline: inlineCode,
+  //
+  prismHl: cBlockHl,
+  prismHeader: {
+    ...bgFgColors,
+    fontSize: 0,
+    ">div:first-child": { alignItems: "center" },
+    ">div>div[class]": lang,
+    button: { fontWeight: "bold" },
+    borderBottom: "1px solid",
+    borderBottomColor: nightOwl[".comment"]["color"],
+    position: "relative",
+    zIndex: 1,
+    mb: -1,
+  },
 
   // Called from eg. variants.mdx to prevent FOUC.
   fallback: {
-    backgroundColor: nightOwl.backgroundColor,
-    color: nightOwl.color,
+    ...bgFgColors,
     my: [6, 8],
   },
   //

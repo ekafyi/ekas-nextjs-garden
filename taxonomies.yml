@@ -1,0 +1,7 @@
+lang:
+  js:
+    background: "yellow"
+    color: "black"
+  graphql:
+    background: "#e652ab"
+    color: "#fff"

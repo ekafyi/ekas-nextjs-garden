@@ -21,5 +21,5 @@ export default {
   "p,ul,ol": blockContentCommon,
   //
   blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
-  ".eka-cblock": { variant: "components.code.block.container" },
+  // ".eka-cblock": { variant: "components.code.block.container" },
 };
