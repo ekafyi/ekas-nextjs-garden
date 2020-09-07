@@ -16,6 +16,8 @@
     "fast-glob": "^3.2.4",
     "gray-matter": "^4.0.2",
     "markdown-to-jsx": "^6.11.4",
+    "markdown-toc": "^1.2.0",
+    "mdx-table-of-contents": "^0.1.0",
     "next": "^9.5.1",
     "next-mdx-remote": "^0.6.0",
     "nextjs-progressbar": "0.0.5",
@@ -35,6 +37,7 @@
     "js-yaml-loader": "^1.2.2",
     "parse-numeric-range": "^1.2.0",
     "react-kawaii": "^0.16.0",
+    "remark-toc": "^7.0.0",
     "tailwindcss": "^1.6.0"
   }
 }

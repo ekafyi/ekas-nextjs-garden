@@ -9,7 +9,7 @@ const right992 = "minmax(12rem,16.67vw)";
 const grid992 = `${left992} minmax(0,1fr) ${right992}`;
 const gap992 = "calc(1rem + 3vw)";
 
-const area992 = '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" "gside1 gbody gside4" ". gbottom ."'; // prettier-ignore
+const area992 = '". gtitle gtitle" "gside1 gbody gside2" "gside1 gbody gside3" "gside1 gbody gside4" ". gbottom ."'; // prettier-ignore
 
 // TODO [low priority] choose one
 // const left1280 = "minmax(10rem,6.25vw)";
@@ -19,7 +19,8 @@ const right1280 = "minmax(12rem,16.67vw)";
 const grid1280 = `${left1280} minmax(0,1fr) ${right1280}`;
 
 const gap1280 = "calc(3rem + 3vw)";
-const area1280 = area992;
+const area1280 = '". gtitle ." "gside1 gbody gside2" "gside1 gbody gside3" "gside1 gbody gside4" ". gbottom ."'; // prettier-ignore
+// area1280 cuma beda di gtitle
 
 // = = =
 

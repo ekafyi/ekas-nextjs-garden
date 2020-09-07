@@ -31,7 +31,7 @@ export default function Related(props) {
       </header>
       <ul className="b">
         {EX_SERIES_GQL.map((link, i) => (
-          <li>
+          <li key={link}>
             <a href="#">{link}</a>
           </li>
         ))}

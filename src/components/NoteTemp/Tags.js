@@ -15,7 +15,7 @@ export default function Tags() {
         graphql
       </a>
       {["learning notes", "some other tag"].map((tag) => (
-        <a sx={{ variant: "buttons.pill" }} href="#">
+        <a key={tag} sx={{ variant: "buttons.pill" }} href="#">
           {tag}
         </a>
       ))}
