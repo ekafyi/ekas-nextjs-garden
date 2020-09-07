@@ -1,7 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui";
+import { jsx } from "theme-ui";
+import { parseISO, format } from "date-fns";
+import { config } from "../../../site.config.yml";
 
-export default function Byline() {
+export default function Byline({ publishDate, updateDate }) {
   return (
     <div sx={{ variant: "components.note.byline" }}>
       <div
@@ -14,10 +16,21 @@ export default function Byline() {
         }}
       />
       <strong sx={{ fontSize: 2, mr: 3 }}>Eka</strong>
-      <span sx={{ fontSize: 1, color: "mutedFg" }}>
-        20 Aug 2020&nbsp;
-        {/* <em>updated 24 Aug 2020</em> */}
-      </span>
+      {publishDate && (
+        <div sx={{ fontSize: 1, color: "mutedFg" }}>
+          <time datetime={publishDate}>
+            {format(parseISO(publishDate), config.dateFormatPost)}
+          </time>
+          {updateDate && (
+            <em sx={{ ml: 1 }}>
+              &middot;&nbsp;updated{" "}
+              <time datetime={updateDate}>
+                {format(parseISO(updateDate), config.dateFormatPost)}
+              </time>
+            </em>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -55,7 +55,10 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
                 {TEMP_TEST_EXCERPT}
               </p>
             )}
-            <Byline />
+            <Byline
+              publishDate={frontMatter.date}
+              updateDate={frontMatter.updated}
+            />
           </header>
 
           <div sx={{ gridArea: "gside2" }}>

@@ -26,3 +26,5 @@ config:
     SCALE_FROM: -2
     SCALE_TO: 20
     SPACING: 4
+
+  dateFormatPost: "d MMM yyyy"
