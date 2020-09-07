@@ -9,7 +9,7 @@ export default function BackLinks() {
         textAlign: "center",
         // mt: -4, // Use mt:-4, mb:4 if we have other bottomBlock content.
         display: "flex",
-        justifyContent: ["space-between", null, null, "flex-end"],
+        justifyContent: ["space-between", null, null, "flex-start"],
       }}
     >
       <a href="#main" sx={{ variant: "links.backToTop", pr: 2 }}>
