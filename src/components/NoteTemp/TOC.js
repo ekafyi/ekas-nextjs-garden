@@ -52,8 +52,8 @@ export default function TOC(props) {
         </DisclosureButton>
         <DisclosurePanel
           className="toc-panel"
-          dangerouslySetInnerHTML={{ __html: props.innerHTML || DUMMY_LIST }}
-        ></DisclosurePanel>
+          dangerouslySetInnerHTML={{ __html: props.content || DUMMY_LIST }}
+        />
       </div>
     </Disclosure>
   );

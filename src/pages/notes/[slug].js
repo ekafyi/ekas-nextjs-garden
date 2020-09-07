@@ -26,17 +26,12 @@ export async function getStaticProps({ params: { slug } }) {
   const post = getPost(slug, "notes");
   if (!post) return { props: { mdxContent: null, frontMatter: {} } };
   const mdxContent = await renderToString(post.mdx, components, options);
-
-  // ??
   const toc = await renderToString(post.toc);
-  // ??
-
   return {
     props: {
       mdxContent,
       frontMatter: post.frontMatter || {},
-      // toc: post.toc,
-      toc: toc.renderedOutput,
+      toc: toc.renderedOutput || null,
     },
   };
 }

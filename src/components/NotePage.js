@@ -65,7 +65,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           {toc && (
             <div sx={{ gridArea: "gside3" }}>
               <TOC
-                innerHTML={toc}
+                content={toc}
                 sx={{
                   position: [null, null, null, "sticky"],
                   top: [null, null, null, "1rem"],
