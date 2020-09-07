@@ -31,7 +31,7 @@ const TEMP_HAS_TOC = [
   "Set up optional image field from Contentful in Gatsby GraphQL",
 ];
 
-export default function NotePage({ mdxContent, frontMatter }) {
+export default function NotePage({ mdxContent, frontMatter, toc }) {
   const router = useRouter();
 
   if (!frontMatter || !mdxContent) {
@@ -62,16 +62,17 @@ export default function NotePage({ mdxContent, frontMatter }) {
             <StatusOrWhatever />
           </div>
 
-          <div sx={{ gridArea: "gside3" }}>
-            {TEMP_HAS_TOC.includes(frontMatter.title) && (
+          {toc && (
+            <div sx={{ gridArea: "gside3" }}>
               <TOC
+                content={toc}
                 sx={{
                   position: [null, null, null, "sticky"],
                   top: [null, null, null, "1rem"],
                 }}
               />
-            )}
-          </div>
+            </div>
+          )}
 
           <div sx={{ variant: "components.note.body" }} className={fallbackCss}>
             {hydrate(mdxContent, components)}

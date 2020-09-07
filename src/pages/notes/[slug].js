@@ -12,9 +12,7 @@ const components = {
   ...mdxComponents,
 };
 
-const options = {
-  remarkPlugins: [require("remark-slug")],
-};
+const options = { remarkPlugins: [require("remark-slug")] };
 
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");
@@ -28,10 +26,12 @@ export async function getStaticProps({ params: { slug } }) {
   const post = getPost(slug, "notes");
   if (!post) return { props: { mdxContent: null, frontMatter: {} } };
   const mdxContent = await renderToString(post.mdx, components, options);
+  const toc = await renderToString(post.toc);
   return {
     props: {
       mdxContent,
       frontMatter: post.frontMatter || {},
+      toc: toc.renderedOutput || null,
     },
   };
 }

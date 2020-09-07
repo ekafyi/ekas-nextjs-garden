@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import glob from "fast-glob";
+import mdToc from "markdown-toc";
 
 export const CONTENT_PATH = "content"; // no trailing slash
 
@@ -103,9 +104,12 @@ export const getPost = (slug, subdir = "") => {
 
   const fileContents = fs.readFileSync(fullPath);
   const { content, data } = matter(fileContents);
+  const toc = mdToc(content).content || null;
+
   return {
     mdx: content,
     frontMatter: data,
+    toc,
   };
 };
 
