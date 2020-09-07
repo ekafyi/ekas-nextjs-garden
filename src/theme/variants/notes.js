@@ -98,7 +98,7 @@ export default {
       getGridCol(3),
       getGridCol(5),
     ],
-    gridAutoRows: ["minmax(4rem, auto)", "5rem", null, "7rem"],
+    gridAutoRows: ["minmax(4rem, auto)", "7rem", null, "8rem"],
     lineHeight: getLhByFontIndex(2),
   },
   snippet: {
