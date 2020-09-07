@@ -1,12 +1,10 @@
 /** @jsx jsx */
+import { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import rangeParser from "parse-numeric-range";
 import { jsx, Styled } from "theme-ui";
 import theme from "prism-react-renderer/themes/nightOwl"; // Use theme from @theme-ui/prism in theme.styles instead of here.
 import { lang as langStyles } from "../../../taxonomies.yml";
-
-const COPY_BTN_TEXT = "copy?";
-const COPIED_BTN_TEXT = "copied ✨";
 
 const checkShouldHl = (hl) => {
   if (hl) {
@@ -24,6 +22,21 @@ const getSxFoo = (lang) => {
   const hasStyle = Object.keys(langStyles).includes(lang);
   return hasStyle ? { ...langStyles[lang] } : { background: "#ffffff00" };
 };
+
+// = = =
+// CopyButton
+// = = =
+
+const COPY_BTN_TEXT = "copy?";
+const COPIED_BTN_TEXT = "copied ✨";
+
+function CopyButton({ isCopied = false, ...props }) {
+  return (
+    <button className="px-1" {...props}>
+      {isCopied ? COPIED_BTN_TEXT : COPY_BTN_TEXT}
+    </button>
+  );
+}
 
 // = = =
 // Styles stuff
@@ -46,6 +59,9 @@ export default function CodeBlock({
   ...props
 }) {
   if (typeof children !== `string`) return null; // MDX will pass in the code string as children
+
+  const content = children;
+  const [isCopied, setCopied] = useState(false);
 
   let language;
   if (typeof outerClassName !== "undefined") {
@@ -80,7 +96,14 @@ export default function CodeBlock({
               {language && languageEl}
               {title && titleEl}
             </div>
-            <button>{COPY_BTN_TEXT}</button>
+            <CopyButton
+              isCopied={isCopied}
+              onClick={(e) => {
+                navigator.clipboard.writeText(content);
+                setCopied(true);
+                // setTimeout(() => { setCopied(false) }, 10000); // prettier-ignore // enable to make text go back to initial
+              }}
+            />
           </div>
           <Styled.pre className={`${className} ${preCss}`} style={style}>
             {tokens.map((line, i) => {

@@ -1,4 +1,5 @@
 import nightOwl from "@theme-ui/prism/presets/night-owl.json";
+// https://github.com/system-ui/theme-ui/blob/master/packages/prism/presets/night-owl.json
 
 const CODEBLOCK_P_X = 4;
 
@@ -43,9 +44,9 @@ const cBlockHl = {
   ">*": { position: "relative" },
 };
 
+// nggak dipake sih~
 export const blockCode = {
   container: {
-    display: "none", // ! bentar
     pre,
     ...nightOwl,
     variant: "text.code",
@@ -89,6 +90,23 @@ const bgFgColors = {
 
 // = = =
 
+// TODO [low priority] move ripple to separate reusable component/variant
+const ripple = {
+  backgroundPosition: "center",
+  transition: "background 0.75s",
+  "&:hover": {
+    background: `radial-gradient(circle, transparent 1%, ${nightOwl.backgroundColor} 1%) center/15000%`, // prettier-ignore
+    backgroundColor: nightOwl.backgroundColor,
+  },
+  "&:active": {
+    backgroundSize: "100%",
+    transition: "background 0s",
+    backgroundColor: nightOwl[".builtin,.char,.constant,.function"]["color"],
+  },
+};
+
+// = = =
+
 export default {
   pre,
   block: blockCode, // coba gak pake
@@ -100,7 +118,7 @@ export default {
     fontSize: 0,
     ">div:first-child": { alignItems: "center" },
     ">div>div[class]": lang,
-    button: { fontWeight: "bold" },
+    button: { fontWeight: "bold", ...ripple },
     borderBottom: "1px solid",
     borderBottomColor: nightOwl[".comment"]["color"],
     position: "relative",
