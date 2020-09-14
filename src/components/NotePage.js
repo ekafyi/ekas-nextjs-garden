@@ -82,7 +82,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           </div>
 
           <div sx={{ variant: "components.note.metaBlock" }}>
-            <Tags />
+            <Tags tags={frontMatter.tags} tech={frontMatter.tech} />
             <Share />
           </div>
 
