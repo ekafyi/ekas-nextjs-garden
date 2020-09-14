@@ -1,7 +1,57 @@
+# used in CodeBlock
 lang:
   js:
-    background: "yellow"
+    background: "#f7e032"
     color: "black"
   graphql:
     background: "#e652ab"
-    color: "#fff"
+    color: "white"
+
+tags:
+  TIPS:
+    label: "console-logs"
+  LEARNING_NOTES:
+    label: "learning-notes"
+  RESOURCES:
+    label: "resources"
+
+tech:
+  javascript:
+    background: "#f7e032"
+    color: "black"
+  css:
+    background: "#264de4"
+    color: "white"
+  svelte:
+    background: "#ff3e00"
+    color: "white"
+  github:
+    background: "black"
+    color: "white"
+  nextjs:
+    background: "black"
+    color: "white"
+  mdx:
+    background: "#fcb42d"
+    color: "black"
+  graphql:
+    background: "#e652ab"
+    color: "white"
+  gatsby:
+    background: "#663399"
+    color: "white"
+  netlify:
+    background: "#164f78"
+    color: "white"
+  contentful:
+    background: "rgb(36, 120, 204)"
+    color: "white"
+  jamstack:
+    background: "#555"
+    color: "white"
+  laravel:
+    background: "#ff2d20"
+    color: "white"
+  php:
+    background: "#596a9c"
+    color: "white"

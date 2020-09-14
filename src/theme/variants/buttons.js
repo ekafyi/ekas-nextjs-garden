@@ -19,17 +19,18 @@ const pill = {
   borderRadius: 32,
   backgroundColor: "muted",
   whiteSpace: "nowrap",
-  py: 1,
+  display: "inline-flex",
   px: 3,
+  py: 1,
   mr: 2,
   mb: 2,
   "&:hover,&:focus": {
-    backgroundColor: "primary",
     color: "background",
+    backgroundColor: "text",
   },
   "&.is-active": {
     color: "background",
-    backgroundColor: "text",
+    backgroundColor: "primary",
   },
   // Note: Set lineHeight from parent/extending component.
 };

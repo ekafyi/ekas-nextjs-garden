@@ -52,7 +52,7 @@ export default {
     alignItems: "center",
   },
   tagsList: {
-    lineHeight: getLhByFontIndex(3),
+    lineHeight: "1rem",
     mb: 8,
     maxWidth: "100%",
     a: { fontSize: "0.702rem" }, // heheheh
