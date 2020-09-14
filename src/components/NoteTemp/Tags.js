@@ -38,6 +38,7 @@ export default function Tags({ tags, tech }) {
               passHref
               prefetch={false}
             >
+              {/* <a sx={VARIANT}>{item}</a> */}
               <a sx={getTechSx(item)}>{item}</a>
             </Link>
           ))}
