@@ -40,7 +40,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
 
   return (
     <>
-      <SEO title={frontMatter.title} />
+      <SEO title={frontMatter.title} path={router.asPath} />
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
@@ -83,7 +83,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
 
           <div sx={{ variant: "components.note.metaBlock" }}>
             <Tags tags={frontMatter.tags} tech={frontMatter.tech} />
-            <Share />
+            <Share path={router.asPath} />
           </div>
 
           <div sx={{ variant: "components.note.bottomBlock" }}>
