@@ -24,12 +24,19 @@ function CopyButton({ isCopied = false, ...props }) {
 export default function Share({ path }) {
   const url = getCanonical(path, config.baseUrl);
 
-  const [isCopied, setCopied] = useState(false);
+  // TODO get text for twitter & share API
+  // use excerpt kalo ada, otherwise use title
 
   const { isSupported, loading, share } = useWebShare();
 
-  // TODO get twitter text
-  // use excerpt kalo ada, otherwise use title
+  const [isCopied, setCopied] = useState(false);
+  const [canCopy, setCanCopy] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && navigator.clipboard !== "undefined") {
+      setCanCopy(true);
+    }
+  }, []);
 
   return (
     <div sx={{ variant: "components.note.ctaShare" }}>
@@ -42,22 +49,25 @@ export default function Share({ path }) {
         >
           tweet
         </a>
-        &nbsp;|&nbsp;
-        <CopyButton
-          isCopied={isCopied}
-          onClick={(e) => {
-            if (navigator.clipboard !== undefined) {
-              navigator.clipboard.writeText(url);
-              setCopied(true);
-            }
-          }}
-        />
+        {canCopy && (
+          <>
+            &nbsp;|&nbsp;
+            <CopyButton
+              isCopied={isCopied}
+              onClick={(e) => {
+                navigator.clipboard.writeText(url);
+                setCopied(true);
+              }}
+            />
+          </>
+        )}
         {!loading && isSupported ? (
           <>
             &nbsp;|&nbsp;
             <button
               onClick={(e) => {
                 share({
+                  // TODO
                   title: "judul post",
                   text: "custom text",
                   url,
