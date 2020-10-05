@@ -99,9 +99,11 @@ export default function CodeBlock({
             <CopyButton
               isCopied={isCopied}
               onClick={(e) => {
-                navigator.clipboard.writeText(content);
-                setCopied(true);
-                // setTimeout(() => { setCopied(false) }, 10000); // prettier-ignore // enable to make text go back to initial
+                if (navigator.clipboard !== undefined) {
+                  navigator.clipboard.writeText(content);
+                  setCopied(true);
+                  // setTimeout(() => { setCopied(false) }, 10000); // prettier-ignore // enable to make text go back to initial
+                }
               }}
             />
           </div>

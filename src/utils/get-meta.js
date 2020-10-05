@@ -13,7 +13,6 @@ export const getMetaDesc = (desc, siteDesc) => {
 };
 
 export const getCanonical = (path, site) => {
-  // return path ? `${site}/${path.startsWith("/") ? path.slice(1) : path}` : site;
   return path
     ? `${site}/${path.startsWith("/") ? path.substring(1, path.length) : path}`
     : site;
