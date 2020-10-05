@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import rangeParser from "parse-numeric-range";
 import { jsx, Styled } from "theme-ui";
