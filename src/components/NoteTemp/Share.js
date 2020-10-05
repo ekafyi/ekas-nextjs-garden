@@ -34,7 +34,7 @@ export default function Share({ path }) {
 
   useEffect(() => {
     if (typeof window !== "undefined" && navigator.clipboard !== "undefined") {
-      if (navigator.clipboard.writeText) setCanCopy(true);
+      if (navigator.clipboard.writeText !== "undefined") setCanCopy(true);
     }
   }, []);
 
