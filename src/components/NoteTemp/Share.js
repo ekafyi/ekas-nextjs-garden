@@ -33,8 +33,12 @@ export default function Share({ path }) {
   const [canCopy, setCanCopy] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && navigator.clipboard !== "undefined") {
-      if (navigator.clipboard.writeText !== "undefined") setCanCopy(true);
+    if (
+      typeof window !== "undefined" &&
+      typeof navigator.clipboard !== "undefined"
+    ) {
+      if (typeof navigator.clipboard.writeText !== "undefined")
+        setCanCopy(true);
     }
   }, []);
 
