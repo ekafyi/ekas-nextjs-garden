@@ -14,6 +14,7 @@ import StatusOrWhatever from "./NoteTemp/StatusOrWhatever";
 
 import dynamic from "next/dynamic";
 import mdxComponents from "components/mdx";
+import { getNoteDesc } from "../utils/note-utils";
 
 const CodeBlock = dynamic(() => import("./mdx/CodeBlock")); // It's somehow faster when imported here vs from components/mdx 🤔.
 const components = {
@@ -38,9 +39,19 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const description = getNoteDesc(
+    frontMatter.excerpt || null,
+    frontMatter.tags,
+    frontMatter.tech
+  );
+
   return (
     <>
-      <SEO title={frontMatter.title} path={router.asPath} />
+      <SEO
+        title={frontMatter.title}
+        description={description}
+        path={router.asPath}
+      />
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
         <Nav curPath={router.asPath} />
@@ -83,7 +94,11 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
 
           <div sx={{ variant: "components.note.metaBlock" }}>
             <Tags tags={frontMatter.tags} tech={frontMatter.tech} />
-            <Share path={router.asPath} />
+            <Share
+              title={frontMatter.title}
+              description={description}
+              path={router.asPath}
+            />
           </div>
 
           <div sx={{ variant: "components.note.bottomBlock" }}>

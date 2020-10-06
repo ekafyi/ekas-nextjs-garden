@@ -21,11 +21,8 @@ function CopyButton({ isCopied = false, ...props }) {
 
 // = = =
 
-export default function Share({ path }) {
+export default function Share({ title, description = "", path = "" }) {
   const url = getCanonical(path, config.baseUrl);
-
-  // TODO get text for twitter & share API
-  // use excerpt kalo ada, otherwise use title
 
   const { isSupported, loading, share } = useWebShare();
 
@@ -47,7 +44,7 @@ export default function Share({ path }) {
       <span className="label">share:</span>
       <div>
         <a
-          href={getTwitterUrl("wawuwo", url)}
+          href={getTwitterUrl(title, url)}
           target="_blank"
           rel="external noopener"
         >
@@ -71,12 +68,10 @@ export default function Share({ path }) {
             <button
               onClick={(e) => {
                 share({
-                  // TODO
-                  title: "judul post",
-                  text: "custom text",
                   url,
+                  title,
+                  text: description,
                 });
-                // }
               }}
               aria-label="Open device share menu"
             >
