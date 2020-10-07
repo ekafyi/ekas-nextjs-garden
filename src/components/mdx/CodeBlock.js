@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import rangeParser from "parse-numeric-range";
 import { jsx, Styled } from "theme-ui";
@@ -62,6 +62,17 @@ export default function CodeBlock({
 
   const content = children;
   const [isCopied, setCopied] = useState(false);
+  const [canCopy, setCanCopy] = useState(false);
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      typeof navigator.clipboard !== "undefined"
+    ) {
+      if (typeof navigator.clipboard.writeText !== "undefined")
+        setCanCopy(true);
+    }
+  }, []);
 
   let language;
   if (typeof outerClassName !== "undefined") {
@@ -96,14 +107,16 @@ export default function CodeBlock({
               {language && languageEl}
               {title && titleEl}
             </div>
-            <CopyButton
-              isCopied={isCopied}
-              onClick={(e) => {
-                navigator.clipboard.writeText(content);
-                setCopied(true);
-                // setTimeout(() => { setCopied(false) }, 10000); // prettier-ignore // enable to make text go back to initial
-              }}
-            />
+            {canCopy && (
+              <CopyButton
+                isCopied={isCopied}
+                onClick={(e) => {
+                  navigator.clipboard.writeText(content);
+                  setCopied(true);
+                  // setTimeout(() => { setCopied(false) }, 10000); // prettier-ignore // enable to make text go back to initial
+                }}
+              />
+            )}
           </div>
           <Styled.pre className={`${className} ${preCss}`} style={style}>
             {tokens.map((line, i) => {
