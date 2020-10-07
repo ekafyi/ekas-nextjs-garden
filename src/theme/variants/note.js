@@ -81,7 +81,8 @@ export default {
     flexDirection: ["row", null, null, "column"],
     alignItems: ["center", null, null, "flex-start"],
     ".label": { pr: 2, color: "mutedFg", lineHeight: "1rem" },
-    a: { variant: "links.inBodySecondary" },
+    "a, button": { variant: "links.inBodySecondary" },
+    button: { lineHeight: "1rem" },
   },
   series: {
     // TODO clamp at 3 lines

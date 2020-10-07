@@ -18,13 +18,13 @@ export default function Byline({ publishDate, updateDate }) {
       <strong sx={{ fontSize: 2, mr: 3 }}>Eka</strong>
       {publishDate && (
         <div sx={{ fontSize: 1, color: "mutedFg" }}>
-          <time datetime={publishDate}>
+          <time dateTime={publishDate}>
             {format(parseISO(publishDate), config.dateFormatPost)}
           </time>
           {updateDate && (
             <em sx={{ ml: 1 }}>
               &middot;&nbsp;updated{" "}
-              <time datetime={updateDate}>
+              <time dateTime={updateDate}>
                 {format(parseISO(updateDate), config.dateFormatPost)}
               </time>
             </em>
