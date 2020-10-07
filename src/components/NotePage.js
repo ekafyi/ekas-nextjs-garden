@@ -25,9 +25,6 @@ const components = {
 
 const fallbackCss = "leading-6 md:leading-7";
 
-// const TEMP_TEST_TITLE = "GraphQL Adventure Club at the Party-Corgi Discord";
-// const TEMP_TEST_EXCERPT = "Learning GraphQL from zero to project with friends!";
-
 export default function NotePage({ mdxContent, frontMatter, toc }) {
   const router = useRouter();
 
