@@ -28,6 +28,9 @@ export { fontSizesPx };
 // ie. snap to multiple of 4, starting from BASE_SIZE (see examples below)
 // returns float(?)
 export const getLhByFontSize = (fontSize) => {
+  // console.log("fontSizeeeeee ", fontSize);
+  // console.log("fontSizeeeeee ", fontSizesPx);
+
   if (fontSize < BASE_SIZE) return BASE_SIZE;
 
   const modulus = fontSize % SPACING;
@@ -38,8 +41,7 @@ export const getLhByFontSize = (fontSize) => {
   // fontSize 18 ====> 18 + 4 = 22 ====> round up to 24.
   // fontSize 20.25 ====> 20.25 + 4 = 24.25 ====> round up to 28.
   else if (modulus > 0) {
-    // return fontSize - modulus + 2 * SPACING; // ? coba bentar
-    return fontSize - modulus + 3 * SPACING;
+    return fontSize - modulus + 2 * SPACING;
   }
   return false;
 };

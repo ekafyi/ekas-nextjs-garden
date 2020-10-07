@@ -14,13 +14,6 @@ const getGridColsArr = (colsArr = []) => {
 const gridColumnGap = "calc(1rem + 2vw)";
 const gridRowGap = [4];
 
-const grid12 = {
-  display: "grid",
-  gridColumnGap,
-  gridRowGap,
-  gridTemplateColumns: getGridColsArr([null, 12]),
-};
-
 const snippetLink = {
   display: "block",
   pt: 2,
@@ -40,7 +33,10 @@ const snippetLink = {
 
 export default {
   container: {
-    ...grid12,
+    display: "grid",
+    gridColumnGap,
+    gridRowGap,
+    gridTemplateColumns: getGridColsArr([null, 12, null, 16, 12]),
     mx: "auto",
     maxWidth: "105rem",
     gridTemplateRows: [
@@ -68,8 +64,8 @@ export default {
   subheader: {
     fontSize: [1, 2, 4],
     lineHeight: ["paragraph", getLhByFontIndex(3), getLhByFontIndex(4)],
-    color: "mutedFg",
-    maxWidth: [null, null, "27em", null, "36vw"],
+    // color: "mutedFg",
+    maxWidth: [null, null, "30em", null, "45vw"],
     pt: [1, 0, 4, 8, 4],
   },
   side: {
@@ -95,11 +91,11 @@ export default {
       null,
       "repeat(auto-fill, minmax(13rem, 1fr))",
       getGridCol(2),
-      getGridCol(3),
+      getGridCol(4),
       getGridCol(5),
     ],
     gridAutoRows: ["minmax(4rem, auto)", "7rem", null, "8rem"],
-    lineHeight: getLhByFontIndex(2),
+    lineHeight: getLhByFontIndex(3),
   },
   snippet: {
     position: "relative",

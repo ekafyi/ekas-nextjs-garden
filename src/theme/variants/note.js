@@ -36,6 +36,7 @@ export default {
     pt: [8, null, 12],
     pb: [8, null, 12],
     gridArea: "gtitle",
+    h1: { mb: 6 },
   },
   title: { variant: "text.entryHeading" },
   excerpt: {
@@ -43,7 +44,7 @@ export default {
     mt: [4],
     fontSize: [4, null, null, null, 5],
     lineHeight: [getLhByFontIndex(4), null, null, null, getLhByFontIndex(6)],
-    color: "mutedFg",
+    // color: "mutedFg",
   },
   byline: {
     mt: [8],
