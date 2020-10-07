@@ -25,13 +25,6 @@ const components = {
 
 const fallbackCss = "leading-6 md:leading-7";
 
-const TEMP_TEST_TITLE = "GraphQL Adventure Club at the Party-Corgi Discord";
-const TEMP_TEST_EXCERPT = "Learning GraphQL from zero to project with friends!";
-const TEMP_HAS_TOC = [
-  TEMP_TEST_TITLE,
-  "Set up optional image field from Contentful in Gatsby GraphQL",
-];
-
 export default function NotePage({ mdxContent, frontMatter, toc }) {
   const router = useRouter();
 
@@ -61,11 +54,9 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
             <Styled.h1 sx={{ variant: "components.note.title" }}>
               {frontMatter.title}
             </Styled.h1>
-            {frontMatter.title === TEMP_TEST_TITLE && (
-              <p sx={{ variant: "components.note.excerpt" }}>
-                {TEMP_TEST_EXCERPT}
-              </p>
-            )}
+            <p sx={{ variant: "components.note.excerpt" }}>
+              {frontMatter.excerpt || null}
+            </p>
             <Byline
               publishDate={frontMatter.date}
               updateDate={frontMatter.updated}
