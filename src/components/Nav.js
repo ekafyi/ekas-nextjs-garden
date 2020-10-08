@@ -3,7 +3,7 @@ import { jsx } from "theme-ui";
 import Link from "next/link";
 import ColorModeSelect from "components/ColorModeSelect";
 
-import * as icons from "components/icons";
+import * as Icons from "components/icons";
 
 const getParent = (curPath) => {
   return curPath.split("/")[1];
@@ -39,16 +39,27 @@ export default function Nav({ curPath, hideBc = false }) {
           </nav>
         )}
       </div>
-      <div>
+      <div sx={{ variant: "components.nav.icons" }}>
         <a
           href="https://github.com/ekafyi"
           rel="external"
           nofollow="true"
           aria-label="eka on Github"
         >
-          <icons.Gh />
+          <Icons.Gh />
         </a>
-        <ColorModeSelect />
+        <a
+          href="https://dev.to/ekafyi"
+          rel="external"
+          nofollow="true"
+          aria-label="eka on dev.to"
+        >
+          <Icons.Dev />
+        </a>
+        <ColorModeSelect
+          darkElement={<Icons.Moon />}
+          lightElement={<Icons.Moon />}
+        />
       </div>
     </header>
   );

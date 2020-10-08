@@ -4,19 +4,17 @@ export default {
     justifyContent: "space-between",
     alignItems: "center",
     height: 32,
-    mt: -2,
+    mt: [-2, null, 0],
     mb: 2,
     fontSize: 1,
     ">*": {
       display: "flex",
       justifyContent: "center",
       fontWeight: "medium",
-      ">*:not(:last-child)": {
-        mr: 3,
-      },
     },
   },
   bc: {
+    ml: 3,
     a: {
       fontWeight: "bold",
     },
@@ -24,6 +22,19 @@ export default {
       mx: 1,
       color: "mutedFg",
       opacity: 0.75,
+    },
+  },
+  icons: {
+    ">*": {
+      ml: [0, null, 1],
+      py: 1,
+      px: 2,
+      color: "mutedFg",
+    },
+    "a:hover,button:hover": {
+      color: "text",
+      backgroundColor: "muted",
+      borderRadius: 4,
     },
   },
 };

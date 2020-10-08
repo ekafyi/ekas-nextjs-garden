@@ -37,15 +37,7 @@ const pill = {
 
 export default {
   pill,
-  colorMode: {
-    mt: "-2px",
-    borderRadius: 4,
-    border: "2px dotted currentColor",
-    // backgroundColor: "text",
-    // color: "background",
-    width: "3.75rem",
-    whiteSpace: "nowrap",
-  },
+  colorModeDark: { backgroundColor: "muted", color: "#ffe100" },
 
   // ! copied from other site
   regular: {
