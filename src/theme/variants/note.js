@@ -104,4 +104,19 @@ export default {
     },
     a: { variant: "links.boxyInList", py: 2 },
   },
+  status: {
+    // TODO [low priority] move to separate component
+    fontSize: 0,
+    lineHeight: "paragraph",
+    p: 2,
+    borderRadius: 4,
+    backgroundColor: "temp_postStatus",
+    mb: 8,
+    "span[role]": { pr: 2 },
+    svg: {
+      display: "inline-block",
+      verticalAlign: "top",
+      ml: 1,
+    },
+  },
 };

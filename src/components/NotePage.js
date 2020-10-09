@@ -10,7 +10,7 @@ import Byline from "./NoteTemp/Byline";
 import Share from "./NoteTemp/Share";
 import Related from "./NoteTemp/Related";
 import BackLinks from "./NoteTemp/BackLinks";
-import StatusOrWhatever from "./NoteTemp/StatusOrWhatever";
+import GardenStatus from "./Note/GardenStatus";
 
 import dynamic from "next/dynamic";
 import mdxComponents from "components/mdx";
@@ -64,7 +64,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           </header>
 
           <div sx={{ gridArea: "gside2" }}>
-            <StatusOrWhatever />
+            <GardenStatus status={frontMatter.status || "GARDEN_FINAL"} />
           </div>
 
           {toc && (

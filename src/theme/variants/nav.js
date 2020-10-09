@@ -17,6 +17,8 @@ export default {
     ml: 3,
     a: {
       fontWeight: "bold",
+      display: "inline-block",
+      py: 1,
     },
     "*[aria-hidden]": {
       mx: 1,
@@ -31,10 +33,12 @@ export default {
       px: 2,
       color: "mutedFg",
     },
+    ">a": { opacity: 0.9 },
     "a:hover,button:hover": {
       color: "text",
       backgroundColor: "muted",
       borderRadius: 4,
+      opacity: 1,
     },
   },
 };
