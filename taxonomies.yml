@@ -25,11 +25,11 @@ statuses:
     icon: "🌻"
     iconLabel: "sunflower"
     desc: "This post has fully bloomed and is unlikely to change"
-  GARDEN_FINAL_OLD:
+  GARDEN_OLD:
     slug: "bloomed"
     icon: "🍂"
     iconLabel: "falling leaves"
-    desc: "This post has fully bloomed and is unlikely to change. If it discusses a specific technology or library, there might have been changes since this post was published."
+    desc: "This post was last updated more than two years ago. If it discusses coding or tech, there might have been changes since."
 
 tags:
   TIPS:

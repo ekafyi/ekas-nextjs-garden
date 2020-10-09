@@ -64,7 +64,10 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           </header>
 
           <div sx={{ gridArea: "gside2" }}>
-            <GardenStatus status={frontMatter.status || "GARDEN_FINAL"} />
+            <GardenStatus
+              status={frontMatter.status || "GARDEN_FINAL"}
+              date={frontMatter.updated || frontMatter.date}
+            />
           </div>
 
           {toc && (
