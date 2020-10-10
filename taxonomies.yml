@@ -7,6 +7,30 @@ lang:
     background: "#e652ab"
     color: "white"
 
+statuses:
+  default: 'GARDEN_FINAL'
+  infoPath: 'starting-digital-garden'
+  GARDEN_SEED:
+    slug: "seedling"
+    icon: "🌱"
+    iconLabel: "seedling"
+    desc: "This post is a seedling that may grow into something more fully-fledged"
+  GARDEN_GROWING:
+    slug: "growing"
+    icon: "🌿"
+    iconLabel: "branch with leaves"
+    desc: "This post is still growing and likely to be updated"
+  GARDEN_FINAL:
+    slug: "bloomed"
+    icon: "🌻"
+    iconLabel: "sunflower"
+    desc: "This post has fully bloomed and is unlikely to change"
+  GARDEN_OLD:
+    slug: "bloomed"
+    icon: "🍂"
+    iconLabel: "falling leaves"
+    desc: "This post was last updated more than two years ago. If it discusses coding or tech, there might have been changes since."
+
 tags:
   TIPS:
     label: "console-logs"

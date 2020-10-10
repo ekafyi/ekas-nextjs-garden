@@ -36,3 +36,8 @@ export const getNoteDesc = (excerpt, tags = [], techs = []) => {
 
   return excerpt;
 };
+
+export const getTaxonomyData = (name, source) => {
+  const hasData = Object.keys(source).includes(name);
+  return hasData ? source[name] : false;
+};

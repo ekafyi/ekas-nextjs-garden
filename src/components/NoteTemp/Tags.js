@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import Link from "next/link";
+import { getTaxonomyData } from "../../utils/note-utils";
 import {
   tags as tagsConfig,
   tech as techConfig,
@@ -8,16 +9,11 @@ import {
 
 const VARIANT = { variant: "buttons.pill" };
 
-const getData = (name, source) => {
-  const hasData = Object.keys(source).includes(name);
-  return hasData ? source[name] : false;
-};
-
 const getTechSx = (name) => {
   return {
     ...VARIANT,
-    background: getData(name, techConfig).background || undefined,
-    color: getData(name, techConfig).color || undefined,
+    background: getTaxonomyData(name, techConfig).background || undefined,
+    color: getTaxonomyData(name, techConfig).color || undefined,
   };
 };
 
@@ -49,7 +45,7 @@ export default function Tags({ tags, tech }) {
       {tags ? (
         <>
           {tags.map((item) => {
-            const tagLabel = getData(item, tagsConfig) ? getData(item, tagsConfig).label : item; // prettier-ignore
+            const tagLabel = getTaxonomyData(item, tagsConfig) ? getTaxonomyData(item, tagsConfig).label : item; // prettier-ignore
             return (
               <Link
                 key={item}

@@ -2,11 +2,12 @@
 import { jsx } from "theme-ui";
 import { useColorMode } from "theme-ui";
 
-const ColorModeSelect = (props) => {
+const ColorModeSelect = ({ darkElement, lightElement, ...props }) => {
   const [colorMode, setColorMode] = useColorMode();
+  const darkSx = { variant: "buttons.colorModeDark" };
   return (
     <button
-      sx={{ variant: "buttons.colorMode" }}
+      sx={colorMode === "default" ? undefined : darkSx}
       aria-label={`${colorMode === "default" ? `dark` : `light`} mode`}
       onClick={(e) => {
         setColorMode(colorMode === "default" ? "dark" : "default");
@@ -14,9 +15,9 @@ const ColorModeSelect = (props) => {
       {...props}
     >
       {colorMode === "default" ? (
-        <>&#9790;&nbsp; dark</>
+        <>{darkElement || "dark"}</>
       ) : (
-        <>&#9788;&#xFE0E;&nbsp; light</>
+        <>{lightElement || "light"}</>
       )}
     </button>
   );

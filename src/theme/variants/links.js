@@ -31,10 +31,10 @@ const coverParent = {
 };
 
 const inBody = {
-  color: "primary",
   fontWeight: "medium",
-  borderBottom: "2px solid currentColor",
-  "&:hover, &:focus": { color: "text" },
+  borderBottom: "2px solid",
+  borderBottomColor: "primary",
+  "&:hover, &:focus": { color: "primary" },
 };
 
 const inBodySecondary = {
