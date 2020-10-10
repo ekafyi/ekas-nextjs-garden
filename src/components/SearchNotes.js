@@ -23,7 +23,6 @@ export default function SearchNotes({ allMdx, handleFilter }) {
 
   useEffect(() => {
     const runFuse = async (queries) => {
-      console.log("fuuuuuuuuse 🏃🏽‍♀️");
       const Fuse = (await import("fuse.js")).default; // Dynamically load fuse.js
       const fuse = new Fuse(posts, fuseOptions);
       const results = fuse.search(queries).map((result) => result.item);
@@ -55,6 +54,7 @@ export default function SearchNotes({ allMdx, handleFilter }) {
           },
         ],
       };
+      console.log("queries ", queries);
       runFuse(queries);
     }
   }, [searchValue, searchTags, searchTechs]);
@@ -73,11 +73,20 @@ export default function SearchNotes({ allMdx, handleFilter }) {
   };
 
   return (
-    <div>
+    <>
+      <input type="text" value={searchValue} onChange={onChange} />
+
       <div>
+        <button
+          type="button"
+          onClick={() => {
+            setSearchTags(["bookmarks"]);
+          }}
+        >
+          foo
+        </button>
         {/* <TagList tags={tags} value={searchTags} onChange={setSearchTags} /> */}
       </div>
-      <input type="text" value={searchValue} onChange={onChange} />
-    </div>
+    </>
   );
 }

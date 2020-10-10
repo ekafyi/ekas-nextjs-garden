@@ -17,6 +17,7 @@ export async function getStaticProps() {
 }
 
 export default function Notes({ allMdx, allTags }) {
+  console.log("allTags ", allTags);
   const [filteredMdx, setFilteredMdx] = useState(allMdx);
   // console.log("filteredMdx ", filteredMdx);
 
