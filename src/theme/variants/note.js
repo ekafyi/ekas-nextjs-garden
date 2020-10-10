@@ -81,7 +81,12 @@ export default {
     display: "flex",
     flexDirection: ["row", null, null, "column"],
     alignItems: ["center", null, null, "flex-start"],
-    ".label": { pr: 2, color: "mutedFg", lineHeight: "1rem" },
+    ".label": {
+      pr: 2,
+      color: "mutedFg",
+      lineHeight: "1rem",
+      display: [null, null, "none"],
+    },
     "a, button": { variant: "links.inBodySecondary" },
     button: { lineHeight: "1rem" },
   },
