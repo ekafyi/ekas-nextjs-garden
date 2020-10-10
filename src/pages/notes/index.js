@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
-import { getAllPosts } from "../../utils/get-mdx";
+import { getAllPosts, getAllTags } from "../../utils/get-mdx";
 
 import * as dummyData from "../../../content/dummy/dummy-notes";
 
@@ -9,11 +9,12 @@ export async function getStaticProps() {
   return {
     props: {
       allMdx: getAllPosts("notes", "slug"),
+      allTags: getAllTags("notes"),
     },
   };
 }
 
-export default function Notes({ allMdx }) {
+export default function Notes({ allMdx, allTags }) {
   return (
     <>
       <SEO title="Notes" />
