@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Fuse from "fuse.js";
-
-import TagList from "./TagList";
+// import Fuse from "fuse.js";
+// import TagList from "./TagList";
 
 const fuseOptions = {
   threshold: 0.5,
@@ -15,19 +14,21 @@ const fuseOptions = {
 };
 
 export default function SearchNotes({ allMdx, handleFilter }) {
-  // const posts = allMdx.map((post) => post.frontMatter);
   const posts = allMdx;
-
   const [searchValue, setSearchValue] = useState("");
   const [searchTags, setSearchTags] = useState([]);
   const [searchTechs, setSearchTechs] = useState([]);
 
-  const fuse = new Fuse(posts, fuseOptions);
-
   // // const tags = [...new Set(posts.flatMap(({ tags }) => tags))];
-  // const tags = [];
 
   useEffect(() => {
+    const runFuse = async (queries) => {
+      const Fuse = (await import("fuse.js")).default; // Dynamically load fuse.js
+      const fuse = new Fuse(posts, fuseOptions);
+      const results = fuse.search(queries).map((result) => result.item);
+      handleFilter(results);
+    };
+
     if (
       searchValue === "" &&
       searchTags.length === 0 &&
@@ -53,12 +54,11 @@ export default function SearchNotes({ allMdx, handleFilter }) {
           },
         ],
       };
-      const results = fuse.search(queries).map((result) => result.item);
-      handleFilter(results);
+      runFuse(queries);
     }
   }, [searchValue, searchTags, searchTechs]);
 
-  const onChange = async (e) => {
+  const onChange = (e) => {
     const { value } = e.target;
     setSearchValue(value);
   };
