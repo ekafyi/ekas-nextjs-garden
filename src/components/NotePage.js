@@ -35,7 +35,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
   const description = getNoteDesc(
     frontMatter.excerpt || null,
     frontMatter.tags,
-    frontMatter.tech
+    frontMatter.techs
   );
 
   return (
@@ -87,7 +87,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           </div>
 
           <div sx={{ variant: "components.note.metaBlock" }}>
-            <Tags tags={frontMatter.tags} tech={frontMatter.tech} />
+            <Tags tags={frontMatter.tags} techs={frontMatter.techs} />
             <Share
               title={frontMatter.title}
               description={description}

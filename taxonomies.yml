@@ -39,7 +39,7 @@ tags:
   RESOURCES:
     label: "resources"
 
-tech:
+techs:
   javascript:
     background: "#f7e032"
     color: "black"

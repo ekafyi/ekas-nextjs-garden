@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getTaxonomyData } from "../../utils/note-utils";
 import {
   tags as tagsConfig,
-  tech as techConfig,
+  techs as techsConfig,
 } from "../../../taxonomies.yml";
 
 const VARIANT = { variant: "buttons.pill" };
@@ -12,21 +12,21 @@ const VARIANT = { variant: "buttons.pill" };
 const getTechSx = (name) => {
   return {
     ...VARIANT,
-    background: getTaxonomyData(name, techConfig).background || undefined,
-    color: getTaxonomyData(name, techConfig).color || undefined,
+    background: getTaxonomyData(name, techsConfig).background || undefined,
+    color: getTaxonomyData(name, techsConfig).color || undefined,
   };
 };
 
 // = = =
 
-export default function Tags({ tags, tech }) {
-  if (!tags && !tech) return false;
+export default function Tags({ tags, techs }) {
+  if (!tags && !techs) return false;
 
   return (
     <div sx={{ variant: "components.note.tagsList" }}>
-      {tech ? (
+      {techs ? (
         <>
-          {tech.map((item) => (
+          {techs.map((item) => (
             <Link
               key={item}
               href="/notes/tags/[tag]"
