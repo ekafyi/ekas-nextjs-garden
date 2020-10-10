@@ -23,7 +23,7 @@ export default function GardenStatus({
         </span>
         <span>{data.desc}</span>
         <Link href={`/notes/${statuses.infoPath}#${data.slug}`} passHref>
-          <a aria-label="learn more">
+          <a aria-label="learn more" title="learn more">
             <Q />
           </a>
         </Link>
