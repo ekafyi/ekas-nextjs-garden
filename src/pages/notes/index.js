@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { useState } from "react";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
 import { getAllPosts, getAllTags } from "../../utils/get-mdx";
+import SearchNotes from "../../components/SearchNotes";
 
 import * as dummyData from "../../../content/dummy/dummy-notes";
 
@@ -15,6 +17,13 @@ export async function getStaticProps() {
 }
 
 export default function Notes({ allMdx, allTags }) {
+  const [filteredMdx, setFilteredMdx] = useState(allMdx);
+  // console.log("filteredMdx ", filteredMdx);
+
+  const handleFilter = (data) => {
+    setFilteredMdx(data);
+  };
+
   return (
     <>
       <SEO title="Notes" />
@@ -30,27 +39,24 @@ export default function Notes({ allMdx, allTags }) {
             </p>
           </header>
           <div sx={{ variant: "components.notes.side" }}>
-            <button sx={{ variant: "buttons.pill" }} className="is-active">
-              All
-            </button>
-            {dummyData.sections.map((s) => (
+            {/* TODO do me! */}
+            <SearchNotes allMdx={allMdx} handleFilter={handleFilter} />
+
+            {/* {dummyData.sections.map((s) => (
               <button key={s} sx={{ variant: "components.notes.tag" }}>
                 {s}
               </button>
-            ))}
+            ))} */}
+
+            {/*  */}
           </div>
           <div id="posts" sx={{ variant: "components.notes.entries" }}>
-            {allMdx && (
-              <>
-                {allMdx.map((item) => (
-                  <NoteSnippet
-                    key={item.slug}
-                    {...item}
-                    variant="components.notes.snippet"
-                  />
-                ))}
-              </>
-            )}
+            {/* {allMdx?.map((item) => (
+              <NoteSnippet key={item.slug} {...item} />
+            ))} */}
+            {filteredMdx?.map((item) => (
+              <NoteSnippet key={item.slug} {...item} />
+            ))}
           </div>
         </div>
       </main>
