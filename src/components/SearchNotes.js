@@ -23,6 +23,7 @@ export default function SearchNotes({ allMdx, handleFilter }) {
 
   useEffect(() => {
     const runFuse = async (queries) => {
+      console.log("fuuuuuuuuse 🏃🏽‍♀️");
       const Fuse = (await import("fuse.js")).default; // Dynamically load fuse.js
       const fuse = new Fuse(posts, fuseOptions);
       const results = fuse.search(queries).map((result) => result.item);
