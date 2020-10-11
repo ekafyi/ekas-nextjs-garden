@@ -20,7 +20,6 @@ export async function getStaticProps({ params: { tag } }) {
 }
 
 export default function Tag({ tag, allPosts }) {
-  console.log("allPosts ", allPosts);
   return (
     <main>
       <h1>Tag: {tag || "unknown"}</h1>

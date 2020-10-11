@@ -53,7 +53,7 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
           },
         ],
       };
-      console.log("queries ", queries);
+      // console.log("queries ", queries);
       runFuse(queries);
     }
   }, [searchValue, searchTags, searchTechs]);
