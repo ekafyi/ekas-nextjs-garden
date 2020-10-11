@@ -11,7 +11,7 @@ export default class extends Document {
     return (
       <html lang="en">
         <Head>
-          <style>{`:root { supported-color-schemes: light dark; }`}</style>
+          <style>{`:root { supported-color-schemes: light dark; } style[data-emotion-css] { display: none; }`}</style>
         </Head>
         <body>
           <InitializeColorMode />
