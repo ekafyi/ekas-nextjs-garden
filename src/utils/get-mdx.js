@@ -4,9 +4,6 @@ import matter from "gray-matter";
 import glob from "fast-glob";
 import mdToc from "markdown-toc";
 
-import { getTaxonomyData } from "./note-utils";
-import { tags as tagsConfig } from "../../taxonomies.yml";
-
 export const CONTENT_PATH = "content"; // no trailing slash
 
 /**
@@ -194,11 +191,7 @@ export const getAllTags = (subdir = "") => {
       return data.tags;
     })
     .flat();
-  return dedupe(tags).map((tag) => {
-    return getTaxonomyData(tag, tagsConfig)
-      ? getTaxonomyData(tag, tagsConfig).label
-      : tag;
-  });
+  return dedupe(tags);
 };
 
 /**

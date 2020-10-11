@@ -37,7 +37,14 @@ export const getNoteDesc = (excerpt, tags = [], techs = []) => {
   return excerpt;
 };
 
+// masih dipake gardenstatus && techs
 export const getTaxonomyData = (name, source) => {
   const hasData = Object.keys(source).includes(name);
   return hasData ? source[name] : false;
+};
+
+export const getTagFriendlyName = (name, source = a) => {
+  const arr = source.filter((item) => item.name === name);
+  if (!arr.length) return name;
+  return arr[0].friendlyName || arr[0].name;
 };

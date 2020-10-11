@@ -32,12 +32,11 @@ statuses:
     desc: "This post was last updated more than two years ago. If it discusses coding or tech, there might have been changes since."
 
 tags:
-  TIPS:
-    label: "console-logs"
-  LEARNING_NOTES:
-    label: "learning-notes"
-  RESOURCES:
-    label: "resources"
+  - { name: "TAG_TIPS", friendlyName: "console-logs" }
+  - { name: "TAG_LEARN", friendlyName: "learning-notes" }
+  - { name: "TAG_RESOURCES", friendlyName: "resources" }
+  - { name: "TAG_HEALTH", friendlyName: "fitter-happier"  }
+  - { name: "digital gardening" }
 
 techs:
   javascript:

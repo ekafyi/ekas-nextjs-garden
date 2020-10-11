@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import { useState } from "react";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
-import { getAllPosts, getAllTags } from "../../utils/get-mdx";
+import { getAllPosts } from "../../utils/get-mdx";
 import SearchFilterNotes from "../../components/SearchFilterNotes";
 
 import * as dummyData from "../../../content/dummy/dummy-notes";
@@ -11,15 +11,13 @@ export async function getStaticProps() {
   return {
     props: {
       allMdx: getAllPosts("notes", "slug"),
-      allTags: getAllTags("notes"),
+      // allTags: getAllTags("notes"), // Import from get-mdx and enable if we need tags list from posts.
     },
   };
 }
 
-export default function Notes({ allMdx, allTags }) {
-  console.log("allTags ", allTags);
+export default function Notes({ allMdx }) {
   const [filteredMdx, setFilteredMdx] = useState(allMdx);
-  // console.log("filteredMdx ", filteredMdx);
 
   const handleFilter = (data) => {
     setFilteredMdx(data);
@@ -40,7 +38,6 @@ export default function Notes({ allMdx, allTags }) {
             </p>
           </header>
           <div sx={{ variant: "components.notes.side" }}>
-            {/* TODO do me! */}
             <SearchFilterNotes allMdx={allMdx} handleFilter={handleFilter} />
           </div>
           <div id="posts" sx={{ variant: "components.notes.entries" }}>

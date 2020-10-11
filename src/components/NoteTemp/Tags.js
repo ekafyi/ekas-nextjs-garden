@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import Link from "next/link";
-import { getTaxonomyData } from "../../utils/note-utils";
+import { getTaxonomyData, getTagFriendlyName } from "../../utils/note-utils";
 import {
   tags as tagsConfig,
   techs as techsConfig,
@@ -45,7 +45,7 @@ export default function Tags({ tags, techs }) {
       {tags ? (
         <>
           {tags.map((item) => {
-            const tagLabel = getTaxonomyData(item, tagsConfig) ? getTaxonomyData(item, tagsConfig).label : item; // prettier-ignore
+            const tagLabel = getTagFriendlyName(item, tagsConfig);
             return (
               <Link
                 key={item}
