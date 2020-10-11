@@ -37,7 +37,7 @@ tags:
   - { name: "TAG_LEARN", friendlyName: "learning-notes" }
   - { name: "TAG_RESOURCES", friendlyName: "resources" }
   - { name: "TAG_HEALTH", friendlyName: "health"  }
-  - { name: "digital gardening" }
+  - { name: "digital-gardening" }
 
 techs:
   - { name: "javascript", background: "#f7e032", color: "black" }

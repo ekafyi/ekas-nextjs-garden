@@ -3,6 +3,8 @@ import { jsx } from "theme-ui";
 import { useRouter } from "next/router";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
 import { getAllTagsStaticPaths, getPostsByTag } from "src/utils/get-mdx";
+import { getTagRealName } from "src/utils/note-utils";
+import { tags as tagsConfig } from "taxonomies.yml";
 
 export async function getStaticPaths() {
   const paths = getAllTagsStaticPaths("notes");
@@ -16,7 +18,7 @@ export async function getStaticProps({ params: { tag } }) {
   return {
     props: {
       tag,
-      allPosts: getPostsByTag(tag, "notes", "tag"),
+      allPosts: getPostsByTag(getTagRealName(tag, tagsConfig), "notes", "tag"),
     },
   };
 }

@@ -50,8 +50,8 @@ export default function Tags({ tags, techs }) {
             return (
               <Link
                 key={item}
-                href="/notes/tags/[tag]"
-                as={`/notes/tags/${tagLabel}`}
+                href="/notes/t/[tag]"
+                as={`/notes/t/${tagLabel}`}
                 passHref
                 prefetch={false}
               >

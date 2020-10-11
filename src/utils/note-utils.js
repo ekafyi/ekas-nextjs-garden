@@ -56,3 +56,9 @@ export const getTagFriendlyName = (name, source) => {
   if (!arr.length) return name;
   return arr[0].friendlyName || arr[0].name;
 };
+
+export const getTagRealName = (name, source) => {
+  const arr = source.filter((item) => item.friendlyName === name);
+  if (!arr.length) return name;
+  return arr[0].name;
+};
