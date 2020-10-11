@@ -73,7 +73,7 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
 
   return (
     <>
-      <label for="q">
+      <label htmlFor="q">
         <span className="sr-only">search notes by keyword</span>
         <input
           type="text"
