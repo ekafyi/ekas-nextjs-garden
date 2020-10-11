@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import { useState, useEffect } from "react";
+
 // import Fuse from "fuse.js"; // leave to debug dynamic import issue
 import TaxonomyFilter from "./TaxonomyFilter";
 
@@ -70,7 +73,42 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
 
   return (
     <>
-      {/* <input type="text" value={searchValue} onChange={onChange} /> */}
+      <label for="q">
+        <span className="sr-only">search notes by keyword</span>
+        <input
+          type="text"
+          name="q"
+          placeholder="search keyword..."
+          value={searchValue}
+          onChange={onChange}
+          sx={{
+            width: "100%",
+            fontSize: 0,
+            fontWeight: "bold",
+            borderRadius: 8,
+            px: 3,
+            py: 2,
+            // py: "calc(0.5rem - 1px)", // keep vertical rhythm
+            mb: 4,
+            borderRadius: "2rem",
+            border: "2px solid",
+            borderColor: "mutedFg",
+            backgroundColor: "background",
+            "&:focus,&:hover": {
+              borderStyle: "solid",
+            },
+            "&:focus": {
+              borderColor: "text",
+              backgroundColor: "muted",
+            },
+            "::placeholder": {
+              color: "mutedFg",
+              fontWeight: "medium",
+            },
+          }}
+        />
+      </label>
+
       <TaxonomyFilter
         onChangeTags={setSearchTags}
         onChangeTechs={setSearchTechs}

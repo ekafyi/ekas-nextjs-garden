@@ -26,7 +26,7 @@ export default function Notes({ allMdx }) {
   return (
     <>
       <SEO title="Notes" />
-      <SkipLink />
+      <SkipLink href="#main">Skip to search/filter</SkipLink>
       <SkipLink href="#posts">Skip to posts</SkipLink>
       <main sx={{ variant: "layout.container" }}>
         <Nav />
