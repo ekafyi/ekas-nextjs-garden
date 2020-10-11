@@ -16,7 +16,7 @@ const TAX_SX = {
     backgroundColor: "text",
     borderColor: "text",
   },
-  "input:focus + &": {
+  "input:focus-visible + &": {
     color: "background",
     backgroundColor: "primary",
   },
