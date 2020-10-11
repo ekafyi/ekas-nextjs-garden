@@ -36,7 +36,7 @@ tags:
   - { name: "TAG_TIPS", friendlyName: "console-logs" }
   - { name: "TAG_LEARN", friendlyName: "learning-notes" }
   - { name: "TAG_RESOURCES", friendlyName: "resources" }
-  - { name: "TAG_HEALTH", friendlyName: "fitter-happier"  }
+  - { name: "TAG_HEALTH", friendlyName: "health"  }
   - { name: "digital gardening" }
 
 techs:
