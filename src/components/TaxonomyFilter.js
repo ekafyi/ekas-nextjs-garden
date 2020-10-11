@@ -11,14 +11,22 @@ const FIELD_TECHS = "techs";
 
 const TAX_SX = {
   variant: "buttons.pill",
-  "input:focus + &": {
-    color: "background",
-    backgroundColor: "primary",
-  },
   "input:checked + &": {
     color: "background",
     backgroundColor: "text",
     borderColor: "text",
+  },
+  "input:focus + &": {
+    color: "background",
+    backgroundColor: "primary",
+  },
+  "input:focus-visible + &::before": {
+    content: '"[ ]"',
+    mr: 1,
+  },
+  "input:focus-visible:checked + &::before": {
+    content: '"[✓]"',
+    mr: 1,
   },
 };
 

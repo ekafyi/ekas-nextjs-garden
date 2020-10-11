@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import Fuse from "fuse.js"; // leave to debug dynamic import issue
 import TaxonomyFilter from "./TaxonomyFilter";
 
 const fuseOptions = {

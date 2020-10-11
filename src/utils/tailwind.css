@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+style[data-emotion-css] {
+  display: none;
+}
 svg {
   fill: currentColor;
 }
