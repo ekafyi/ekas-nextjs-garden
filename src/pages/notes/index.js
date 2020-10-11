@@ -4,7 +4,8 @@ import { useState } from "react";
 import { SEO, SkipLink, Nav, NoteSnippet, SearchFilterNotes } from "components";
 import { getAllPosts } from "src/utils/get-mdx";
 
-import * as dummyData from "../../../content/dummy/dummy-notes";
+const TAGLINE_TEXT =
+  "My digital garden of resources and thoughts. Loosely cultivated, might have bugs, always in progress.";
 
 export async function getStaticProps() {
   return {
@@ -32,9 +33,7 @@ export default function Notes({ allMdx }) {
         <div id="main" sx={{ variant: "components.notes.container" }}>
           <header sx={{ variant: "components.notes.header" }}>
             <h1 sx={{ variant: "text.pageHeading" }}>Notes</h1>
-            <p sx={{ variant: "components.notes.subheader" }}>
-              {dummyData.about}
-            </p>
+            <p sx={{ variant: "components.notes.subheader" }}>{TAGLINE_TEXT}</p>
           </header>
           <div sx={{ variant: "components.notes.side" }}>
             <SearchFilterNotes allMdx={allMdx} handleFilter={handleFilter} />
