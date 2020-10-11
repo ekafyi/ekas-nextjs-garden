@@ -83,7 +83,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           )}
 
           <div sx={{ variant: "components.note.body" }} className={fallbackCss}>
-            {hydrate(mdxContent, components)}
+            {hydrate(mdxContent, { components })}
           </div>
 
           <div sx={{ variant: "components.note.metaBlock" }}>

@@ -18,7 +18,7 @@
     "gray-matter": "^4.0.2",
     "markdown-to-jsx": "^6.11.4",
     "next": "^9.5.5",
-    "next-mdx-remote": "^0.6.0",
+    "next-mdx-remote": "^1.0.0",
     "nextjs-progressbar": "0.0.5",
     "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
