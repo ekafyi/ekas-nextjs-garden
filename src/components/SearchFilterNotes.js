@@ -71,7 +71,12 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
     <>
       <input type="text" value={searchValue} onChange={onChange} />
 
-      <TagsSelect value={searchTags} onChange={setSearchTags} />
+      <TagsSelect
+        // value={searchTags}
+        value={[]}
+        onChangeTags={setSearchTags}
+        onChangeTechs={setSearchTechs}
+      />
 
       {/* 
         <button
