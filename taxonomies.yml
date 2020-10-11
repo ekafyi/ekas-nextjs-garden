@@ -39,42 +39,16 @@ tags:
   - { name: "digital gardening" }
 
 techs:
-  javascript:
-    background: "#f7e032"
-    color: "black"
-  css:
-    background: "#264de4"
-    color: "white"
-  svelte:
-    background: "#ff3e00"
-    color: "white"
-  github:
-    background: "black"
-    color: "white"
-  nextjs:
-    background: "black"
-    color: "white"
-  mdx:
-    background: "#fcb42d"
-    color: "black"
-  graphql:
-    background: "#e652ab"
-    color: "white"
-  gatsby:
-    background: "#663399"
-    color: "white"
-  netlify:
-    background: "#164f78"
-    color: "white"
-  contentful:
-    background: "rgb(36, 120, 204)"
-    color: "white"
-  jamstack:
-    background: "#555"
-    color: "white"
-  laravel:
-    background: "#ff2d20"
-    color: "white"
-  php:
-    background: "#596a9c"
-    color: "white"
+  - { name: "javascript", background: "#f7e032", color: "black" }
+  - { name: "css", background: "#264de4", color: "white" }
+  - { name: "svelte", background: "#ff3e00", color: "white" }
+  - { name: "github", background: "black", color: "white" }
+  - { name: "nextjs", background: "black", color: "white" }
+  - { name: "mdx", background: "#fcb42d", color: "black" }
+  - { name: "graphql", background: "#e652ab", color: "white" }
+  - { name: "gatsby", background: "#663399", color: "white" }
+  - { name: "netlify", background: "#164f78", color: "white" }
+  - { name: "contentful", background: "rgb(36, 120, 204)", color: "white" }
+  - { name: "jamstack", background: "#555", color: "white" }
+  - { name: "laravel", background: "#ff2d20", color: "white" }
+  - { name: "php", background: "#596a9c", color: "white"  }

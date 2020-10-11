@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import Link from "next/link";
-import { getTaxonomyData, getTagFriendlyName } from "../../utils/note-utils";
+import {
+  getTaxonomyData_NEW,
+  getTagFriendlyName,
+} from "../../utils/note-utils";
 import {
   tags as tagsConfig,
   techs as techsConfig,
@@ -12,8 +15,8 @@ const VARIANT = { variant: "buttons.pill" };
 const getTechSx = (name) => {
   return {
     ...VARIANT,
-    background: getTaxonomyData(name, techsConfig).background || undefined,
-    color: getTaxonomyData(name, techsConfig).color || undefined,
+    background: getTaxonomyData_NEW(name, techsConfig).background || undefined,
+    color: getTaxonomyData_NEW(name, techsConfig).color || undefined,
   };
 };
 
@@ -21,7 +24,6 @@ const getTechSx = (name) => {
 
 export default function Tags({ tags, techs }) {
   if (!tags && !techs) return false;
-
   return (
     <div sx={{ variant: "components.note.tagsList" }}>
       {techs ? (
@@ -34,7 +36,6 @@ export default function Tags({ tags, techs }) {
               passHref
               prefetch={false}
             >
-              {/* <a sx={VARIANT}>{item}</a> */}
               <a sx={getTechSx(item)}>{item}</a>
             </Link>
           ))}
