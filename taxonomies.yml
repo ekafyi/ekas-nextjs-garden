@@ -31,6 +31,7 @@ statuses:
     iconLabel: "falling leaves"
     desc: "This post was last updated more than two years ago. If it discusses coding or tech, there might have been changes since."
 
+# if changing items order, update note-utils/getNoteDesc.
 tags:
   - { name: "TAG_TIPS", friendlyName: "console-logs" }
   - { name: "TAG_LEARN", friendlyName: "learning-notes" }
