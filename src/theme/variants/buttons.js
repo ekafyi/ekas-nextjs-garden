@@ -17,14 +17,20 @@ const pill = {
   fontSize: 0,
   fontWeight: "medium",
   borderRadius: 8,
-  backgroundColor: "muted",
+  // backgroundColor: "muted",
   whiteSpace: "nowrap",
   display: "inline-flex",
   px: 3,
-  py: 1,
-  mr: 2,
-  mb: 2,
+  // py: 1,
+  // mr: 2, mb: 2,
   cursor: "pointer",
+  // ? new
+  py: "calc(0.5rem - 1px)", // keep vertical rhythm
+  mr: 1,
+  mb: 1,
+  border: "1px solid",
+  borderColor: "muted",
+  // ?
   "&:hover,&:focus": {
     color: "background",
     backgroundColor: "primary",
@@ -32,6 +38,7 @@ const pill = {
   "&.is-active": {
     color: "background",
     backgroundColor: "text",
+    borderColor: "text",
   },
   // Note: Set lineHeight from parent/extending component.
 };
