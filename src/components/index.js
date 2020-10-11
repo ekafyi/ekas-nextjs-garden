@@ -9,6 +9,7 @@ export PostSnippet from "./PostSnippet";
 export PostPage from "./PostPage";
 export SEO from "./SEO";
 export SkipLink from "./SkipLink";
+export SearchFilterNotes from "./SearchFilterNotes";
 
 // export * from "./MDXComponents";
 

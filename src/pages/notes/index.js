@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useState } from "react";
-import { SEO, SkipLink, Nav, NoteSnippet } from "components";
-import { getAllPosts } from "../../utils/get-mdx";
-import SearchFilterNotes from "../../components/SearchFilterNotes";
+import { SEO, SkipLink, Nav, NoteSnippet, SearchFilterNotes } from "components";
+import { getAllPosts } from "src/utils/get-mdx";
 
 import * as dummyData from "../../../content/dummy/dummy-notes";
 

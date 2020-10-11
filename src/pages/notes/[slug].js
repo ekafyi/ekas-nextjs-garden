@@ -1,5 +1,5 @@
 import renderToString from "next-mdx-remote/render-to-string";
-import { getAllSlugsStaticPaths, getPost } from "../../utils/get-mdx";
+import { getAllSlugsStaticPaths, getPost } from "src/utils/get-mdx";
 import { NotePage } from "components";
 
 import dynamic from "next/dynamic";

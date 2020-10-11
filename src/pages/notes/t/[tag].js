@@ -1,4 +1,4 @@
-import { getAllTagsStaticPaths, getPostsByTag } from "../../../utils/get-mdx";
+import { getAllTagsStaticPaths, getPostsByTag } from "src/utils/get-mdx";
 
 // import { PostSnippet } from "components";
 
