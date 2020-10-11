@@ -46,7 +46,7 @@ const Input = ({ name, value, label, register, ...props }) => (
         ref={register}
         {...props}
       />
-      <span sx={TAX_SX}>#{label}</span>
+      <span sx={TAX_SX}>{label}</span>
     </label>
   </>
 );
