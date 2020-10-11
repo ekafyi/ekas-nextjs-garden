@@ -3,7 +3,7 @@ import { jsx } from "theme-ui";
 import { useState } from "react";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
 import { getAllPosts, getAllTags } from "../../utils/get-mdx";
-import SearchNotes from "../../components/SearchNotes";
+import SearchFilterNotes from "../../components/SearchFilterNotes";
 
 import * as dummyData from "../../../content/dummy/dummy-notes";
 
@@ -41,20 +41,10 @@ export default function Notes({ allMdx, allTags }) {
           </header>
           <div sx={{ variant: "components.notes.side" }}>
             {/* TODO do me! */}
-            <SearchNotes allMdx={allMdx} handleFilter={handleFilter} />
-
-            {/* {dummyData.sections.map((s) => (
-              <button key={s} sx={{ variant: "components.notes.tag" }}>
-                {s}
-              </button>
-            ))} */}
-
-            {/*  */}
+            <SearchFilterNotes allMdx={allMdx} handleFilter={handleFilter} />
           </div>
           <div id="posts" sx={{ variant: "components.notes.entries" }}>
-            {/* {allMdx?.map((item) => (
-              <NoteSnippet key={item.slug} {...item} />
-            ))} */}
+            {/* Change allMdx | filteredMdx as needed */}
             {filteredMdx?.map((item) => (
               <NoteSnippet key={item.slug} {...item} />
             ))}

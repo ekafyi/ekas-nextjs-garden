@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-// import Fuse from "fuse.js";
-// import TagList from "./TagList";
+import TagsSelect from "./TagsSelect";
 
 const fuseOptions = {
-  threshold: 0.5,
+  threshold: 0.3,
   location: 0,
   distance: 100,
   minMatchCharLength: 3,
-  // shouldSort: true,
-  // includeScore: true,
   useExtendedSearch: true,
   keys: ["frontMatter.title", "frontMatter.tags", "frontMatter.techs"],
 };
 
-export default function SearchNotes({ allMdx, handleFilter }) {
+const BUTTON_CSS =
+  "mr-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded";
+
+export default function SearchFilterNotes({ allMdx, handleFilter }) {
   const posts = allMdx;
   const [searchValue, setSearchValue] = useState("");
   const [searchTags, setSearchTags] = useState([]);
@@ -76,17 +76,27 @@ export default function SearchNotes({ allMdx, handleFilter }) {
     <>
       <input type="text" value={searchValue} onChange={onChange} />
 
-      <div>
+      <TagsSelect value={searchTags} onChange={setSearchTags} />
+
+      {/* 
         <button
+          className={BUTTON_CSS}
           type="button"
           onClick={() => {
-            setSearchTags(["bookmarks"]);
+            setSearchTags(["LEARNING_NOTES"]);
           }}
         >
-          foo
+          tag
         </button>
-        {/* <TagList tags={tags} value={searchTags} onChange={setSearchTags} /> */}
-      </div>
+        <button
+          className={BUTTON_CSS}
+          type="button"
+          onClick={() => {
+            setSearchTechs(["gatsby"]);
+          }}
+        >
+          tech
+        </button> */}
     </>
   );
 }
