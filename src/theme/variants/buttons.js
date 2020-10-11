@@ -16,7 +16,7 @@ export const basicStyles = {
 const pill = {
   fontSize: 0,
   fontWeight: "medium",
-  borderRadius: 32,
+  borderRadius: 8,
   backgroundColor: "muted",
   whiteSpace: "nowrap",
   display: "inline-flex",
@@ -24,13 +24,14 @@ const pill = {
   py: 1,
   mr: 2,
   mb: 2,
+  cursor: "pointer",
   "&:hover,&:focus": {
     color: "background",
-    backgroundColor: "text",
+    backgroundColor: "primary",
   },
   "&.is-active": {
     color: "background",
-    backgroundColor: "primary",
+    backgroundColor: "text",
   },
   // Note: Set lineHeight from parent/extending component.
 };

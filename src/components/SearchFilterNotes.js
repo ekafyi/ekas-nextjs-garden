@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TagsSelect from "./TagsSelect";
+import TaxonomyFilter from "./TaxonomyFilter";
 
 const fuseOptions = {
   threshold: 0.3,
@@ -69,25 +69,11 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
 
   return (
     <>
-      <input type="text" value={searchValue} onChange={onChange} />
-
-      <TagsSelect
-        // value={searchTags}
-        value={[]}
+      {/* <input type="text" value={searchValue} onChange={onChange} /> */}
+      <TaxonomyFilter
         onChangeTags={setSearchTags}
         onChangeTechs={setSearchTechs}
       />
-
-      {/* 
-        <button
-          className={BUTTON_CSS}
-          type="button"
-          onClick={() => {
-            setSearchTechs(["gatsby"]);
-          }}
-        >
-          tech
-        </button> */}
     </>
   );
 }

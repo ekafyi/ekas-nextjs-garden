@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { useForm } from "react-hook-form";
 
 // Use this to list manually curated tags from taxonomies.yml.
@@ -8,28 +9,39 @@ import { tags as configTags, techs as configTechs } from "../../taxonomies.yml";
 const FIELD_TAGS = "tags";
 const FIELD_TECHS = "techs";
 
-const BUTTON_CSS =
-  "inline-block mr-1 mt-2 text-xs bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded";
+const TAX_SX = {
+  variant: "buttons.pill",
+  "input:checked + &": {
+    color: "background",
+    backgroundColor: "primary",
+  },
+};
+
+const RESET_SX = {
+  variant: "buttons.pill",
+  backgroundColor: "muted",
+};
 
 const Input = ({ name, value, label, register, ...props }) => (
   <>
-    <label className={BUTTON_CSS}>
-      <span>{label}</span>
+    <label>
       <input
+        className="sr-only"
         type="checkbox"
         name={name}
         value={value}
         ref={register}
         {...props}
       />
+      <span sx={TAX_SX}>#{label}</span>
     </label>
   </>
 );
 
 // = = =
 
-export default function TagsSelect({ value, onChangeTags, onChangeTechs }) {
-  const { register, handleSubmit } = useForm();
+export default function TaxonomyFilter({ onChangeTags, onChangeTechs }) {
+  const { register, handleSubmit, reset } = useForm();
 
   const handleClickTag = (data) => {
     onChangeTags(data[FIELD_TAGS]);
@@ -39,8 +51,17 @@ export default function TagsSelect({ value, onChangeTags, onChangeTechs }) {
     onChangeTechs(data[FIELD_TECHS]);
   };
 
+  const handleReset = () => {
+    reset();
+    onChangeTags([]);
+    onChangeTechs([]);
+  };
+
   return (
-    <form>
+    <form aria-label="Select topics">
+      <button type="button" onClick={handleReset} sx={RESET_SX}>
+        all
+      </button>
       {configTags?.map((tag) => (
         <Input
           key={tag.name}
