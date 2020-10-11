@@ -1,6 +1,6 @@
 import { getAllTagsStaticPaths, getPostsByTag } from "../../../utils/get-mdx";
 
-import { PostSnippet } from "components";
+// import { PostSnippet } from "components";
 
 export async function getStaticPaths() {
   const paths = getAllTagsStaticPaths("notes");
@@ -14,24 +14,23 @@ export async function getStaticProps({ params: { tag } }) {
   return {
     props: {
       tag,
-      // allMdx: getPostsByTag(tag, "notes", "slug"),
+      allPosts: getPostsByTag(tag, "notes", "tag"),
     },
   };
 }
 
-export default function Tag({ tag }) {
+export default function Tag({ tag, allPosts }) {
+  console.log("allPosts ", allPosts);
   return (
     <main>
       <h1>Tag: {tag || "unknown"}</h1>
-      {/* {allMdx && (
+      {allPosts && (
         <ul>
-          {allMdx.map((item) => (
-            <li key={item.slug}>
-              <PostSnippet {...item} />
-            </li>
+          {allPosts.map((item) => (
+            <li key={item.slug}>{item.frontMatter.title || ""}</li>
           ))}
         </ul>
-      )} */}
+      )}
     </main>
   );
 }
