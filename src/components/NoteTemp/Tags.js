@@ -4,7 +4,7 @@ import Link from "next/link";
 import {
   getTaxonomyData_NEW,
   getTagFriendlyName,
-} from "../../utils/note-utils";
+} from "../../utils/get-taxonomy";
 import {
   tags as tagsConfig,
   techs as techsConfig,

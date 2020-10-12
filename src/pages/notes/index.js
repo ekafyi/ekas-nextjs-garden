@@ -3,9 +3,7 @@ import { jsx } from "theme-ui";
 import { useState } from "react";
 import { SEO, SkipLink, Nav, NoteSnippet, SearchFilterNotes } from "components";
 import { getAllPosts } from "src/utils/get-mdx";
-
-const TAGLINE_TEXT =
-  "My digital garden of resources and thoughts. Loosely cultivated, might have bugs, always in progress.";
+import { copy } from "site.config.yml";
 
 export async function getStaticProps() {
   return {
@@ -23,9 +21,11 @@ export default function Notes({ allMdx }) {
     setFilteredMdx(data);
   };
 
+  const { NOTES_TAGLINE, NOTES_META_DESC } = copy;
+
   return (
     <>
-      <SEO title="Notes" />
+      <SEO title="Eka’s Notes" description={NOTES_META_DESC} />
       <SkipLink href="#main">Skip to search/filter</SkipLink>
       <SkipLink href="#posts">Skip to posts</SkipLink>
       <main sx={{ variant: "layout.container" }}>
@@ -33,7 +33,9 @@ export default function Notes({ allMdx }) {
         <div id="main" sx={{ variant: "components.notes.container" }}>
           <header sx={{ variant: "components.notes.header" }}>
             <h1 sx={{ variant: "text.pageHeading" }}>Notes</h1>
-            <p sx={{ variant: "components.notes.subheader" }}>{TAGLINE_TEXT}</p>
+            <p sx={{ variant: "components.notes.subheader" }}>
+              {NOTES_TAGLINE}
+            </p>
           </header>
           <div sx={{ variant: "components.notes.side" }}>
             <SearchFilterNotes allMdx={allMdx} handleFilter={handleFilter} />

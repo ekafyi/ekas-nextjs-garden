@@ -31,12 +31,12 @@ statuses:
     iconLabel: "falling leaves"
     desc: "This post was last updated more than two years ago. If it discusses coding or tech, there might have been changes since."
 
-# if changing items order, update note-utils/getNoteDesc.
+# if changing items order, update get-seo-copy.
 tags:
   - { name: "TAG_TIPS", friendlyName: "console-logs", desc: "Mollit cillum exercitation labore consequat voluptate amet voluptate labore." }
   - { name: "TAG_LEARN", friendlyName: "learning-notes", desc: "Ea aliquip eu ex quis aliqua minim." }
   - { name: "TAG_RESOURCES", friendlyName: "resources", desc: "Ex anim irure eu ad labore nostrud officia." }
-  - { name: "TAG_HEALTH", friendlyName: "health", desc: "Ex anim irure eu ad labore nostrud officia."  }
+  - { name: "health", desc: "Ex anim irure eu ad labore nostrud officia."  }
   - { name: "digital-gardening" }
 
 techs:

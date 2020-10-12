@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import Link from "next/link";
 import { differenceInYears } from "date-fns";
-import { getTaxonomyData } from "../../utils/note-utils";
+import { getTaxonomyData } from "../../utils/get-taxonomy";
 import { statuses } from "../../../taxonomies.yml";
 
 import { Q } from "components/icons";

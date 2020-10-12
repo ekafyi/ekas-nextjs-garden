@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import glob from "fast-glob";
 import mdToc from "markdown-toc";
 
-import { getTagFriendlyName } from "./note-utils";
+import { getTagFriendlyName } from "./get-taxonomy";
 import { tags as tagsConfig } from "../../taxonomies.yml";
 
 export const CONTENT_PATH = "content"; // no trailing slash
