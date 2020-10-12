@@ -3,7 +3,7 @@ import { jsx } from "theme-ui";
 import { useRouter } from "next/router";
 import { SEO, SkipLink, Nav, NoteSnippet } from "components";
 import { getAllTagsStaticPaths, getPostsByTag } from "src/utils/get-mdx";
-import { getTagRealName } from "src/utils/note-utils";
+import { getTagRealName, getTagData } from "src/utils/note-utils";
 import { tags as tagsConfig } from "taxonomies.yml";
 
 export async function getStaticPaths() {
@@ -18,13 +18,21 @@ export async function getStaticProps({ params: { tag } }) {
   return {
     props: {
       tag,
+      tagData: getTagData(tag, tagsConfig),
       allPosts: getPostsByTag(getTagRealName(tag, tagsConfig), "notes", "tag"),
     },
   };
 }
 
-export default function Tag({ tag, allPosts }) {
+export default function Tag({ tag, tagData, allPosts }) {
   const router = useRouter();
+
+  let countText = "no entries";
+  if (allPosts) {
+    countText =
+      allPosts.length > 1 ? `${allPosts.length} entries` : "one entry";
+  }
+
   return (
     <>
       <SEO
@@ -47,7 +55,19 @@ export default function Tag({ tag, allPosts }) {
               tagged <strong>#{tag}</strong>
             </p>
           </header>
-          <div sx={{ variant: "components.notes.side" }}>asdasdas</div>
+          <div sx={{ variant: "components.notes.side" }}>
+            <div sx={{ variant: "components.notes.sideMeta" }}>
+              {tagData && <p>{tagData.desc}</p>}
+              {allPosts ? (
+                <strong sx={{ color: "mutedFg" }}>
+                  <span aria-hidden="true">▬&nbsp; </span>
+                  {countText}
+                </strong>
+              ) : (
+                <strong>no entries</strong>
+              )}
+            </div>
+          </div>
           <div id="posts" sx={{ variant: "components.notes.entries" }}>
             {allPosts?.map((item) => (
               <NoteSnippet key={item.slug} {...item} />

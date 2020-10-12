@@ -33,10 +33,10 @@ statuses:
 
 # if changing items order, update note-utils/getNoteDesc.
 tags:
-  - { name: "TAG_TIPS", friendlyName: "console-logs" }
-  - { name: "TAG_LEARN", friendlyName: "learning-notes" }
-  - { name: "TAG_RESOURCES", friendlyName: "resources" }
-  - { name: "TAG_HEALTH", friendlyName: "health"  }
+  - { name: "TAG_TIPS", friendlyName: "console-logs", desc: "Mollit cillum exercitation labore consequat voluptate amet voluptate labore." }
+  - { name: "TAG_LEARN", friendlyName: "learning-notes", desc: "Ea aliquip eu ex quis aliqua minim." }
+  - { name: "TAG_RESOURCES", friendlyName: "resources", desc: "Ex anim irure eu ad labore nostrud officia." }
+  - { name: "TAG_HEALTH", friendlyName: "health", desc: "Ex anim irure eu ad labore nostrud officia."  }
   - { name: "digital-gardening" }
 
 techs:

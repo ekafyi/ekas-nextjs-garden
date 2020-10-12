@@ -78,7 +78,7 @@ export default {
     maxHeight: "100vh", // Height must be set so position:sticky works.
     mt: [-2, null, 0], // These are for sticky top on small screens.
     pt: [2, null, 0], // These are for sticky top on small screens.
-    mb: [null, 2],
+    mb: 4,
     lineHeight: "1rem",
   },
   entries: {
@@ -111,5 +111,11 @@ export default {
       WebkitLineClamp: "4",
       WebkitBoxOrient: "vertical",
     },
+  },
+  sideMeta: {
+    fontSize: 1,
+    lineHeight: "paragraph",
+    mb: 2,
+    p: { mb: 4 },
   },
 };
