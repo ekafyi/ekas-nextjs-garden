@@ -11,14 +11,14 @@ const fuseOptions = {
   distance: 100,
   minMatchCharLength: 3,
   useExtendedSearch: true,
-  keys: ["frontMatter.title", "frontMatter.tags", "frontMatter.techs"],
+  keys: ["frontMatter.title", "frontMatter.tags"],
 };
 
 export default function SearchFilterNotes({ allMdx, handleFilter }) {
   const posts = allMdx;
   const [searchValue, setSearchValue] = useState("");
   const [searchTags, setSearchTags] = useState([]);
-  const [searchTechs, setSearchTechs] = useState([]);
+  // duplicate all `searchTags` stuff if adding new taxonomy type.
 
   useEffect(() => {
     const runFuse = async (queries) => {
@@ -28,35 +28,27 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
       handleFilter(results);
     };
 
-    if (
-      searchValue === "" &&
-      searchTags.length === 0 &&
-      searchTechs.length === 0
-    ) {
+    if (searchValue === "" && searchTags.length === 0) {
       handleFilter(posts);
     } else {
       // Allow for a search for tag
       const formattedTags = [
         ...searchTags.map((item) => ({ "frontMatter.tags": item })),
       ];
-      const formattedTechs = [
-        ...searchTechs.map((item) => ({ "frontMatter.techs": item })),
-      ];
       const formattedTitle = searchValue.length ? [{ "frontMatter.title": searchValue }] : []; // prettier-ignore
       const queries = {
         $or: [
           { "frontMatter.tags": searchValue },
-          { "frontMatter.techs": searchValue },
           { "frontMatter.title": searchValue },
           {
-            $and: [...formattedTags, ...formattedTechs, ...formattedTitle],
+            $and: [...formattedTags, ...formattedTitle],
           },
         ],
       };
       // console.log("queries ", queries);
       runFuse(queries);
     }
-  }, [searchValue, searchTags, searchTechs]);
+  }, [searchValue, searchTags]);
 
   const onChange = (e) => {
     const { value } = e.target;
@@ -109,10 +101,7 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
         />
       </label>
 
-      <TaxonomyFilter
-        onChangeTags={setSearchTags}
-        onChangeTechs={setSearchTechs}
-      />
+      <TaxonomyFilter onChangeTags={setSearchTags} />
     </>
   );
 }

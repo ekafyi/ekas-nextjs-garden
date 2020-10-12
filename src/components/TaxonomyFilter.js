@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 
 // Use this to list manually curated tags from taxonomies.yml.
 // Replace with allTags from pages/notes/index getStaticProps to list tags from the posts.
-import { tags as configTags, techs as configTechs } from "../../taxonomies.yml";
+import { tags as configTags } from "taxonomies.yml";
 
 const FIELD_TAGS = "tags";
-const FIELD_TECHS = "techs";
 
 const TAX_SX = {
   variant: "buttons.pill",
@@ -53,21 +52,16 @@ const Input = ({ name, value, label, register, ...props }) => (
 
 // = = =
 
-export default function TaxonomyFilter({ onChangeTags, onChangeTechs }) {
+export default function TaxonomyFilter({ onChangeTags }) {
   const { register, handleSubmit, reset } = useForm();
 
   const handleClickTag = (data) => {
     onChangeTags(data[FIELD_TAGS]);
   };
 
-  const handleClickTech = (data) => {
-    onChangeTechs(data[FIELD_TECHS]);
-  };
-
   const handleReset = () => {
     reset();
     onChangeTags([]);
-    onChangeTechs([]);
   };
 
   return (
@@ -83,16 +77,6 @@ export default function TaxonomyFilter({ onChangeTags, onChangeTechs }) {
           name={FIELD_TAGS}
           register={register}
           onInput={handleSubmit(handleClickTag)}
-        />
-      ))}
-      {configTechs?.map((tech) => (
-        <Input
-          key={tech.name}
-          value={tech.name}
-          label={tech.name}
-          name={FIELD_TECHS}
-          register={register}
-          onInput={handleSubmit(handleClickTech)}
         />
       ))}
     </form>
