@@ -38,8 +38,13 @@ export default function Tag({ tag, allPosts }) {
         <div id="main" sx={{ variant: "components.notes.container" }}>
           <header sx={{ variant: "components.notes.header" }}>
             <h1 sx={{ variant: "text.pageHeading" }}>Notes</h1>
-            <p sx={{ variant: "components.notes.subheader" }}>
-              notes tagged <strong>#{tag}</strong>
+            <p
+              sx={{
+                variant: "components.notes.subheader",
+                fontSize: [6, null, 8],
+              }}
+            >
+              tagged <strong>#{tag}</strong>
             </p>
           </header>
           <div sx={{ variant: "components.notes.side" }}>asdasdas</div>
