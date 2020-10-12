@@ -1,23 +1,32 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { SEO, SkipLink, Nav, NoteSnippet } from "components";
-import { getAllPosts } from "../../utils/get-mdx";
-
-import * as dummyData from "../../../content/dummy/dummy-notes";
+import { useState } from "react";
+import { SEO, SkipLink, Nav, NoteSnippet, SearchFilterNotes } from "components";
+import { getAllPosts } from "src/utils/get-mdx";
+import { copy } from "site.config.yml";
 
 export async function getStaticProps() {
   return {
     props: {
       allMdx: getAllPosts("notes", "slug"),
+      // allTags: getAllTags("notes"), // Import from get-mdx and enable if we need tags list from posts.
     },
   };
 }
 
 export default function Notes({ allMdx }) {
+  const [filteredMdx, setFilteredMdx] = useState(allMdx);
+
+  const handleFilter = (data) => {
+    setFilteredMdx(data);
+  };
+
+  const { NOTES_TAGLINE, NOTES_META_DESC } = copy;
+
   return (
     <>
-      <SEO title="Notes" />
-      <SkipLink />
+      <SEO title="Eka’s Notes" description={NOTES_META_DESC} />
+      <SkipLink href="#main">Skip to search/filter</SkipLink>
       <SkipLink href="#posts">Skip to posts</SkipLink>
       <main sx={{ variant: "layout.container" }}>
         <Nav />
@@ -25,31 +34,17 @@ export default function Notes({ allMdx }) {
           <header sx={{ variant: "components.notes.header" }}>
             <h1 sx={{ variant: "text.pageHeading" }}>Notes</h1>
             <p sx={{ variant: "components.notes.subheader" }}>
-              {dummyData.about}
+              {NOTES_TAGLINE}
             </p>
           </header>
           <div sx={{ variant: "components.notes.side" }}>
-            <button sx={{ variant: "buttons.pill" }} className="is-active">
-              All
-            </button>
-            {dummyData.sections.map((s) => (
-              <button key={s} sx={{ variant: "components.notes.tag" }}>
-                {s}
-              </button>
-            ))}
+            <SearchFilterNotes allMdx={allMdx} handleFilter={handleFilter} />
           </div>
           <div id="posts" sx={{ variant: "components.notes.entries" }}>
-            {allMdx && (
-              <>
-                {allMdx.map((item) => (
-                  <NoteSnippet
-                    key={item.slug}
-                    {...item}
-                    variant="components.notes.snippet"
-                  />
-                ))}
-              </>
-            )}
+            {/* Change allMdx | filteredMdx as needed */}
+            {filteredMdx?.map((item) => (
+              <NoteSnippet key={item.slug} {...item} />
+            ))}
           </div>
         </div>
       </main>

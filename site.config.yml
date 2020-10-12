@@ -1,7 +1,7 @@
 config:
   # Modified from: https://github.com/lorenseanstewart/nextjs-mdx-blog-kit/blob/master/config/config.yml
   author: Eka
-  siteName: "Eka’s Digital Garden"
+  siteName: "ekafyi"
   siteDescription: My digital garden in NextJS (in progress)
   baseUrl: https://ekas-nextjs-garden.vercel.app
 
@@ -28,3 +28,7 @@ config:
     SPACING: 4
 
   dateFormatPost: "d MMM yyyy"
+
+copy:
+  NOTES_TAGLINE: "My digital garden of resources and thoughts. Loosely cultivated, might have bugs, always in progress."
+  NOTES_META_DESC: "Ever-growing collection of resources, tips, and thoughts. From frontend to food, web dev to workouts."

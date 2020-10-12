@@ -146,7 +146,7 @@ export default {
   // Used on top-level page eg. "Notes" and "Posts"
   pageHeading: {
     variant: "text.heading",
-    fontSize: [12, 14, 16, 19, 20],
+    fontSize: [14, null, 16, 19, 20],
     letterSpacing: "-0.0125em",
   },
   // Used on entry page, eg. a single note/post

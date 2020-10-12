@@ -4,7 +4,17 @@ import matter from "gray-matter";
 import glob from "fast-glob";
 import mdToc from "markdown-toc";
 
+import { getTagFriendlyName } from "./get-taxonomy";
+import { tags as tagsConfig } from "../../taxonomies.yml";
+
 export const CONTENT_PATH = "content"; // no trailing slash
+
+/**
+ * Helper function to remove duplicate items in array.
+ */
+const dedupe = (array) => {
+  return [...new Set(array)];
+};
 
 /**
  * Get content path. Does not include file.
@@ -184,7 +194,7 @@ export const getAllTags = (subdir = "") => {
       return data.tags;
     })
     .flat();
-  return tags;
+  return dedupe(tags);
 };
 
 /**
@@ -206,7 +216,7 @@ export const getAllTagsStaticPaths = (subdir = "") => {
   const tags = getAllTags(subdir);
   const tagPaths = tags.map((tag) => {
     return {
-      params: { tag },
+      params: { tag: getTagFriendlyName(tag, tagsConfig) },
     };
   });
   return tagPaths;

@@ -31,51 +31,33 @@ statuses:
     iconLabel: "falling leaves"
     desc: "This post was last updated more than two years ago. If it discusses coding or tech, there might have been changes since."
 
+# if changing items order, update get-seo-copy.
 tags:
-  TIPS:
-    label: "console-logs"
-  LEARNING_NOTES:
-    label: "learning-notes"
-  RESOURCES:
-    label: "resources"
+  - { name: "TAG_TIPS", friendlyName: "console-logs", desc: "Mollit cillum exercitation labore consequat voluptate amet voluptate labore." }
+  - { name: "TAG_LEARN", friendlyName: "learning-notes", desc: "Ea aliquip eu ex quis aliqua minim." }
+  - { name: "TAG_RESOURCES", friendlyName: "resources", desc: "Ex anim irure eu ad labore nostrud officia." }
+  - { name: "health", desc: "Ex anim irure eu ad labore nostrud officia."  }
+  - { name: "digital-gardening" }
+  - { name: "javascript" }
+  - { name: "css" }
+  - { name: "svelte" }
+  - { name: "git" }
+  - { name: "nextjs" }
+  - { name: "gatsby" }
+  - { name: "graphql" }
+  - { name: "laravel" }
+  - { name: "jamstack" }
 
-techs:
-  javascript:
-    background: "#f7e032"
-    color: "black"
-  css:
-    background: "#264de4"
-    color: "white"
-  svelte:
-    background: "#ff3e00"
-    color: "white"
-  github:
-    background: "black"
-    color: "white"
-  nextjs:
-    background: "black"
-    color: "white"
-  mdx:
-    background: "#fcb42d"
-    color: "black"
-  graphql:
-    background: "#e652ab"
-    color: "white"
-  gatsby:
-    background: "#663399"
-    color: "white"
-  netlify:
-    background: "#164f78"
-    color: "white"
-  contentful:
-    background: "rgb(36, 120, 204)"
-    color: "white"
-  jamstack:
-    background: "#555"
-    color: "white"
-  laravel:
-    background: "#ff2d20"
-    color: "white"
-  php:
-    background: "#596a9c"
-    color: "white"
+# techs:
+#   - { name: "javascript", background: "#f7e032", color: "black" }
+#   - { name: "css", background: "#264de4", color: "white" }
+#   - { name: "svelte", background: "#ff3e00", color: "white" }
+#   - { name: "github", background: "black", color: "white" }
+#   - { name: "nextjs", background: "black", color: "white" }
+#   - { name: "mdx", background: "#fcb42d", color: "black" }
+#   - { name: "graphql", background: "#e652ab", color: "white" }
+#   - { name: "gatsby", background: "#663399", color: "white" }
+#   - { name: "netlify", background: "#164f78", color: "white" }
+#   - { name: "contentful", background: "rgb(36, 120, 204)", color: "white" }
+#   - { name: "laravel", background: "#ff2d20", color: "white" }
+#   - { name: "php", background: "#596a9c", color: "white"  }
