@@ -14,12 +14,12 @@ export default function Footer() {
   return (
     <div
       sx={{
-        display: "none", // TODO redesign ugly footer
+        display: "none", // TODO redesign this ugly footer
+        // display: [null, null, null, "flex"],
         px: 4,
         py: [8, null, null, 4],
         fontSize: 0,
         lineHeight: "paragraph",
-        display: [null, null, null, "flex"],
         alignItems: "center",
         justifyContent: "space-between",
       }}
