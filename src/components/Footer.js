@@ -14,6 +14,7 @@ export default function Footer() {
   return (
     <div
       sx={{
+        display: "none", // TODO redesign ugly footer
         px: 4,
         py: [8, null, null, 4],
         fontSize: 0,

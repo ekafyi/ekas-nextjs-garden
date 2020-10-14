@@ -107,7 +107,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
           </div>
 
           <div sx={{ variant: "components.note.bottomBlock" }}>
-            <BackLinks />
+            {/* <BackLinks /> */}
             {/* add other stuff here (newsletter signup, webmentions) */}
           </div>
 
