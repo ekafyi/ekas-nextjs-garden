@@ -19,13 +19,13 @@ const snippetLink = {
   pt: 2,
   pb: [2, 0],
   px: 1,
-  borderTop: ".125rem solid currentColor",
-  borderBottom: ".375rem solid transparent",
+  borderTop: ".25rem solid currentColor",
+  // borderBottom: ".375rem solid transparent",
   transition: "border .2s",
   "&:hover,&:focus": {
     color: "primary",
-    borderTopWidth: ".375rem",
-    borderBottomWidth: ".125rem",
+    borderTopWidth: ".5rem",
+    // borderBottomWidth: ".125rem",
   },
 };
 
