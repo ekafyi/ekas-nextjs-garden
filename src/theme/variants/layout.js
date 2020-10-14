@@ -6,7 +6,7 @@ export default {
   container: {
     wordWrap: "break-word",
     py: 4,
-    px: [2, null, 6],
+    px: [2, null, 4, null, 6],
     minHeight: "calc(100vh - 4rem)",
   },
   //

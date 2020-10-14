@@ -5,26 +5,38 @@ const getGridCol = (col) => {
   return `repeat(${col}, minmax(0, 1fr))`;
 };
 
-const getGridColsArr = (colsArr = []) => {
-  return colsArr.map((col) => {
-    return col ? getGridCol(col) : null;
-  });
+// Define here for quicker changes.
+const outerCols = [null, 12, null, 16, 12];
+const entryGridHeight = ["minmax(7rem, auto)", null, "9rem"];
+const headerHeight = ["9rem", null, "12.5rem", "16rem", "17rem"];
+const titleSpacing = {
+  pt: [2, null, 4, null, 5],
+  mb: [null, null, -3, -6, -7],
 };
+const subtitleSpacing = {}; // set margins from titleSpacing; leave here in case of future design changes.
 
+// Used in container and entries to keep gap consistent.
 const gridColumnGap = "calc(1rem + 2vw)";
 const gridRowGap = [4];
 
 const snippetLink = {
   display: "block",
   pt: 3,
-  pb: [2, 0],
   px: 1,
   borderTop: ".25rem solid currentColor",
-  transition: "border .2s",
+  transition: "all .15s ease-in-out",
   "&:hover,&:focus": {
     color: "primary",
+    pt: 2,
     borderTopWidth: ".5rem",
   },
+};
+
+const stickyStuff = {
+  position: [null, null, null, "sticky"],
+  top: [null, null, null, 4],
+  zIndex: 1,
+  maxHeight: [null, null, null, "100vh"], // Height must be set so position:sticky works.
 };
 
 // = = =
@@ -34,76 +46,57 @@ export default {
     display: "grid",
     gridColumnGap,
     gridRowGap,
-    gridTemplateColumns: getGridColsArr([null, 12, null, 16, 12]),
+    gridTemplateColumns: outerCols.map((col) => (col ? getGridCol(col) : null)),
     mx: "auto",
     maxWidth: "105rem",
-    gridTemplateRows: [
-      "8rem auto",
-      "10rem auto",
-      "13rem auto",
-      "16rem auto",
-      "17rem auto",
-    ], // set header row height manually
+    gridTemplateRows: headerHeight.map((item) =>
+      item ? `${item} auto` : null
+    ),
   },
   header: {
     gridColumn: ["-1 / 1", null, null, "-1 / 4", "-1 / 3"],
     display: "grid",
-    gridGap: "0 calc(1rem + 2vw)",
-    gridTemplateRows: [
-      "repeat(8, 1rem)",
-      "repeat(10, 1rem)",
-      "repeat(9, 2rem)",
-    ], // match container.gridTemplateRows
-    h1: {
-      pt: [2, 6, 5, 6, 7],
-      gridRow: ["span 4", "span 6", "span 3", "span 4", "span 5"],
-    },
+    gridGap: `0 ${gridColumnGap}`,
+    h1: titleSpacing,
   },
   subheader: {
+    ...subtitleSpacing,
     fontSize: [1, 2, 4],
     lineHeight: ["paragraph", getLhByFontIndex(3), getLhByFontIndex(4)],
-    // color: "mutedFg",
     maxWidth: [null, null, "30em", null, "45vw"],
-    pt: [1, 0, 4, 8, 4],
   },
   side: {
-    gridColumn: ["1 / -1", null, "span 3", null, "span 2"],
-    backgroundColor: "background",
-    position: ["sticky"],
-    top: [0, null, 4],
-    zIndex: 1,
-    maxWidth: [null, null, "14rem"],
-    maxHeight: "100vh", // Height must be set so position:sticky works.
-    mt: [-2, null, 0], // These are for sticky top on small screens.
-    pt: [2, null, 0], // These are for sticky top on small screens.
-    mb: 4,
+    ...stickyStuff,
+    gridColumn: ["1 / -1", null, null, "span 3", "span 2"],
+    maxWidth: [null, null, null, "14rem"],
+    mb: [4, null, 7],
     lineHeight: "1rem",
   },
   entries: {
     // background: [null, "aliceblue", "greenyellow", "salmon", "transparent"], // check
-    gridColumn: ["1 / -1", null, "-1 / 4", null, "-1 / 3"],
+    gridColumn: ["1 / -1", null, null, "-1 / 4", "-1 / 3"],
     display: "grid",
     gridColumnGap,
     gridRowGap,
     gridTemplateColumns: [
       null,
       "repeat(auto-fill, minmax(13rem, 1fr))",
-      getGridCol(2),
+      getGridCol(3),
       getGridCol(4),
       getGridCol(5),
     ],
-    gridAutoRows: ["minmax(4rem, auto)", "8rem", null, "10rem"],
+    gridAutoRows: entryGridHeight,
     lineHeight: getLhByFontIndex(3),
+    justifyContent: ["center", "unset"],
   },
   snippet: {
     position: "relative",
     fontWeight: "medium",
+    width: ["17rem", "auto"],
     a: {
       variant: "links.coverParent",
       ...snippetLink,
-
-      // TODO separate clamp as helper/reusable theme function
-      // Clamp at 3 lines to fit gridAutoRows
+      // Clamp at 4 lines to fit gridAutoRows
       display: ["block", "-webkit-box"],
       overflow: [null, "hidden"],
       WebkitLineClamp: "4",
@@ -113,6 +106,7 @@ export default {
   sideMeta: {
     fontSize: 1,
     lineHeight: "paragraph",
+    mt: [-4, null, null, 0],
     mb: 2,
     p: { mb: 4 },
   },
