@@ -48,14 +48,14 @@ export default function Nav({ curPath, hideBc = false }) {
         >
           <Icons.Gh />
         </a>
-        <a
+        {/* <a
           href="https://dev.to/ekafyi"
           rel="external"
           nofollow="true"
           aria-label="eka on dev.to"
         >
           <Icons.Dev />
-        </a>
+        </a> */}
         <ColorModeSelect
           darkElement={<Icons.Moon />}
           lightElement={<Icons.Moon />}
