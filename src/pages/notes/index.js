@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SEO, SkipLink, Nav, NoteSnippet, SearchFilterNotes } from "components";
 import { getAllPosts } from "src/utils/get-mdx";
+import { createCacheNotes } from "src/utils/related-notes";
 import { copy } from "site.config.yml";
 
 export async function getStaticProps() {
@@ -16,6 +17,13 @@ export async function getStaticProps() {
 
 export default function Notes({ allMdx }) {
   const [filteredMdx, setFilteredMdx] = useState(allMdx);
+
+  useEffect(() => {
+    if (allMdx.length) {
+      const cacheNotes = createCacheNotes(allMdx);
+      window.localStorage.setItem("recentNotes", JSON.stringify(cacheNotes));
+    }
+  }, []);
 
   const handleFilter = (data) => {
     setFilteredMdx(data);

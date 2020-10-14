@@ -90,7 +90,7 @@ export default {
     "a, button": { variant: "links.inBodySecondary" },
     button: { lineHeight: "1rem" },
   },
-  series: {
+  related: {
     // TODO clamp at 3 lines
     // TODO [low priority] move to separate component
     borderTop: "4px solid currentColor",
@@ -99,7 +99,7 @@ export default {
     mb: [8, null, null, "10vh"],
     "header,a": { px: 1 },
     header: { py: 2 },
-    ".h": { variant: "text.heading", lineHeight: getLhByFontIndex(3) },
+    ".h": { lineHeight: getLhByFontIndex(3) },
     ".sub": { fontSize: 1, color: "mutedFg", mt: 1 },
     ".b": {
       py: 1,
