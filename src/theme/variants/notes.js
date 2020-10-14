@@ -16,16 +16,14 @@ const gridRowGap = [4];
 
 const snippetLink = {
   display: "block",
-  pt: 2,
+  pt: 3,
   pb: [2, 0],
   px: 1,
   borderTop: ".25rem solid currentColor",
-  // borderBottom: ".375rem solid transparent",
   transition: "border .2s",
   "&:hover,&:focus": {
     color: "primary",
     borderTopWidth: ".5rem",
-    // borderBottomWidth: ".125rem",
   },
 };
 
@@ -94,7 +92,7 @@ export default {
       getGridCol(4),
       getGridCol(5),
     ],
-    gridAutoRows: ["minmax(4rem, auto)", "7rem", null, "8rem"],
+    gridAutoRows: ["minmax(4rem, auto)", "8rem", null, "10rem"],
     lineHeight: getLhByFontIndex(3),
   },
   snippet: {
