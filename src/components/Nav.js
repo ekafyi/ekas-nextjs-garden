@@ -17,7 +17,12 @@ export default function Nav({ curPath, hideBc = false }) {
   return (
     <header sx={{ variant: "components.nav.container" }}>
       <div>
-        <button aria-label="Open navigation menu">☰ menu&nbsp;</button>
+        <button
+          sx={{ variant: "buttons.ham" }}
+          aria-label="Open navigation menu"
+        >
+          menu
+        </button>
         {!hideBc && (
           <nav sx={{ variant: "components.nav.bc" }} aria-label="Breadcrumb">
             <Link href="/" passHref>
