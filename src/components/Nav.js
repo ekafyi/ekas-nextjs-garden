@@ -1,19 +1,57 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { Fragment } from "react";
 import Link from "next/link";
 import ColorModeSelect from "components/ColorModeSelect";
 
 import * as Icons from "components/icons";
 
-const getParent = (curPath) => {
-  return curPath.split("/")[1];
+const printLastSegment = (path) => {
+  return path.split("/")[path.split("/").length - 1];
 };
 
-const getPageTitle = (curPath) => {
-  return curPath.replace(/-/g, " ").replace(`/${getParent(curPath)}/`, "");
+const getCrumbs = (arr) => {
+  const result = [arr.join("/")];
+  for (let i = -1; i > arr.length * -1; i--) {
+    result.push(arr.slice(0, i).join("/"));
+  }
+  return result.reverse();
 };
 
-export default function Nav({ curPath, hideBc = false }) {
+// = = =
+
+function Breadcrumb({ path }) {
+  if (!path.length) return false;
+
+  const pathArr = path.split("/");
+  pathArr.shift();
+  const crumbs = getCrumbs(pathArr);
+  const lastCrumb = crumbs.pop();
+
+  return (
+    <>
+      {crumbs?.map((crumb) => (
+        <Fragment key={crumb}>
+          <span aria-hidden="true">/</span>
+          <Link href={`/${crumb}`} passHref>
+            <a>{printLastSegment(crumb)}</a>
+          </Link>
+        </Fragment>
+      ))}
+      {lastCrumb && (
+        <Link href={lastCrumb} passHref>
+          <a aria-current="page" className="sr-only">
+            {printLastSegment(lastCrumb)}
+          </a>
+        </Link>
+      )}
+    </>
+  );
+}
+
+// = = =
+
+export default function Nav({ curPath, showBc = true }) {
   return (
     <header sx={{ variant: "components.nav.container" }}>
       <div>
@@ -23,24 +61,12 @@ export default function Nav({ curPath, hideBc = false }) {
         >
           menu
         </button>
-        {!hideBc && (
+        {showBc && (
           <nav sx={{ variant: "components.nav.bc" }} aria-label="Breadcrumb">
             <Link href="/" passHref>
               <a>eka.fyi</a>
             </Link>
-            {curPath && (
-              <>
-                <span aria-hidden="true">/</span>
-                <Link href={`/${getParent(curPath)}`} passHref>
-                  <a>{getParent(curPath)}</a>
-                </Link>
-                <Link href={curPath} passHref>
-                  <a aria-current="page" className="sr-only">
-                    {getPageTitle(curPath)}
-                  </a>
-                </Link>
-              </>
-            )}
+            {curPath && <Breadcrumb path={curPath} />}
           </nav>
         )}
       </div>

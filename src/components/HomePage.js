@@ -11,7 +11,7 @@ export default function HomePage({ allMdx }) {
     <>
       <SEO />
       <main sx={{ p: 4 }}>
-        <Nav hideBc />
+        <Nav showBc={false} />
         <h1
           sx={{
             variant: "text.entryHeading",
