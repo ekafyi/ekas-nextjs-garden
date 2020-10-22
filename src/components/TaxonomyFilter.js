@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui";
 import { useForm } from "react-hook-form";
 import { useColorMode } from "theme-ui";
+import Link from "next/link";
 
 // Use this to list manually curated tags from taxonomies.yml.
 // Replace with allTags from pages/notes/index getStaticProps to list tags from the posts.
@@ -12,6 +13,18 @@ const FIELD_TAGS = "tags";
 const RESET_SX = {
   variant: "buttons.pill",
   backgroundColor: "muted",
+};
+
+const ALL_LINK_SX = {
+  variant: "buttons.pill",
+  borderColor: "transparent",
+  fontWeight: "bold",
+  textDecoration: "underline",
+  px: 1,
+  "&:hover": {
+    backgroundColor: "background",
+    color: "primary",
+  },
 };
 
 const Input = ({ name, value, label, register, ...props }) => {
@@ -68,7 +81,7 @@ export default function TaxonomyFilter({ onChangeTags }) {
   return (
     <form aria-label="Select topics">
       <button type="button" onClick={handleReset} sx={RESET_SX}>
-        all
+        reset
       </button>
       {configTags?.map((tag) => (
         <Input
@@ -80,6 +93,9 @@ export default function TaxonomyFilter({ onChangeTags }) {
           onInput={handleSubmit(handleClickTag)}
         />
       ))}
+      <Link href="/notes/tags" passHref>
+        <a sx={ALL_LINK_SX}>all tags &gt;</a>
+      </Link>
     </form>
   );
 }
