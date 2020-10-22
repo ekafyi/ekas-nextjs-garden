@@ -182,7 +182,7 @@ export const getPostsByTag = (tag = "", subdir = "", paramName = null) => {
  */
 export const getAllTags = (subdir = "") => {
   const files = glob.sync(getContentGlob(subdir));
-  const tags = files
+  const tagsDupe = files
     .map((file) => {
       return fs.readFileSync(file);
     })
@@ -194,7 +194,9 @@ export const getAllTags = (subdir = "") => {
       return data.tags;
     })
     .flat();
-  return dedupe(tags);
+  return dedupe(tagsDupe)
+    .map((tag) => getTagFriendlyName(tag))
+    .sort();
 };
 
 /**
@@ -216,7 +218,7 @@ export const getAllTagsStaticPaths = (subdir = "") => {
   const tags = getAllTags(subdir);
   const tagPaths = tags.map((tag) => {
     return {
-      params: { tag: getTagFriendlyName(tag, tagsConfig) },
+      params: { tag: getTagFriendlyName(tag) },
     };
   });
   return tagPaths;

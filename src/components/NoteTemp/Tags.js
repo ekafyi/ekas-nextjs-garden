@@ -2,7 +2,6 @@
 import { jsx } from "theme-ui";
 import Link from "next/link";
 import { getTagFriendlyName } from "src/utils/get-taxonomy";
-import { tags as tagsConfig } from "taxonomies.yml";
 
 // const getTechSx = (name) => {
 //   return {
@@ -17,7 +16,7 @@ export default function Tags({ tags }) {
   return (
     <div sx={{ variant: "components.note.tagsList" }}>
       {tags.map((item) => {
-        const tagLabel = getTagFriendlyName(item, tagsConfig);
+        const tagLabel = getTagFriendlyName(item);
         return (
           <Link
             key={item}

@@ -1,4 +1,4 @@
-// import { tags as tagsConfig } from "../../taxonomies.yml";
+import { tags as tagsConfig } from "../../taxonomies.yml";
 
 // masih dipake gardenstatus
 export const getTaxonomyData = (name, source) => {
@@ -12,7 +12,7 @@ export const getTaxonomyData_NEW = (name, source) => {
   return arr[0];
 };
 
-export const getTagFriendlyName = (name, source) => {
+export const getTagFriendlyName = (name, source = tagsConfig) => {
   const arr = source.filter((item) => item.name === name);
   if (!arr.length) return name;
   return arr[0].friendlyName || arr[0].name;
