@@ -80,7 +80,6 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
             borderRadius: 8,
             px: 3,
             py: 2,
-            // py: "calc(0.5rem - 1px)", // keep vertical rhythm
             mb: 4,
             borderRadius: "2rem",
             border: "2px solid",
