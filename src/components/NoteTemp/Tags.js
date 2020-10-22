@@ -21,8 +21,8 @@ export default function Tags({ tags }) {
         return (
           <Link
             key={item}
-            href="/notes/t/[tag]"
-            as={`/notes/t/${tagLabel}`}
+            href="/notes/tags/[tag]"
+            as={`/notes/tags/${tagLabel}`}
             passHref
             prefetch={false}
           >
