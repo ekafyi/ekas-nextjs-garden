@@ -10,10 +10,7 @@ import { tags as configTags } from "taxonomies.yml";
 
 const FIELD_TAGS = "tags";
 
-const RESET_SX = {
-  variant: "buttons.pill",
-  backgroundColor: "muted",
-};
+// const RESET_SX = { variant: "buttons.pill", backgroundColor: "muted" };
 
 const ALL_LINK_SX = {
   variant: "buttons.pill",
@@ -67,22 +64,21 @@ const Input = ({ name, value, label, register, ...props }) => {
 // = = =
 
 export default function TaxonomyFilter({ onChangeTags }) {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    // reset
+  } = useForm();
 
   const handleClickTag = (data) => {
     onChangeTags(data[FIELD_TAGS]);
   };
 
-  const handleReset = () => {
-    reset();
-    onChangeTags([]);
-  };
+  // const handleReset = () => { reset(); onChangeTags([]); };
 
   return (
     <form aria-label="Select topics">
-      <button type="button" onClick={handleReset} sx={RESET_SX}>
-        reset
-      </button>
+      {/* <button type="button" onClick={handleReset} sx={RESET_SX}>reset</button> */}
       {configTags?.map((tag) => (
         <Input
           key={tag.name}
