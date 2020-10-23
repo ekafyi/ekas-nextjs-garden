@@ -11,7 +11,8 @@ const withMDX = require("@next/mdx")({
 
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
-  webpack(config) {
+
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.node = {
       fs: "empty",
     };
