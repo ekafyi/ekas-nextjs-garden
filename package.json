@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "yarn copy-img-dir && next dev",
+    "build": "yarn copy-img-dir && next build",
+    "start": "next start",
+    "copy-img-dir": "node src/utils/copy-dir.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.16",
