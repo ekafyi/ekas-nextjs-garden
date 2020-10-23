@@ -12,7 +12,9 @@ const components = {
   ...mdxComponents,
 };
 
-const mdxOptions = { remarkPlugins: [require("remark-slug")] };
+const mdxOptions = {
+  remarkPlugins: [require("remark-slug"), require("remark-unwrap-images")],
+};
 
 export async function getStaticPaths() {
   const paths = getAllSlugsStaticPaths("notes");

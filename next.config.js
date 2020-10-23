@@ -1,7 +1,7 @@
 // if i ever need to use env: https://github.com/vercel/next.js/discussions/12077#discussioncomment-6080
 
 const options = {
-  remarkPlugins: [require("remark-slug")],
+  remarkPlugins: [require("remark-slug"), require("remark-unwrap-images")],
 };
 
 const withMDX = require("@next/mdx")({
