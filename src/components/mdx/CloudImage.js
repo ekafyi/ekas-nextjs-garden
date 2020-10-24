@@ -2,8 +2,6 @@
 import { jsx } from "theme-ui";
 import { useImage } from "use-cloudinary";
 
-// !! NOT USED
-
 export default function CloudImage({
   publicId,
   transformations,
@@ -40,7 +38,7 @@ export default function CloudImage({
   return (
     <div
       ref={!supportsLazyLoading ? ref : undefined}
-      sx={{ my: [8, null, 12], mx: "auto" }}
+      // sx={{ my: [8, null, 12], mx: "auto" }}
       style={{
         width: `${width}px`,
         height: `${height}px`,
@@ -55,7 +53,7 @@ export default function CloudImage({
             width: `${width}px`,
             height: `${height}px`,
           }}
-          alt={alt || ""} // Use alt="" if alt value not present for a11y.
+          alt={alt || ""}
         />
       ) : null}
     </div>

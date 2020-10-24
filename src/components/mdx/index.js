@@ -5,6 +5,9 @@ import getHeading from "./AnchorHeading";
 // import dynamic from "next/dynamic";
 // const Example = dynamic(() => import("../Example"));
 
+import dynamic from "next/dynamic";
+const CloudImage = dynamic(() => import("./CloudImage"));
+
 import { Mug } from "react-kawaii";
 // import Example from "../Example";
 import Image from "./Image";
@@ -13,6 +16,7 @@ import ImageWithCaption from "./ImageWithCaption";
 const components = {
   Mug,
   ImageWithCaption,
+  CloudImage,
 
   // prettier-ignore
   Grid: ({ columns = [null, null, 2], gap = 4, mb = 4, children, ...props }) => {
