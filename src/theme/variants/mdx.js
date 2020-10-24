@@ -9,6 +9,8 @@ const blockContentCommon = {
   code: { variant: "components.code.inline" }, // = inlineCode in theme.styles
 };
 
+const blockImgCommon = { my: [6, null, 10] };
+
 export default {
   h2: { variant: "text.subheading.h2" },
   h3: { variant: "text.subheading.h3" },
@@ -21,5 +23,8 @@ export default {
   "p,ul,ol": blockContentCommon,
   //
   blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
+  figcaption: { variant: "text.caption" },
+  "figure,p+img": blockImgCommon,
+
   // ".eka-cblock": { variant: "components.code.block.container" },
 };

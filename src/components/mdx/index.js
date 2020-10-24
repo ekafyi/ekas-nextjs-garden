@@ -6,6 +6,7 @@ import getHeading from "./AnchorHeading";
 
 import { Mug } from "react-kawaii";
 import Example from "../Example";
+import Image from "./Image";
 
 const components = {
   Mug,
@@ -14,6 +15,7 @@ const components = {
   h3: getHeading("h3"),
   h4: getHeading("h4"),
   h5: getHeading("h5"),
+  img: Image,
 };
 
 export default components;

@@ -10,13 +10,9 @@ tags:
 
 Eiusmod ex ad ea laborum ut. (Actual content in progress, this is just to test loading images.)
 
-external url: (ofc it works)
+public dir, no alt: (works out of the box, but i'd like my images co-located with the mdx files)
 
-![woman in a plank position](https://images.unsplash.com/photo-1514512364185-4c2b0985be01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80)
-
-public dir: (works out of the box, but i'd like my images co-located with the mdx files)
-
-![woman in a plank position](/images/unsplash-push-up.jpeg)
+![](/images/unsplash-push-up.jpeg)
 
 with `<figure>`
 
@@ -25,7 +21,10 @@ with `<figure>`
 
 ![woman in a plank position](/images/unsplash-push-up.jpeg)
 
-<figcaption>Photo by Ayo Ogunseinde</figcaption>
+<figcaption>
+  Adipisicing et ut veniam ea nostrud sint et eiusmod.{" "}
+  <small>Photo by Ayo Ogunseinde</small>
+</figcaption>
 
 </figure>
 
@@ -37,13 +36,25 @@ with `<figure>` and markdown syntax inside `<figcaption>`
 
 ![woman in a plank position](/images/unsplash-push-up.jpeg)
 
-<figcaption>
+<figcaption><small>
 
 
 Photo by [Ayo Ogunseinde](https://unsplash.com/@armedshutter)
 
-</figcaption>
+</small></figcaption>
 
+
+</figure>
+
+
+With `figcaption` but no image credit:
+
+<figure>
+
+
+![woman in a plank position](/images/unsplash-push-up.jpeg)
+
+<figcaption>Adipisicing et ut veniam ea nostrud sint et eiusmod.</figcaption>
 
 </figure>
 

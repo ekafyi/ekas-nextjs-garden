@@ -70,6 +70,23 @@ const blockquoteCenter = {
   //
 };
 
+const caption = {
+  "&,p": {
+    color: "mutedFg",
+    fontSize: 1,
+    textAlign: "center",
+    py: 2,
+    lineHeight: "paragraph",
+  },
+  "small, small p": {
+    fontSize: 0,
+    lineHeight: "1rem", // If unset, breaks vertical rhythm.
+    px: "2px",
+    "&,a": { fontWeight: "bold" },
+  },
+  "small>p": { display: "inline" },
+};
+
 export const h2Sizes = [5, null, null, 6];
 export const h2M = { "&:not(:first-child)": { mt: [9, null, 12] } };
 export const h3Sizes = 4;
@@ -143,6 +160,7 @@ export default {
   blockquote,
   blockquoteCenter,
   blockquoteCenterLineSep,
+  caption,
   // Used on top-level page eg. "Notes" and "Posts"
   pageHeading: {
     variant: "text.heading",
