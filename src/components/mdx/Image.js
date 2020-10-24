@@ -15,7 +15,7 @@ export default function Image({ src, alt, figcaption, ...props }) {
       <LazyLoadImage
         src={src}
         alt={alt || ""}
-        threshold={10}
+        threshold={-50}
         effect="opacity"
         afterLoad={() => setHasLoaded(true)}
         {...props}
