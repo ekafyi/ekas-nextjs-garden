@@ -27,7 +27,8 @@
     "react-dom": "16.13.1",
     "react-hook-form": "^6.9.2",
     "react-use-web-share": "^1.0.2",
-    "theme-ui": "^0.3.1"
+    "theme-ui": "^0.3.1",
+    "use-cloudinary": "^3.1.7"
   },
   "devDependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.10.4",

@@ -1,0 +1,130 @@
+---
+title: Trying the useImage hook from use-cloudinary
+excerpt: In which I ended up with a stretched cat
+date: "2020-10-24"
+status: GARDEN_GROWING
+tags:
+  - cloudinary
+  - jamstack
+---
+
+Trying out the `useImage` hook from the `use-cloudinary` library ([repo](https://github.com/domitriusclark/use-cloudinary) | [docs](https://use-cloudinary.netlify.app/)). I copied the sample component code from the [documentation page](https://use-cloudinary.netlify.app/usage/use-image/). Let’s go!
+
+## Basic usage
+
+(1) no `width`, `height`, or `transformations` props
+
+```jsx
+<Image
+  // cloudName
+  publicId="samples/animals/cat.jpg"
+/>
+```
+
+![serious-looking gray cat hanging over the back of a chair, staring into your soul](https://res.cloudinary.com/ekafyi/image/upload/c_scale,f_auto,q_auto/v1/samples/animals/cat.jpg)
+
+- **expectation:** original size
+- **rendered:** `c_scale,f_auto,q_auto/v1/samples/animals/cat.jpg` ✅ as expected
+
+---
+
+(2) `width` only
+
+```jsx
+<Image
+  // cloudName
+  publicId="samples/animals/cat.jpg"
+  width={300}
+/>
+```
+
+![](https://res.cloudinary.com/ekafyi/image/upload/c_scale,f_auto,q_auto,w_300/v1/samples/animals/cat.jpg)
+
+- **expectation:** auto height
+- **rendered:** `c_scale,f_auto,q_auto,w_300/v1/samples/animals/cat.jpg` ✅ as expected
+
+---
+
+(3) `height` only
+
+```jsx
+<Image
+  // cloudName
+  publicId="samples/animals/cat.jpg"
+  height={480}
+/>
+```
+
+![](https://res.cloudinary.com/ekafyi/image/upload/c_scale,f_auto,h_480,q_auto/v1/samples/animals/cat.jpg)
+
+- **expectation:** auto width
+- **rendered:** `c_scale,f_auto,h_480,q_auto/v1/samples/animals/cat.jpg` ✅ as expected
+
+---
+
+## Customizations
+
+(4) `width` and `height` props
+
+```jsx
+// ❌ stretched image, don't copy
+<Image
+  // cloudName
+  publicId="samples/animals/cat.jpg"
+  width={300}
+  height={200}
+/>
+```
+
+![](https://res.cloudinary.com/ekafyi/image/upload/c_scale,f_auto,h_200,q_auto,w_300/v1/samples/animals/cat.jpg)
+
+- Would be cool if it auto-crops/fits, but my guess is we'll have to use the `transformations` props.
+- **rendered:** `c_scale,f_auto,h_200,q_auto,w_300/v1/samples/animals/cat.jpg` (heheheh stretchy cat)
+
+---
+
+(5) `width`, `height`, and `transformations` props
+
+As per the [Cloudinary docs](https://cloudinary.com/documentation/image_transformation_reference#crop_parameter), `crop: 'fill'` is what we need to _“Create an image with the exact given width and height without distorting the image.”_
+
+```jsx
+// ❌ stretched image, don't copy
+<Image
+  // cloudName
+  publicId="samples/animals/cat.jpg"
+  width={300}
+  height={200}
+  transformations={{ crop: "fill" }}
+/>
+```
+
+![](https://res.cloudinary.com/ekafyi/image/upload/c_scale,f_auto,h_200,q_auto,w_300/v1/samples/animals/cat.jpg)
+
+🤔 The `transformations` props does not take effect, and we still get the same image `c_scale,f_auto,h_200,q_auto,w_300/v1/samples/animals/cat.jpg`.
+
+I then try (5b), moving the desired width and height to the `transformations` props. Still does not work; renders the same image as above.
+
+```jsx
+// ❌ stretched image, don't copy
+<Image
+  // cloudName
+  publicId="samples/animals/cat.jpg"
+  transformations={{ crop: "fill", width: 300, height: 200 }}
+/>
+```
+
+On inspecting the source code, I found this possibly relevant part: https://github.com/domitriusclark/use-cloudinary/blob/e913c6ff572a37a0dd0e9bdfdb41114db29f6873/src/hooks/useImage/index.js#L49-L50
+
+`crop: 'scale'` is applied by default if the below condition is met. I'm not sure why this is still applied even when I _do_ pass `crop` in the `transformations` though.
+
+I tried various other `crop` values (`pad`, `crop`, etc) as well as `crop`, `width`, and `aspect_ratio` combinations out of curiousity, but they all did not take effect, ie. still yield `c_scale` (`crop: "scale"`) URL.
+
+---
+
+## Conclusion
+
+The `useImage` hook works well out of the box for basic usage. Maybe I used it incorrectly, but I failed to get it to work when customizing the `crop` value. As such, it's _not_ possible to crop an image of unknown/arbitrary aspect ratio into, say, 300x200px with this library. If this is the use case you need, Cloudinary also has a [large list of SDKs](https://cloudinary.com/documentation/framework_integration) that you can look into.
+
+Bonus track:
+
+https://www.youtube.com/watch?v=ebyTywlJXFk
