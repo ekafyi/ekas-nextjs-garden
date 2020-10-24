@@ -22,7 +22,7 @@ export default function Image({ src, alt, figcaption, ...props }) {
         src={src}
         alt={alt || ""}
         placeholder={placeholderEl}
-        threshold={100}
+        threshold={-200}
         {...props}
       />
     </>
