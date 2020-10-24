@@ -4,8 +4,8 @@ import getHeading from "./AnchorHeading";
 // import dynamic from "next/dynamic";
 // const Example = dynamic(() => import("../Example"));
 
-import dynamic from "next/dynamic";
-const Image = dynamic(() => import("../Image"));
+// import dynamic from "next/dynamic";
+// const Image = dynamic(() => import("../Image"));
 
 import { Mug } from "react-kawaii";
 import Example from "../Example";
@@ -18,7 +18,7 @@ const components = {
   h3: getHeading("h3"),
   h4: getHeading("h4"),
   h5: getHeading("h5"),
-  img: Image,
+  // img: Image,
 };
 
 export default components;

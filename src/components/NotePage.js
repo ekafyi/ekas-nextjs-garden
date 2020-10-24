@@ -19,9 +19,11 @@ import { getNotePageDesc } from "src/utils/get-seo-copy";
 import { getNotesByTags } from "src/utils/related-notes";
 
 const CodeBlock = dynamic(() => import("./mdx/CodeBlock")); // It's somehow faster when imported here vs from components/mdx 🤔.
+const Image = dynamic(() => import("./mdx/Image"));
 const components = {
   pre: ({ children }) => <>{children}</>,
   code: CodeBlock,
+  img: Image,
   ...mdxComponents,
 };
 
