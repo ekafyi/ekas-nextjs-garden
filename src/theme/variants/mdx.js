@@ -9,7 +9,7 @@ const blockContentCommon = {
   code: { variant: "components.code.inline" }, // = inlineCode in theme.styles
 };
 
-const blockImgCommon = { my: [6, null, 10] };
+const blockImgCommon = { my: [8, null, 12] };
 
 export default {
   h2: { variant: "text.subheading.h2" },
