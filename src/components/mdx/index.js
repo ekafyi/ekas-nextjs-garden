@@ -4,9 +4,12 @@ import getHeading from "./AnchorHeading";
 // import dynamic from "next/dynamic";
 // const Example = dynamic(() => import("../Example"));
 
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("../Image"));
+
 import { Mug } from "react-kawaii";
 import Example from "../Example";
-import Image from "./Image";
+// import Image from "./Image";
 
 const components = {
   Mug,
