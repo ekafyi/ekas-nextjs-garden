@@ -7,7 +7,7 @@ export default function Image({ src, alt, figcaption, ...props }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   return (
     <div
-      className="img-container"
+      className={`img-container ${hasLoaded ? "" : "is-loading"}`}
       sx={{ variant: "media.container" }}
       aria-hidden={hasLoaded ? undefined : "true"}
     >
@@ -15,7 +15,8 @@ export default function Image({ src, alt, figcaption, ...props }) {
       <LazyLoadImage
         src={src}
         alt={alt || ""}
-        threshold={-50}
+        // threshold={-50}
+        threshold={0}
         effect="opacity"
         afterLoad={() => setHasLoaded(true)}
         {...props}

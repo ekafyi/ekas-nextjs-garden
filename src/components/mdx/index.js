@@ -1,3 +1,4 @@
+import { Grid } from "theme-ui";
 import getHeading from "./AnchorHeading";
 
 // Note: dynamic vs regular imports have nearly similar results. Just experiment with both if needed.
@@ -5,14 +6,24 @@ import getHeading from "./AnchorHeading";
 // const Example = dynamic(() => import("../Example"));
 
 import { Mug } from "react-kawaii";
-import Example from "../Example";
+// import Example from "../Example";
 import Image from "./Image";
 import ImageWithCaption from "./ImageWithCaption";
 
 const components = {
   Mug,
-  Example,
   ImageWithCaption,
+
+  // prettier-ignore
+  Grid: ({ columns = [null, null, 2], gap = 4, mb = 4, children, ...props }) => {
+    return (
+      <Grid columns={columns} gap={gap} mb={mb} {...props}>
+        {children || null}
+      </Grid>
+    );
+  },
+  //
+
   h2: getHeading("h2"),
   h3: getHeading("h3"),
   h4: getHeading("h4"),

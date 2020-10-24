@@ -78,13 +78,24 @@ const caption = {
     py: 2,
     lineHeight: "paragraph",
   },
+  "small, small p, >strong": {
+    lineHeight: "1rem", // If unset, breaks vertical rhythm.
+  },
   "small, small p": {
     fontSize: 0,
-    lineHeight: "1rem", // If unset, breaks vertical rhythm.
     px: "2px",
     "&,a": { fontWeight: "bold" },
   },
   "small>p": { display: "inline" },
+  ">strong": {
+    fontFamily: "Times New Roman",
+    fontWeight: "medium",
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    display: "inline-block",
+    fontSize: 0,
+    "&::first-letter": { fontSize: 2 },
+  },
 };
 
 export const h2Sizes = [5, null, null, 6];
