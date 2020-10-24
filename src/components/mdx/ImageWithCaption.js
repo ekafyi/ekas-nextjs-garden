@@ -7,6 +7,7 @@ export default function ImageWithCaption({ caption, smallCaption, ...props }) {
       {(caption || smallCaption) && (
         <figcaption>
           {caption || ""}
+          {caption && smallCaption && " "}
           {smallCaption && <small>{smallCaption}</small>}
         </figcaption>
       )}

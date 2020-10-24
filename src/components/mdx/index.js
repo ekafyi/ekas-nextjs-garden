@@ -7,10 +7,12 @@ import getHeading from "./AnchorHeading";
 import { Mug } from "react-kawaii";
 import Example from "../Example";
 import Image from "./Image";
+import ImageWithCaption from "./ImageWithCaption";
 
 const components = {
   Mug,
   Example,
+  ImageWithCaption,
   h2: getHeading("h2"),
   h3: getHeading("h3"),
   h4: getHeading("h4"),
