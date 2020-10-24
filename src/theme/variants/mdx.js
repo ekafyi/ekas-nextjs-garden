@@ -1,5 +1,7 @@
 import { getLhByFontIndex } from "../../utils/calc-type";
 
+const blockImgCommon = { my: [8, null, 12] };
+
 const blockContentCommon = {
   fontSize: [2, null, 3],
   lineHeight: [getLhByFontIndex(3), null, getLhByFontIndex(4)], // Repeat so it does not get overridden.
@@ -7,9 +9,8 @@ const blockContentCommon = {
   "&:first-child": { mt: 0 },
   a: { variant: "links.inBody" },
   code: { variant: "components.code.inline" }, // = inlineCode in theme.styles
+  "+img": blockImgCommon,
 };
-
-const blockImgCommon = { my: [8, null, 12] };
 
 export default {
   h2: { variant: "text.subheading.h2" },
@@ -24,7 +25,7 @@ export default {
   //
   blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
   figcaption: { variant: "text.caption" },
-  "figure,p+img": blockImgCommon,
+  "figure, .img-placeholder": blockImgCommon,
 
   // ".eka-cblock": { variant: "components.code.block.container" },
 };
