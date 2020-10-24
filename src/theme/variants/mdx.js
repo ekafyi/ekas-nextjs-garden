@@ -1,6 +1,6 @@
 import { getLhByFontIndex } from "../../utils/calc-type";
 
-const blockImgCommon = { my: [8, null, 12] };
+const blogImgM = { my: [8, null, 12] };
 
 const blockContentCommon = {
   fontSize: [2, null, 3],
@@ -9,7 +9,7 @@ const blockContentCommon = {
   "&:first-child": { mt: 0 },
   a: { variant: "links.inBody" },
   code: { variant: "components.code.inline" }, // = inlineCode in theme.styles
-  "+img": blockImgCommon,
+  "+ .img-container": blogImgM,
 };
 
 export default {
@@ -25,7 +25,7 @@ export default {
   //
   blockquote: { variant: "text.blockquoteCenter" }, // or blockquoteCenterLineSep
   figcaption: { variant: "text.caption" },
-  "figure, .img-placeholder": blockImgCommon,
+  figure: blogImgM,
 
   // ".eka-cblock": { variant: "components.code.block.container" },
 };

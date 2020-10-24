@@ -1,30 +1,25 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
-const placeholderEl = (
-  <div
-    className="img-placeholder"
-    sx={{
-      height: 300,
-      backgroundColor: "muted",
-      animation: "bgAnim 4s infinite",
-    }}
-    aria-hidden="true"
-  />
-);
+import { useState } from "react";
 
 export default function Image({ src, alt, figcaption, ...props }) {
+  const [hasLoaded, setHasLoaded] = useState(false);
   return (
-    <>
+    <div
+      className="img-container"
+      sx={{ variant: "media.container" }}
+      aria-hidden={hasLoaded ? undefined : "true"}
+    >
       {/* <img src={src} alt={alt || ""} loading="lazy" {...props} /> */}
       <LazyLoadImage
         src={src}
         alt={alt || ""}
-        placeholder={placeholderEl}
-        threshold={-200}
+        threshold={-100}
+        effect="opacity"
+        afterLoad={() => setHasLoaded(true)}
         {...props}
       />
-    </>
+    </div>
   );
 }
