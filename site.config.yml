@@ -6,10 +6,11 @@ config:
   baseUrl: https://ekas-nextjs-garden.vercel.app
 
   # Each social card type has its own size and dimensions requirements. TODO complete this.
-  # OpenGraph images should be 1200x630 px.
   socialImgOg: "/og.jpg"
   socialImgTwitter: "/og.jpg"
   favicon: "/favicon.png"
+  ogImgWidth: 1200
+  ogImgHeight: 630
 
   twitterHandle: "@ekafyi"
   twitterCardType: summary
