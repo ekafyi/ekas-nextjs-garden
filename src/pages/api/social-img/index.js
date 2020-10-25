@@ -8,6 +8,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 const handler = async (req, res) => {
   let browser = null;
+  console.log("envvvv ", process.env.NODE_ENV);
 
   try {
     const title = req.query.title;
@@ -21,9 +22,7 @@ const handler = async (req, res) => {
     browser = await chrome.puppeteer.launch({
       args: isDev ? [] : chrome.args,
       defaultViewport: chrome.defaultViewport,
-      executablePath: isDev
-        ? pptr.executablePath()
-        : await chrome.executablePath,
+      executablePath: isDev ? pptr.executablePath() : await chrome.executablePath, // prettier-ignore
       headless: isDev ? true : chrome.headless,
       ignoreHTTPSErrors: true,
     });
