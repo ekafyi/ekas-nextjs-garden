@@ -7,11 +7,13 @@ import getHeading from "./AnchorHeading";
 
 import dynamic from "next/dynamic";
 const CloudImage = dynamic(() => import("./CloudImage"));
+const Image = dynamic(() => import("./Image"));
+const ImageWithCaption = dynamic(() => import("./ImageWithCaption"));
 
 import { Mug } from "react-kawaii";
 // import Example from "../Example";
-import Image from "./Image";
-import ImageWithCaption from "./ImageWithCaption";
+// import Image from "./Image";
+// import ImageWithCaption from "./ImageWithCaption";
 
 const components = {
   Mug,
