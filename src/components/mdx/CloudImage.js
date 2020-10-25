@@ -2,6 +2,11 @@
 import { jsx } from "theme-ui";
 import { useImage } from "use-cloudinary";
 
+// TODO [low priority] refactor for srcset/sizes
+// https://cloudinary.com/blog/responsive_images_with_srcset_sizes_and_cloudinary
+// https://cloudinary.com/documentation/javascript_integration
+// https://cloudinary.com/documentation/react_integration
+
 export default function CloudImage({
   publicId,
   transformations,
