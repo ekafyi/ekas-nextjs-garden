@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { ogImgWidth, ogImgHeight } from "site.config.yml";
 
 export default function SocialImgPage({
   title = "eka.fyi",
@@ -8,28 +7,9 @@ export default function SocialImgPage({
   path = "",
 }) {
   return (
-    <div
-      sx={{
-        width: ogImgWidth,
-        height: ogImgHeight,
-        backgroundColor: "background",
-        color: "text",
-        p: 8,
-      }}
-    >
-      <h1
-        sx={{
-          fontWeight: "bold",
-          fontSize: 80,
-          mb: 8,
-          pt: 8,
-          borderTop: ".5rem solid",
-          lineHeight: 1.1,
-        }}
-      >
-        {title}
-      </h1>
-      <p sx={{ fontSize: 32 }}>{desc}</p>
+    <div sx={{ variant: "media.ogImg.card" }}>
+      <h1 sx={{ variant: "media.ogImg.title" }}>{title}</h1>
+      <p sx={{ variant: "media.ogImg.desc" }}>{desc}</p>
       <style jsx global>{`
         body {
           background: #fff !important;

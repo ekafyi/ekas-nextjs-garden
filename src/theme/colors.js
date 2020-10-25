@@ -1,6 +1,6 @@
 //  "#64C7FF" // i like this color, not sure where to use
 
-const light = {
+export const light = {
   background: "hsl(60, 100%, 88%)", // #ffffc3
   text: "hsl(236, 76%, 35%)", // #16209f
 
@@ -20,7 +20,7 @@ const light = {
   temp_postStatus: "#e6ff98", // green
 };
 
-const dark = {
+export const dark = {
   text: "hsl(48, 100%, 87%)", // #fff2bf
   background: "hsl(225, 40%, 16%)", // #182038
   primary: "hsl(25, 100%, 55%)", // #FF7717

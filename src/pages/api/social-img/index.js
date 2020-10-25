@@ -2,13 +2,11 @@ import { absoluteUrl } from "src/utils/absolute-url";
 import chrome from "chrome-aws-lambda";
 import pptr from "puppeteer";
 import qs from "querystring";
-import { ogImgWidth, ogImgHeight } from "site.config.yml";
 
 const isDev = process.env.NODE_ENV === "development";
 
 const handler = async (req, res) => {
   let browser = null;
-  console.log("envvvv ", process.env.NODE_ENV);
 
   try {
     const title = req.query.title;
@@ -29,8 +27,8 @@ const handler = async (req, res) => {
     const page = await browser.newPage();
 
     await page.setViewport({
-      width: ogImgWidth,
-      height: ogImgHeight,
+      width: 1200,
+      height: 630,
     });
 
     await page.goto(url, {
