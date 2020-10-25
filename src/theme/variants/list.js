@@ -17,7 +17,7 @@ const bulletList = {
     // content: '"\\2022"', // dot
     // content: '"\\25A7"', // square w/ diagonal lines fill
     content: '"\\25E2"',
-    fontSize: [null, "0.75em"],
+    fontSize: [null, "0.7em"],
     display: "inline-block",
     color: "primary",
     width: convertToRem(UL_MARGIN),

@@ -12,7 +12,7 @@ import nav from "./nav";
 import note from "./note";
 import notes from "./notes";
 import toc from "./toc";
-import tomato from "./tomato";
+// import tomato from "./tomato";
 
 // Shared/Utility
 import buttons from "./buttons";
@@ -20,6 +20,7 @@ import grids from "./grids";
 import layout from "./layout";
 import links from "./links";
 import list from "./list";
+import media from "./media";
 import text from "./text";
 
 // = = =
@@ -42,5 +43,6 @@ export default {
   layout,
   links,
   list,
+  media,
   text,
 };

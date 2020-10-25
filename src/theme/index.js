@@ -27,6 +27,7 @@ import styles from "./styles";
 // = = =
 
 export default {
+  useColorSchemeMediaQuery: true,
   breakpoints,
   colors,
   fonts,

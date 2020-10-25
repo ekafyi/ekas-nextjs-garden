@@ -1,7 +1,7 @@
 // if i ever need to use env: https://github.com/vercel/next.js/discussions/12077#discussioncomment-6080
 
 const options = {
-  remarkPlugins: [require("remark-slug")],
+  remarkPlugins: [require("remark-slug"), require("remark-unwrap-images")],
 };
 
 const withMDX = require("@next/mdx")({
@@ -11,7 +11,8 @@ const withMDX = require("@next/mdx")({
 
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
-  webpack(config) {
+
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.node = {
       fs: "empty",
     };
