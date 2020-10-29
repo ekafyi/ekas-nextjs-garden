@@ -30,11 +30,11 @@ export const getNotePageDesc = (excerpt = null, tags = []) => {
       let desc;
 
       if (tags.includes(tagsConfig[0].name)) {
-        desc = `Coding tips / snippet note`;
+        desc = `Coding tips and snippets`;
       } else if (tags.includes(tagsConfig[1].name)) {
         desc = `Learning note`;
       } else if (tags.includes(tagsConfig[2].name)) {
-        desc = `Resources / tools / bookmarks note`;
+        desc = `Resources and bookmarks`;
       }
 
       if (tags.length > 1) {
@@ -47,4 +47,11 @@ export const getNotePageDesc = (excerpt = null, tags = []) => {
     return `Note tagged ${tags.join(", ")}`;
   }
   return excerpt;
+};
+
+/**
+ * @param {array} [tags]
+ */
+export const getOgImgDesc = () => {
+  // return //
 };

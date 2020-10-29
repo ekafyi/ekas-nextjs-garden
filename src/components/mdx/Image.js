@@ -8,7 +8,7 @@ export default function Image({ src, alt, figcaption, ...props }) {
   return (
     <div
       className={`img-container ${hasLoaded ? "" : "is-loading"}`}
-      sx={{ variant: "media.container" }}
+      sx={{ variant: "media.postImg" }}
       aria-hidden={hasLoaded ? undefined : "true"}
     >
       {/* <img src={src} alt={alt || ""} loading="lazy" {...props} /> */}

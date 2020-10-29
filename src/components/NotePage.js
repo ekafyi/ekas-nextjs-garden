@@ -17,6 +17,7 @@ import dynamic from "next/dynamic";
 import mdxComponents from "components/mdx";
 import { getNotePageDesc } from "src/utils/get-seo-copy";
 import { getNotesByTags } from "src/utils/related-notes";
+import { buildOgUrl, getOgDesc } from "src/utils/get-meta";
 
 const CodeBlock = dynamic(() => import("./mdx/CodeBlock")); // It's somehow faster when imported here vs from components/mdx 🤔.
 const components = {
@@ -55,6 +56,12 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
         title={frontMatter.title}
         description={description}
         path={router.asPath}
+        socialImg={buildOgUrl({
+          title: frontMatter.title,
+          desc: getOgDesc(frontMatter.tags),
+          path: router.asPath,
+          tagText: (typeof frontMatter.tags !== 'undefined' && frontMatter.tags.join(" ").includes("TAG_")) ? frontMatter.tags[0] : undefined, // prettier-ignore
+        })}
       />
       <SkipLink />
       <main sx={{ variant: "layout.container" }}>
