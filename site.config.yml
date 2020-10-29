@@ -19,7 +19,8 @@ config:
     - { text: Home, link: / }
     - { text: Posts, link: /posts }
     - { text: Notes, link: /notes }
-    - { text: Microblog, link: /microblog }
+    - { text: Talks, link: /talks }
+    - { text: About, link: /about }
 
   typography:
     BASE_SIZE: 16
