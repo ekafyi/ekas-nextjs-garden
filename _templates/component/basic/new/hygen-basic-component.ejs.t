@@ -1,5 +1,5 @@
 ---
-to: "src/components/<%= name %>.js"
+to: "src/components/<%= Name %>.js"
 ---
 <% if(pragma) { %>
 /** @jsx jsx */
