@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import hydrate from "next-mdx-remote/hydrate";
-import { SEO, SkipLink, Nav, ErrorPage, Footer } from "components";
+import { SEO, SkipLink, Nav, ErrorPage, Footer, Layout } from "components";
 
 import TOC from "./NoteTemp/TOC";
 import Tags from "./NoteTemp/Tags";
@@ -64,7 +64,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
         })}
       />
       <SkipLink />
-      <main sx={{ variant: "layout.container" }}>
+      <Layout>
         <Nav curPath={router.asPath} />
 
         <article id="main" sx={{ variant: "components.note.container" }}>
@@ -129,7 +129,7 @@ export default function NotePage({ mdxContent, frontMatter, toc }) {
 
           {/* yay, we're done! */}
         </article>
-      </main>
+      </Layout>
       <Footer />
     </>
   );

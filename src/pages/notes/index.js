@@ -1,7 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useState, useEffect } from "react";
-import { SEO, SkipLink, Nav, NoteSnippet, SearchFilterNotes } from "components";
+import {
+  SEO,
+  SkipLink,
+  Nav,
+  NoteSnippet,
+  SearchFilterNotes,
+  Layout,
+} from "components";
 import { getAllPosts } from "src/utils/get-mdx";
 import { createCacheNotes } from "src/utils/related-notes";
 import { copy } from "site.config.yml";
@@ -40,7 +47,7 @@ export default function Notes({ allMdx }) {
       />
       <SkipLink href="#main">Skip to search/filter</SkipLink>
       <SkipLink href="#posts">Skip to posts</SkipLink>
-      <main sx={{ variant: "layout.container" }}>
+      <Layout>
         <Nav />
         <div id="main" sx={{ variant: "components.notes.container" }}>
           <header sx={{ variant: "components.notes.header" }}>
@@ -59,7 +66,7 @@ export default function Notes({ allMdx }) {
             ))}
           </div>
         </div>
-      </main>
+      </Layout>
     </>
   );
 }
