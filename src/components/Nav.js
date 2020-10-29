@@ -1,22 +1,29 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { useState } from "react";
 import Link from "next/link";
 import ColorModeSelect from "components/ColorModeSelect";
 import Breadcrumb from "./Breadcrumb";
+// import Menu from "./Menu";
 import * as Icons from "components/icons";
 
 // = = =
 
 export default function Nav({ curPath, showBc = true }) {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header sx={{ variant: "components.nav.container" }}>
       <div>
-        <button
-          sx={{ variant: "buttons.ham" }}
-          aria-label="Open navigation menu"
-        >
-          menu
-        </button>
+        <Icons.Burger
+          onClick={toggleMenu}
+          className={isMenuOpen ? "is-open" : ""}
+        />
+
         {showBc && (
           <nav sx={{ variant: "components.nav.bc" }} aria-label="Breadcrumb">
             <Link href="/" passHref>

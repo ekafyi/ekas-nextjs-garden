@@ -39,20 +39,8 @@ const pill = {
   // Note: Set lineHeight from parent/extending component.
 };
 
-const ham = {
-  fontWeight: 500,
-  fontSize: 0,
-  backgroundColor: "text",
-  color: "background",
-  px: [1, null, 2],
-  ml: -1,
-  transform: "rotate(-8deg)",
-  transition: "all .1s ease-in-out",
-};
-
 export default {
   pill,
-  ham,
   colorModeDark: { backgroundColor: "muted", color: "#ffe100" },
 
   // ! copied from other site
