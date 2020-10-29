@@ -19,7 +19,7 @@ const burger = {
   "&.is-open": { pl: 1 },
   ">*": {
     width: BURGER_SIZE,
-    height: "0.25rem",
+    height: 4,
     backgroundColor: "text",
     borderRadius: ".5rem",
     transition: "all 0.3s linear 0s",
@@ -31,10 +31,31 @@ const burger = {
   },
   "&.is-open>*": {
     "&:first-child": { transform: "rotate(45deg)" },
-    "&:nth-child(2)": { transform: "translateX(20px)", opacity: 0 },
+    "&:nth-child(2)": { transform: "translateX(100%)", opacity: 0 },
     "&:last-child": { transform: "rotate(-45deg)" },
   },
 };
+
+const menu = {
+  backgroundColor: "#060b1b",
+  top: 0,
+  bottom: 0,
+  left: 0,
+  position: "fixed",
+  zIndex: 8,
+  width: [null, null, 400],
+  px: [4],
+  py: [16],
+  transition: "all .1s ease-in-out",
+  opacity: 0,
+  transform: "translateX(-100%)",
+  "&.is-open": {
+    opacity: 1,
+    transform: "translateX(0)",
+  },
+};
+
+// = = =
 
 export default {
   container: {
@@ -53,7 +74,7 @@ export default {
     },
   },
   bc: {
-    ml: 4,
+    ml: 6,
     a: {
       fontWeight: "bold",
       display: "inline-block",
@@ -81,4 +102,5 @@ export default {
     },
   },
   burger,
+  menu,
 };
