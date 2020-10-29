@@ -6,8 +6,8 @@ config:
   baseUrl: https://ekas-nextjs-garden.vercel.app
 
   # Each social card type has its own size and dimensions requirements. TODO complete this.
-  socialImgOg: "/og.jpg"
-  socialImgTwitter: "/og.jpg"
+  socialImgOg: "/og.png"
+  socialImgTwitter: "/og.png"
   favicon: "/favicon.png"
   ogImgWidth: 1200
   ogImgHeight: 630

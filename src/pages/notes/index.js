@@ -36,7 +36,7 @@ export default function Notes({ allMdx }) {
       <SEO
         title="Eka’s Notes"
         description={NOTES_META_DESC}
-        socialImg="https://ekas-nextjs-garden-git-feat-social-image.ekafyi.vercel.app/api/social-img" // coba
+        // socialImg="https://ekas-nextjs-garden-git-feat-social-image.ekafyi.vercel.app/api/social-img" // coba
       />
       <SkipLink href="#main">Skip to search/filter</SkipLink>
       <SkipLink href="#posts">Skip to posts</SkipLink>

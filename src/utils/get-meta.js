@@ -24,3 +24,31 @@ export const getImg = (img, siteImg, baseUrl) => {
     ? `${baseUrl}${addInitialSlash(img)}`
     : `${baseUrl}${addInitialSlash(siteImg)}`;
 };
+
+export const buildOgUrl = ({ title, desc, path, tagText }) => {
+  const base = "/api/social-img";
+
+  const paramsObj = { title, desc, path, tagText };
+
+  const queryString = Object.keys(paramsObj)
+    .filter((key) => typeof paramsObj[key] !== "undefined")
+    .map(
+      (key) => encodeURIComponent(key) + "=" + encodeURIComponent(paramsObj[key]) // prettier-ignore
+    )
+    .join("&");
+
+  return `${base}${queryString ? `?${queryString}` : ""}`;
+};
+
+export const getOgDesc = (tags = []) => {
+  if (!tags) return "by **Eka**";
+  const tagsArr = tags
+    .filter((item) => !item.includes("TAG_"))
+    .map((item) => `#${item}`);
+  return `by **Eka** · ${tagsArr.join(" ")}`;
+};
+
+export const getOgTagDesc = (tagName) => {
+  if (!tagName) return false;
+  return `tag archive **#${tagName}**`;
+};

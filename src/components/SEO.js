@@ -10,8 +10,9 @@ import {
 export default function SEO({
   title = "",
   description = "",
-  socialImg = null,
   path = "",
+  socialImg = null, // Use same image for OG & Twitter. Refactor if needed.
+  socialImgBase = null,
 }) {
   return (
     <Head>
@@ -44,11 +45,11 @@ export default function SEO({
       <link rel="icon" href={config.favicon} />
       <meta
         property="og:image"
-        content={getImg(socialImg, config.socialImgOg, config.baseUrl)}
+        content={getImg(socialImg, config.socialImgOg, socialImgBase || config.baseUrl)} // prettier-ignore
       />
       <meta
         name="twitter:image"
-        content={getImg(socialImg, config.socialImgTwitter, config.baseUrl)}
+        content={getImg(socialImg, config.socialImgTwitter, socialImgBase || config.baseUrl)} // prettier-ignore
       />
 
       {/* Misc - OpenGraph */}

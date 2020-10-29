@@ -7,6 +7,7 @@ import { getAllTagsStaticPaths, getPostsByTag } from "src/utils/get-mdx";
 import { getTagRealName, getTagData } from "src/utils/get-taxonomy";
 import { getTagPageDesc } from "src/utils/get-seo-copy";
 import { tags as tagsConfig } from "taxonomies.yml";
+import { buildOgUrl, getOgTagDesc } from "src/utils/get-meta";
 
 export async function getStaticPaths() {
   const paths = getAllTagsStaticPaths("notes");
@@ -41,6 +42,10 @@ export default function Tag({ tag, tagData, allPosts }) {
         title={`#${tag} | Eka’s Notes`}
         description={tagData.desc || getTagPageDesc(tag)}
         path={router.asPath}
+        socialImg={buildOgUrl({
+          desc: getOgTagDesc(tag),
+          path: router.asPath,
+        })}
       />
       <SkipLink href="#posts">Skip to posts</SkipLink>
       <main sx={{ variant: "layout.container" }}>

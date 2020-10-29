@@ -1,17 +1,17 @@
 import { config } from "site.config.yml";
 import { dark } from "src/theme/colors"; // Don't use theme colorMode for ogImg
-import { getLineClamp, getRadialBg } from "src/utils/styles";
-
-const modBgImg1 =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%230e0c1c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%23121531' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23121c47' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%230e245e' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23002b77' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E\")";
-const modBgImg =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg fill-opacity='0.75'%3E%3Ccircle fill='%23192139' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2319274c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%23172d5f' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23143273' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23113888' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23103d9c' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E\")";
+import { getLineClamp, getRadialBg, getCirclesBg } from "src/utils/styles";
 
 const svgBg = {
-  backgroundImage: modBgImg,
+  backgroundImage: getCirclesBg({}),
   backgroundSize: "contain",
   backgroundPosition: "center",
 };
+
+const NAVY_BG = "hsla(220, 86%, 22%, 75%)";
+
+const ogImgSmallText = { background: NAVY_BG, p: 1, borderRadius: 4 };
+const ogImgCoffee = { color: dark.background, position: "absolute" };
 
 // Social/OpenGraph image
 const ogImg = {
@@ -21,12 +21,12 @@ const ogImg = {
     ...svgBg,
     background: getRadialBg({}),
     //
-
     width: config.ogImgWidth,
     height: config.ogImgHeight,
     color: dark.text,
     p: 10,
     position: "relative",
+    overflow: "hidden",
     "*": { letterSpacing: "0.01em" },
   },
   title: {
@@ -40,15 +40,58 @@ const ogImg = {
     ...getLineClamp(3),
   },
   desc: {
+    ogImgSmallText,
     fontSize: 32,
     wordSpacing: "0.02em",
+    display: "inline-block",
+    lineHeight: 1.375,
+    maxWidth: "75%",
+    strong: { fontSize: "1.125em" },
+    //// enable if using truncate
+    // overflow: "hidden",
+    // textOverflow: "ellipsis",
+    // whiteSpace: "nowrap",
   },
   url: {
-    fontSize: 24,
+    ogImgSmallText,
+    fontSize: "20px",
+    letterSpacing: "0.02em",
     position: "absolute",
     bottom: 16,
-    fontWeight: "medium",
-    letterSpacing: "0.02em",
+    svg: {
+      display: "inline-block",
+      verticalAlign: "baseline",
+      mr: 1,
+    },
+  },
+  decor: {
+    ...ogImgCoffee,
+    bottom: -2,
+    right: 6,
+  },
+  cupText: {
+    display: "flex",
+    position: "absolute",
+    zIndex: 2,
+    left: "50%",
+    top: 24,
+    transform: "translateX(-50%)",
+    fontSize: "42px",
+    ">*": {
+      letterSpacing: "-1.5px",
+      display: "inline-block",
+    },
+    ">*:first-child": { transform: "skewX(4deg)", mr: "1px" },
+    ">*:last-child": {
+      transform: "skewX(-4deg)",
+      letterSpacing: "-1.75px",
+    },
+  },
+  homeGraphics: {
+    ...ogImgCoffee,
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
