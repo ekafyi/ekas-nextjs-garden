@@ -56,11 +56,6 @@ export default function Nav({ curPath, showBc = true }) {
   return (
     <header sx={{ variant: "components.nav.container" }}>
       <div>
-        <Icons.Burger
-          onClick={toggleMenu}
-          className={showMenu ? "is-open" : ""}
-        />
-        {showMenu && <Menu className={openCss && showMenu ? "is-open" : ""} />}
         {showBc && (
           <nav sx={{ variant: "components.nav.bc" }} aria-label="Breadcrumb">
             <Link href="/" passHref>
@@ -71,14 +66,14 @@ export default function Nav({ curPath, showBc = true }) {
         )}
       </div>
       <div sx={{ variant: "components.nav.icons" }}>
-        <a
+        {/* <a
           href="https://github.com/ekafyi"
           rel="external"
           nofollow="true"
           aria-label="eka on Github"
         >
           <Icons.Gh />
-        </a>
+        </a> */}
         {/* <a
           href="https://dev.to/ekafyi"
           rel="external"
@@ -88,9 +83,17 @@ export default function Nav({ curPath, showBc = true }) {
           <Icons.Dev />
         </a> */}
         <ColorModeSelect
+          className="top-icon-btn"
           darkElement={<Icons.Moon />}
           lightElement={<Icons.Moon />}
         />
+
+        {/* left or right? */}
+        <Icons.Burger
+          onClick={toggleMenu}
+          className={showMenu ? "is-open" : ""}
+        />
+        {showMenu && <Menu className={openCss && showMenu ? "is-open" : ""} />}
       </div>
     </header>
   );
