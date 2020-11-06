@@ -8,7 +8,7 @@ tags:
 
 **Problem:** All of a sudden I cannot merge from a branch (let’s call it `my-working-branch`) to the current branch.
 
-Both `git merge my-working-branch` and `git pull origin my-working-branch` (the working branch has been pushed) returns `Already up to date.`.
+Both `git merge my-working-branch` and `git pull origin my-working-branch` (the working branch has been pushed) returns `Already up to date.`. Creating a new PR indicates the branches are identical.
 
 The files in both branches _are_ different, both on local and remote as seen in the web-based Github repo.
 
@@ -18,7 +18,10 @@ Changed files are staged into the current branch. You have to add and commit the
 
 WTF. 🤷🏽‍♀️
 
-No time/energy to investigate the cause further, just taking a note here.
+No time/energy to investigate the cause/explanation. Additional background info:
+
+- Never happened before to me; once fixed has not happened again so far.
+- Happened once to my colleague working on the same codebase.
 
 ⚠️ Warning: `git checkout` overrides uncommitted changes so make sure to commit/stash changes you want to retain.
 
