@@ -7,7 +7,6 @@ const burger = {
   overflow: "hidden",
   width: BURGER_SIZE,
   height: BURGER_SIZE,
-  // p: ".125rem",
   zIndex: 9,
   display: "flex",
   flexDirection: "column",
@@ -17,9 +16,6 @@ const burger = {
   "&.is-open": {
     backgroundColor: "menuBg",
     pl: 1,
-    // position: "fixed",
-    // top: 2,
-    // right: [1, null, "auto"],
     transform: "scale(1.25)",
   },
   ">*": {
@@ -29,7 +25,7 @@ const burger = {
     borderRadius: ".5rem",
     transition: "all 0.3s linear 0s",
     position: "relative",
-    transformOrigin: "0px center",
+    transformOrigin: "0.5px center",
     "&:first-child": { transform: "rotate(0deg)" },
     "&:nth-child(2)": { transform: "translateX(0px)", opacity: 1 },
     "&:last-child": { transform: "rotate(0deg)" },
@@ -38,7 +34,7 @@ const burger = {
     "&:first-child": { transform: "rotate(45deg)" },
     "&:nth-child(2)": { transform: "translateX(100%)", opacity: 0 },
     "&:last-child": { transform: "rotate(-45deg)" },
-    backgroundColor: "#000", // TODO decide design
+    backgroundColor: "#000",
   },
 };
 
@@ -72,8 +68,6 @@ export default {
       opacity: 0.75,
     },
   },
-  icons: {
-    ".top-icon-btn": { mr: 4, py: 1, px: 2 },
-  },
+  iconButton: { mr: [2, 4], py: 1, px: 2 },
   burger,
 };

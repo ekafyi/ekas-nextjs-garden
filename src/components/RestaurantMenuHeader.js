@@ -3,7 +3,7 @@ import { jsx } from "theme-ui";
 import { CircleText } from "src/components/graphics";
 
 const TITLE_SX = {
-  fontSize: [16, 19, 20],
+  fontSize: [16, 19, null, 20],
   fontWeight: 800,
   color: "transparent",
   WebkitTextStroke: "2px #263238",

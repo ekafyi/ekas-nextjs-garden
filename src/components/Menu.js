@@ -7,13 +7,22 @@ import {
   MENU_MAINS,
   MENU_STARTERS,
   MENU_SIDES,
-  MENU_DRINKS,
   MENU_INDO,
   MENU_COFFEE,
   SPICY_LEGEND,
+  UPDATE_TEXT,
 } from "content/meta/menu-copy";
 
 // = = =
+
+const COFFEE_BASE_SX = {
+  width: 36,
+  height: 36,
+  borderRadius: "50%",
+  mt: 1,
+  mx: "auto",
+  boxShadow: "inset 0 0 8px rgba(0,0,0,0.33)",
+};
 
 // = = =
 
@@ -42,33 +51,54 @@ function Footnotes() {
         <ChiliIcon />
       </dt>
       <dd>{SPICY_LEGEND}</dd>
+      <p sx={{ mt: 4 }}>{UPDATE_TEXT}</p>
     </div>
   );
 }
 
-function MenuLink({ item }) {
-  if (item.href?.startsWith("/"))
-    return (
-      <Link href={item.href} passHref>
-        <MenuLinkContent item={item} />
-      </Link>
-    );
-  if (item.href?.startsWith("http"))
-    return <MenuLinkContent item={item} isExternal />;
-  return false;
+function CoffeeList() {
+  return (
+    <ul sx={{ variant: "components.menu.group.coffee" }}>
+      <li>
+        <FoodLink item={MENU_COFFEE[0]} />
+        <div sx={{ ...COFFEE_BASE_SX, background: "#503527" }} />
+      </li>
+      <li>
+        <FoodLink item={MENU_COFFEE[1]} />
+        <div sx={{ ...COFFEE_BASE_SX, background: "#cea673" }} />
+      </li>
+      <li>
+        <FoodLink item={MENU_COFFEE[2]} />
+        <div sx={{ ...COFFEE_BASE_SX, background: "#795548" }} />
+      </li>
+      <li>
+        <FoodLink item={MENU_COFFEE[3]} />
+        <div
+          sx={{
+            ...COFFEE_BASE_SX,
+            backgroundImage:
+              "linear-gradient(180deg, hsl(33.06,56.32%,82.94%) 21%, hsla(24.66,83.91%,17.06%,0.69) 43%), radial-gradient(circle at 24% 110%, hsl(35.79,78.08%,14.31%) 19%, hsla(25.86,70.73%,16.08%,0.4) 52%)",
+          }}
+        />
+      </li>
+      <li>
+        <FoodLink item={MENU_COFFEE[4]} />
+        <div sx={{ ...COFFEE_BASE_SX, background: "#d09221" }} />
+      </li>
+    </ul>
+  );
 }
 
-const MenuLinkContent = forwardRef(({ item, isExternal }, ref) => {
+const SiteLinkContent = forwardRef(({ item, isExternal }, ref) => {
   return (
     <a
       sx={{
         variant: "components.menu.link",
-        // TODO re-enable when done
-        // pointerEvents: item.isOut ? "none" : "initial",
+        pointerEvents: item.isNa ? "none" : "initial",
       }}
       href={item.href}
       rel={isExternal ? "external" : undefined}
-      aria-label={item.isOut ? `${item.name} (not available)` : undefined}
+      aria-label={item.isNa ? `${item.name} (not available)` : undefined}
       ref={ref}
     >
       <span>
@@ -76,54 +106,89 @@ const MenuLinkContent = forwardRef(({ item, isExternal }, ref) => {
         {item.isSpicy && (
           <ChiliIcon sx={{ variant: "components.menu.legendIcon" }} />
         )}
-        {/* TODO enable when done */}
-        {/* {item.isOut && (
-          <span sx={{ variant: "components.menu.out" }}>not available</span>
-        )} */}
+        {item.isNa && (
+          <span sx={{ variant: "components.menu.out" }} className="na">
+            not available
+          </span>
+        )}
       </span>
-      {item.num && <small aria-hidden="true">{item.num}</small>}
+      {item.num && (
+        <small className="num" aria-hidden="true">
+          {item.num}
+        </small>
+      )}
     </a>
   );
 });
 
-function NotMenuLink({ item }) {
-  return (
-    <>
-      <a
-        sx={{ variant: "components.menu.link" }}
-        href={item.href}
-        rel="external nofollow noreferrer noopener"
-        target="_blank"
-      >
-        {item.name}
-        {item.isSpicy && (
-          <ChiliIcon sx={{ variant: "components.menu.legendIcon" }} />
-        )}
-      </a>
-      {item.imgSrc && <img src={item.imgSrc} width={96} height={96} alt="" />}
-    </>
-  );
-}
-
-function MenuGroup({ title = "", data, caption, children, ...props }) {
+function MenuGroup({ title = "", caption, children, ...props }) {
   return (
     <article {...props}>
       <h2 sx={{ variant: "components.menu.group.title" }}>{title}</h2>
-      {caption && (
-        <p sx={{ variant: "components.menu.group.caption" }}>{caption}</p>
-      )}
       {children || ""}
-      {data && (
-        <ul sx={{ variant: "components.menu.group.body" }}>
-          {data.map((item) => (
-            <li className="relative" key={item.name}>
-              <MenuLink item={item} />
-              {item.desc && <p className="desc">{item.desc}</p>}
-            </li>
-          ))}
-        </ul>
-      )}
+      {caption && <p sx={{ variant: "components.menu.caption" }}>{caption}</p>}
     </article>
+  );
+}
+
+function SiteMenuList({ data, ...props }) {
+  if (data)
+    return (
+      <ul sx={{ variant: "components.menu.group.mainNav" }} {...props}>
+        {data.map((item) => (
+          <li key={item.name}>
+            <SiteLink item={item} />
+            {item.desc && <p className="desc">{item.desc}</p>}
+          </li>
+        ))}
+      </ul>
+    );
+  return false;
+}
+
+function SiteLink({ item }) {
+  if (item.href?.startsWith("/"))
+    return (
+      <Link href={item.href} passHref>
+        <SiteLinkContent item={item} />
+      </Link>
+    );
+  if (item.href?.startsWith("http"))
+    return <SiteLinkContent item={item} isExternal />;
+  return false;
+}
+
+function FoodMenuList({ data, ...props }) {
+  if (data)
+    return (
+      <ul sx={{ variant: "components.menu.group.food" }} {...props}>
+        {data.map((item) => (
+          <li key={item.name}>
+            <FoodLink item={item} />
+            {item.imgSrc && (
+              <img src={item.imgSrc} width={96} height={96} alt="" />
+            )}
+            {item.desc && <p className="desc">{item.desc}</p>}
+          </li>
+        ))}
+      </ul>
+    );
+  return false;
+}
+
+function FoodLink({ item }) {
+  return (
+    <a
+      sx={{ variant: "components.menu.link" }}
+      href={item.href}
+      rel="external nofollow noreferrer noopener"
+      target="_blank"
+    >
+      {item.name}
+      {item.isSpicy && (
+        <ChiliIcon sx={{ variant: "components.menu.legendIcon" }} />
+      )}
+    </a>
   );
 }
 
@@ -136,69 +201,37 @@ export default function Menu({ closeEl, ...props }) {
       {...props}
     >
       <RestaurantMenuHeader />
+
       <div sx={{ variant: "components.menu.innerWrapper" }}>
+        <MenuGroup title="mains" sx={{ gridRow: [null, "1/3"] }}>
+          <SiteMenuList data={MENU_MAINS} />
+        </MenuGroup>
+
+        <MenuGroup title="starters" sx={{ gridRow: [null, null, null, "3/4"] }}>
+          <SiteMenuList data={MENU_STARTERS} />
+        </MenuGroup>
+
+        <MenuGroup title="sides">
+          <SiteMenuList data={MENU_SIDES} />
+        </MenuGroup>
+
         <MenuGroup
-          title="mains"
-          data={MENU_MAINS}
-          sx={{
-            gridColumn: [null, "1/3", "unset"],
-            gridRow: [null, null, "1/3"],
-          }}
-        />
-        {/*  */}
-        <MenuGroup
-          title="starters"
-          data={MENU_STARTERS}
-          sx={{ gridRow: [null, null, "3/4"] }}
-        />
-        {/*  */}
-        <MenuGroup title="sides" data={MENU_SIDES} />
-        {/*  */}
-        <MenuGroup
-          title="specials 🇮🇩"
-          sx={{ gridRow: [null, null, "2/4"] }}
-          // caption="seasonal content etc"
+          title="indonesian delights 🇮🇩"
+          sx={{ gridColumn: [null, "1/-1", null, "unset"], gridRow: [null, null, null, "2/4"] }} // prettier-ignore
         >
-          <ul sx={{ variant: "components.menu.group.bodyWithImage" }}>
-            {MENU_INDO.map((item) => (
-              <li className="relative" key={item.name}>
-                <NotMenuLink item={item} />
-              </li>
-            ))}
-          </ul>
+          <FoodMenuList data={MENU_INDO} />
         </MenuGroup>
-        {/*  */}
-        <MenuGroup title="cocktails" sx={{ gridColumn: [null, null, "1/3"] }}>
-          <ul sx={{ variant: "components.menu.group.bodyWithImage" }}>
-            {MENU_DRINKS.map((item) => (
-              <li className="relative" key={item.name}>
-                <NotMenuLink item={item} />
-              </li>
-            ))}
-          </ul>
-        </MenuGroup>
-        {/*  */}
+
         <MenuGroup
           title="coffee"
-          sx={{
-            gridColumn: [null, "1/3", "3/4"],
-            gridRow: [null, null, "1/5"],
-            li: { flex: "1 0" },
-            img: { width: "3rem", height: "3rem" },
-          }}
+          sx={{ gridColumn: [null, "1/-1", null, "3/4"], gridRow: [null, null, null, "1/4"] }} // prettier-ignore
         >
-          <ul sx={{ variant: "components.menu.group.bodyWithImage" }}>
-            {MENU_COFFEE.map((item) => (
-              <li className="relative" key={item.name}>
-                <NotMenuLink item={item} />
-              </li>
-            ))}
-          </ul>
+          <CoffeeList />
         </MenuGroup>
       </div>
+
       <EmailLabel />
       <Footnotes />
-      {/*  */}
       {closeEl || null}
     </nav>
   );

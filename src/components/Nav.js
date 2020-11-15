@@ -40,16 +40,21 @@ export default function Nav({ curPath, showBc = true }) {
     if (showMenu) {
       // Disable scroll while menu is open.
       document.body.style.overflow = "hidden";
+      // iOS workaround
+      document.body.style.position = "fixed";
+      document.body.style.left = 0;
+      document.body.style.right = 0;
 
       // Enable closing menu by clicking outside area _or_ pressing Esc key.
-      document.body.addEventListener("click", close);
+      // TODO add overlay and add click listener there
+      // document.body.addEventListener("click", close);
       window.addEventListener("keyup", closeOnEsc);
       //
     } else document.body.style = null;
 
     return () => {
       // Clean up listeners.
-      document.body.removeEventListener("click", close);
+      // document.body.removeEventListener("click", close);
       window.removeEventListener("keyup", closeOnEsc);
     };
   }, [showMenu]);
@@ -66,7 +71,7 @@ export default function Nav({ curPath, showBc = true }) {
           </nav>
         )}
       </div>
-      <div sx={{ variant: "components.nav.icons" }}>
+      <div>
         {/* <a
           href="https://github.com/ekafyi"
           rel="external"
@@ -76,7 +81,7 @@ export default function Nav({ curPath, showBc = true }) {
           <Icons.Gh />
         </a> */}
         <ColorModeSelect
-          className="top-icon-btn"
+          sx={{ variant: "components.nav.iconButton" }}
           darkElement={<Moon />}
           lightElement={<Moon />}
         />
@@ -92,13 +97,18 @@ export default function Nav({ curPath, showBc = true }) {
               sx={{
                 variant: "links.skip",
                 transform: "scale(0)",
-                position: "relative",
+                position: "absolute",
+                top: "2rem",
+                left: "50%",
                 fontSize: [2, 3],
                 mb: -8,
+                "&:focus": {
+                  transform: "translateY(0%) translateX(-50%) scale(1)",
+                },
               }}
               onClick={close}
             >
-              click here / Esc key / anywhere outside the box to close
+              click here / Esc / outside the menu to close
             </button>
           }
           className={openCss && showMenu ? "is-open" : ""}

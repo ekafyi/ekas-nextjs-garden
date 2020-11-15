@@ -3,15 +3,15 @@ export const MENU_MAINS = [
     name: "posts",
     href: "/posts",
     desc: "web development & programming articles",
-    num: 4,
-    isOut: true,
+    num: 8,
+    isNa: true,
   },
   {
     name: "notes",
     href: "/notes",
     desc: "Exercitation adipisicing et qui ipsum sunt dolor qui cupidatat deserunt.", // prettier-ignore
     isSpicy: true,
-    num: 4,
+    num: 25,
   },
   {
     name: "talks",
@@ -23,8 +23,8 @@ export const MENU_MAINS = [
     name: "made",
     href: "/made",
     desc: "portfolio of projects & miscellany",
-    num: 4,
-    isOut: true,
+    num: 1,
+    isNa: true,
   },
 ];
 
@@ -32,16 +32,16 @@ export const MENU_STARTERS = [
   {
     name: "eka who?",
     href: "/about",
-    desc: "about me, what I do, where to find me",
+    desc: "about me, what I do, my favourite Beatle, etc",
     num: 42,
-    isOut: true,
+    isNa: true,
   },
   {
     name: "meta",
     href: "/meta",
     desc: "about this site, privacy, credits",
     num: 13,
-    isOut: true,
+    isNa: true,
   },
 ];
 
@@ -51,46 +51,32 @@ export const MENU_SIDES = [
     href: "https://microblog.eka.fyi",
     isSpicy: true,
     num: 1,
-    isOut: true,
+    isNa: true,
   },
   {
     name: "bookshelf",
     href: "https://nowreading.eka.fyi",
     num: 1,
-    isOut: true,
+    isNa: true,
   },
   {
     name: "playlists",
     href: "https://nowplaying.eka.fyi",
     isSpicy: true,
     num: 1,
-    isOut: true,
+    isNa: true,
   },
-  { name: "music", href: "https://music.eka.fyi", num: 1, isOut: true },
-];
-
-export const MENU_DRINKS = [
-  {
-    name: "swedish coffee",
-    href: "https://www.thecocktaildb.com/drink/15521",
-    imgSrc:
-      "https://www.thecocktaildb.com/images/media/drink/ywtrvt1441246783.jpg/preview",
-  },
-  {
-    name: "bloody maria",
-    href: "https://www.thecocktaildb.com/drink/11112",
-    imgSrc:
-      "https://www.thecocktaildb.com/images/media/drink/yz0j6z1504389461.jpg/preview",
-  },
-  {
-    name: "london town",
-    href: "https://www.thecocktaildb.com/drink/11662",
-    imgSrc:
-      "https://www.thecocktaildb.com/images/media/drink/rpsrqv1468923507.jpg/preview",
-  },
+  { name: "music", href: "https://music.eka.fyi", num: 1, isNa: true },
 ];
 
 export const MENU_INDO = [
+  {
+    name: "gudeg",
+    href: "https://en.wikipedia.org/wiki/Gudeg",
+    // desc: "yogyakarta’s most popular food",
+    imgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Nasi_Gudeg.jpg/320px-Nasi_Gudeg.jpg",
+  },
   {
     name: "nasi goreng",
     isSpicy: true,
@@ -104,46 +90,34 @@ export const MENU_INDO = [
     imgSrc:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Soto_ayam.JPG/320px-Soto_ayam.JPG",
   },
-  {
-    name: "gudeg",
-    href: "https://en.wikipedia.org/wiki/Gudeg",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Nasi_Gudeg.jpg/320px-Nasi_Gudeg.jpg",
-  },
 ];
 
 export const MENU_COFFEE = [
   {
     name: "americano",
     href: "https://en.wikipedia.org/wiki/Caff%C3%A8_Americano",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg/160px-Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg",
   },
   {
     name: "latte",
-    href: "https://en.wikipedia.org/wiki/Caff%C3%A8_Americano",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg/160px-Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg",
+    href: "https://en.wikipedia.org/wiki/Latte",
   },
   {
     name: "mocha",
-    href: "https://en.wikipedia.org/wiki/Caff%C3%A8_Americano",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg/160px-Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg",
+    // href: "https://www.bbcgoodfood.com/recipes/mocha",
+    href: "https://bakingmischief.com/homemade-mocha/",
   },
   {
-    name: "frappe",
-    href: "https://en.wikipedia.org/wiki/Caff%C3%A8_Americano",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg/160px-Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg",
+    name: "irish coffee",
+    href: "https://www.bbcgoodfood.com/recipes/irish-coffee",
   },
   {
     name: "pumpkin spice latte",
-    href: "https://en.wikipedia.org/wiki/Caff%C3%A8_Americano",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg/160px-Hokitika_Cheese_and_Deli%2C_Hokitika_%283526706594%29.jpg",
+    href:
+      "https://www.inspiredtaste.net/8419/pumpkin-spice-latte-at-home-recipe/",
   },
 ];
 
 export const SPICY_LEGEND =
   "may contain strong language, commentary on hot-button issues, and/or spicy food.";
+
+export const UPDATE_TEXT = "New menu every week. Come back for more!";
