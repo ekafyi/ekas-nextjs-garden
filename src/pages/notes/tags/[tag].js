@@ -65,7 +65,7 @@ export default function Tag({ tag, tagData, allPosts }) {
           <div sx={{ variant: "components.notes.side" }}>
             <div sx={{ variant: "components.notes.sideMeta" }}>
               {tagData && <p>{tagData.desc}</p>}
-              <strong sx={{ color: "mutedFg", fontWeight: 500 }}>
+              <strong sx={{ fontWeight: 500 }}>
                 <span aria-hidden="true">▬&nbsp; </span>
                 {countText}
               </strong>
