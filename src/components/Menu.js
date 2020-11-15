@@ -1,147 +1,205 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { forwardRef } from "react";
 import Link from "next/link";
-// import { getLhByFontIndex } from "src/utils/calc-type";
-import { CircleText } from "src/components/graphics";
+import RestaurantMenuHeader from "src/components/RestaurantMenuHeader";
+import {
+  MENU_MAINS,
+  MENU_STARTERS,
+  MENU_SIDES,
+  MENU_DRINKS,
+  MENU_INDO,
+  MENU_COFFEE,
+  SPICY_LEGEND,
+} from "content/meta/menu-copy";
 
-/**
- * TODO
- *
- * - link
- * - legends (spicy & unrelated)
- * - out (belum ada)
- *
- * tentative ideas:
- * https://id.wikipedia.org/wiki/Daftar_masakan_Indonesia
- * https://www.thecocktaildb.com/api.php
- */
+// = = =
 
-const MENU_MAINS = [
-  {
-    name: "posts",
-    href: "/",
-    desc: "In officia deserunt deserunt reprehenderit.",
-  },
-  {
-    name: "notes",
-    href: "/",
-    desc: "Pariatur in ad non sint ad esse in sunt officia ullamco.",
-    isSpicy: true,
-  },
-  {
-    name: "talks",
-    href: "/",
-    desc:
-      "Exercitation adipisicing et qui ipsum sunt dolor qui cupidatat deserunt.",
-  },
-];
-const MENU_STARTERS = [
-  {
-    name: "eka who?",
-    href: "/",
-    desc: "Sit sint et ex do magna elit enim nostrud.",
-  },
-  {
-    name: "i made these",
-    href: "/",
-    desc: "Laboris occaecat adipisicing nisi enim excepteur ea incididunt qui.",
-  },
-];
-const MENU_SIDES = [
-  { name: "microblog", isSpicy: true },
-  { name: "bookshelf" },
-  { name: "playlists" },
-];
-const MENU_DRINKS = [
-  { name: "margarita", desc: "", href: "https://blah.com" },
-  { name: "cranberry punch", desc: "", href: "https://blah.com" },
-];
-const MENU_INDO = [
-  {
-    name: "soto ayam",
-    desc: "Dolor reprehenderit enim dolor consectetur reprehenderit irure.",
-    href: "https://id.wikipedia.org/wiki/Soto_ayam",
-  },
-  {
-    name: "tahu gejrot",
-    desc: "Cillum anim qui commodo minim ut ipsum.",
-    href: "https://id.wikipedia.org/wiki/Tahu_gejrot",
-  },
-];
+// = = =
 
-function MenuGroup({ title = "", data = [], isJoke = false, ...props }) {
+function ChiliIcon(props) {
   return (
-    <div {...props}>
-      <h2 sx={{ variant: "components.nav.menuGroup.title" }}>{title}</h2>
-      <ul sx={{ variant: "components.nav.menuGroup.body" }}>
-        {data.map((item) => (
-          <li>
-            <Link href="/notes" passHref>
-              <a>{item.name}</a>
-            </Link>
-            {item.desc && <p className="link__desc">{item.desc}</p>}
-          </li>
-        ))}
-      </ul>
+    <span role="img" aria-label="hot pepper" {...props}>
+      🌶
+    </span>
+  );
+}
+
+function EmailLabel() {
+  return (
+    <p sx={{ variant: "components.menu.contact" }}>
+      open 24 hrs
+      <br />
+      <strong>me@eka.fyi</strong>
+    </p>
+  );
+}
+
+function Footnotes() {
+  return (
+    <div sx={{ variant: "components.menu.footnotes" }}>
+      <dt>
+        <ChiliIcon />
+      </dt>
+      <dd>{SPICY_LEGEND}</dd>
     </div>
   );
 }
 
-const SMALLMENU_SX = { a: { fontSize: 2 } };
+function MenuLink({ item }) {
+  if (item.href?.startsWith("/"))
+    return (
+      <Link href={item.href} passHref>
+        <MenuLinkContent item={item} />
+      </Link>
+    );
+  if (item.href?.startsWith("http"))
+    return <MenuLinkContent item={item} isExternal />;
+  return false;
+}
 
-const FOO_SX = {
-  fontSize: [16, 20],
-  // lineHeight: [getLhByFontIndex(18)],
-  fontWeight: 800,
-  color: "transparent",
-  WebkitTextStroke: "2px #263238",
-  textShadow: "0.05em 0.075em hsla(186, 100%, 55%, 33%)",
-  display: "block",
-  textAlign: "center",
-  mt: -4,
-  ".dot": { color: "menuFg" },
-};
-const BAR_SX = {
-  fontSize: 0,
-  textAlign: "center",
-  backgroundColor: ["menuBg", "transparent"],
-  mt: [1, 0],
-};
+const MenuLinkContent = forwardRef(({ item, isExternal }, ref) => {
+  return (
+    <a
+      sx={{
+        variant: "components.menu.link",
+        // TODO re-enable when done
+        // pointerEvents: item.isOut ? "none" : "initial",
+      }}
+      href={item.href}
+      rel={isExternal ? "external" : undefined}
+      aria-label={item.isOut ? `${item.name} (not available)` : undefined}
+      ref={ref}
+    >
+      <span>
+        {item.name}
+        {item.isSpicy && (
+          <ChiliIcon sx={{ variant: "components.menu.legendIcon" }} />
+        )}
+        {/* TODO enable when done */}
+        {/* {item.isOut && (
+          <span sx={{ variant: "components.menu.out" }}>not available</span>
+        )} */}
+      </span>
+      {item.num && <small aria-hidden="true">{item.num}</small>}
+    </a>
+  );
+});
 
-export default function Menu({ ...props }) {
+function NotMenuLink({ item }) {
+  return (
+    <>
+      <a
+        sx={{ variant: "components.menu.link" }}
+        href={item.href}
+        rel="external nofollow noreferrer noopener"
+        target="_blank"
+      >
+        {item.name}
+        {item.isSpicy && (
+          <ChiliIcon sx={{ variant: "components.menu.legendIcon" }} />
+        )}
+      </a>
+      {item.imgSrc && <img src={item.imgSrc} width={96} height={96} alt="" />}
+    </>
+  );
+}
+
+function MenuGroup({ title = "", data, caption, children, ...props }) {
+  return (
+    <article {...props}>
+      <h2 sx={{ variant: "components.menu.group.title" }}>{title}</h2>
+      {caption && (
+        <p sx={{ variant: "components.menu.group.caption" }}>{caption}</p>
+      )}
+      {children || ""}
+      {data && (
+        <ul sx={{ variant: "components.menu.group.body" }}>
+          {data.map((item) => (
+            <li className="relative" key={item.name}>
+              <MenuLink item={item} />
+              {item.desc && <p className="desc">{item.desc}</p>}
+            </li>
+          ))}
+        </ul>
+      )}
+    </article>
+  );
+}
+
+export default function Menu({ closeEl, ...props }) {
   return (
     <nav
       aria-label="Site navigation"
       aria-live="assertive"
-      sx={{ variant: "components.nav.menu" }}
+      sx={{ variant: "components.menu.outerWrapper" }}
       {...props}
     >
-      <div sx={{ height: "2rem", mt: -6 }}>
-        <CircleText
-          size={120}
-          text="menu"
+      <RestaurantMenuHeader />
+      <div sx={{ variant: "components.menu.innerWrapper" }}>
+        <MenuGroup
+          title="mains"
+          data={MENU_MAINS}
           sx={{
-            mx: "auto",
-            letterSpacing: "0.25em",
-            transform: "rotate(61deg)",
+            gridColumn: [null, "1/3", "unset"],
+            gridRow: [null, null, "1/3"],
           }}
         />
+        {/*  */}
+        <MenuGroup
+          title="starters"
+          data={MENU_STARTERS}
+          sx={{ gridRow: [null, null, "3/4"] }}
+        />
+        {/*  */}
+        <MenuGroup title="sides" data={MENU_SIDES} />
+        {/*  */}
+        <MenuGroup
+          title="specials 🇮🇩"
+          sx={{ gridRow: [null, null, "2/4"] }}
+          // caption="seasonal content etc"
+        >
+          <ul sx={{ variant: "components.menu.group.bodyWithImage" }}>
+            {MENU_INDO.map((item) => (
+              <li className="relative" key={item.name}>
+                <NotMenuLink item={item} />
+              </li>
+            ))}
+          </ul>
+        </MenuGroup>
+        {/*  */}
+        <MenuGroup title="cocktails" sx={{ gridColumn: [null, null, "1/3"] }}>
+          <ul sx={{ variant: "components.menu.group.bodyWithImage" }}>
+            {MENU_DRINKS.map((item) => (
+              <li className="relative" key={item.name}>
+                <NotMenuLink item={item} />
+              </li>
+            ))}
+          </ul>
+        </MenuGroup>
+        {/*  */}
+        <MenuGroup
+          title="coffee"
+          sx={{
+            gridColumn: [null, "1/3", "3/4"],
+            gridRow: [null, null, "1/5"],
+            li: { flex: "1 0" },
+            img: { width: "3rem", height: "3rem" },
+          }}
+        >
+          <ul sx={{ variant: "components.menu.group.bodyWithImage" }}>
+            {MENU_COFFEE.map((item) => (
+              <li className="relative" key={item.name}>
+                <NotMenuLink item={item} />
+              </li>
+            ))}
+          </ul>
+        </MenuGroup>
       </div>
-      <strong sx={FOO_SX}>
-        eka<span className="dot">.</span>fyi
-      </strong>
-      <em sx={BAR_SX}>
-        Eka’s personal site &amp; digital garden
-        <br />
-        est. 2020
-      </em>
-      <div sx={{ variant: "components.nav.menuInner" }}>
-        <MenuGroup title="mains" data={MENU_MAINS} />
-        <MenuGroup title="starters" data={MENU_STARTERS} />
-        <MenuGroup title="sides" data={MENU_SIDES} sx={SMALLMENU_SX} />
-        <MenuGroup title="indonesian" data={MENU_INDO} sx={SMALLMENU_SX} />
-        <MenuGroup title="drinks" data={MENU_DRINKS} sx={SMALLMENU_SX} />
-      </div>
+      <EmailLabel />
+      <Footnotes />
+      {/*  */}
+      {closeEl || null}
     </nav>
   );
 }

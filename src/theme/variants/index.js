@@ -8,6 +8,7 @@ import code from "./code";
 import footer from "./footer";
 import header from "./header";
 import mdx from "./mdx";
+import menu from "./menu";
 import nav from "./nav";
 import note from "./note";
 import notes from "./notes";
@@ -31,6 +32,7 @@ export default {
     footer,
     header,
     mdx,
+    menu,
     nav,
     note,
     notes,

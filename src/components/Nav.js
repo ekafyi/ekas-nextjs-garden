@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import ColorModeSelect from "components/ColorModeSelect";
+// import { SkipLink } from "components";
 import Breadcrumb from "./Breadcrumb";
 import Menu from "./Menu";
-import * as Icons from "components/icons";
+import { Moon, Burger } from "src/components/icons";
 
 // = = =
 
@@ -74,27 +75,35 @@ export default function Nav({ curPath, showBc = true }) {
         >
           <Icons.Gh />
         </a> */}
-        {/* <a
-          href="https://dev.to/ekafyi"
-          rel="external"
-          nofollow="true"
-          aria-label="eka on dev.to"
-        >
-          <Icons.Dev />
-        </a> */}
         <ColorModeSelect
           className="top-icon-btn"
-          darkElement={<Icons.Moon />}
-          lightElement={<Icons.Moon />}
+          darkElement={<Moon />}
+          lightElement={<Moon />}
         />
 
         {/* left or right? */}
-        <Icons.Burger
-          onClick={toggleMenu}
-          className={showMenu ? "is-open" : ""}
-        />
-        {showMenu && <Menu className={openCss && showMenu ? "is-open" : ""} />}
+        <Burger onClick={toggleMenu} className={showMenu ? "is-open" : ""} />
       </div>
+
+      {showMenu && (
+        <Menu
+          closeEl={
+            <button
+              sx={{
+                variant: "links.skip",
+                transform: "scale(0)",
+                position: "relative",
+                fontSize: [2, 3],
+                mb: -8,
+              }}
+              onClick={close}
+            >
+              click here / Esc key / anywhere outside the box to close
+            </button>
+          }
+          className={openCss && showMenu ? "is-open" : ""}
+        />
+      )}
     </header>
   );
 }
