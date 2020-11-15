@@ -83,14 +83,14 @@ export default function SearchFilterNotes({ allMdx, handleFilter }) {
             mb: 4,
             borderRadius: "2rem",
             border: "2px solid",
-            borderColor: "mutedFg",
             backgroundColor: "background",
             "&:focus,&:hover": {
               borderStyle: "solid",
             },
             "&:focus": {
-              borderColor: "text",
               backgroundColor: "muted",
+              outline: "none",
+              boxShadow: "2px 2px 2px 2px currentColor",
             },
             "::placeholder": {
               color: "mutedFg",

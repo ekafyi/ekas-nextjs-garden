@@ -17,16 +17,14 @@ const pill = {
   fontSize: 0,
   fontWeight: "medium",
   borderRadius: 8,
-  backgroundColor: "background",
+  backgroundColor: "muted",
   whiteSpace: "nowrap",
   display: "inline-flex",
   px: 3,
   cursor: "pointer",
-  py: "calc(0.5rem - 1px)", // keep vertical rhythm
+  py: 2,
   mr: 1,
   mb: 1,
-  border: "1px solid",
-  borderColor: "muted",
   "&:hover": {
     color: "background",
     backgroundColor: "primary",

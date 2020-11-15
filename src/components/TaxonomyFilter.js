@@ -14,12 +14,12 @@ const FIELD_TAGS = "tags";
 
 const ALL_LINK_SX = {
   variant: "buttons.pill",
+  backgroundColor: "transparent",
   borderColor: "transparent",
   fontWeight: "bold",
   textDecoration: "underline",
   px: 1,
   "&:hover": {
-    backgroundColor: "background",
     color: "primary",
   },
 };
