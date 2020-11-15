@@ -198,6 +198,7 @@ const footnotes = {
   fontWeight: "body",
   lineHeight: "1rem",
   mt: 4,
+  mb: -4, // balance top whitespace
   "dt,dd": { display: "inline" },
   "*[role=img]": { display: "inline-block", width: "1.25rem" },
   dt: { "&::after": { content: '"="', mx: 1 } },
