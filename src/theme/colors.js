@@ -1,4 +1,6 @@
-//  "#64C7FF" // i like this color, not sure where to use
+// colors i like but not sure where to use:
+// "#64C7FF"
+// "hsl(219, 88%, 35%)"
 
 export const light = {
   background: "hsl(60, 100%, 88%)", // #ffffc3
@@ -14,6 +16,8 @@ export const light = {
   muted: "hsl(54, 57%, 81%)",
 
   // Others
+  menuBg: "#fff06e", // hsl(54, 100%, 72%)
+  menuFg: "#000",
   codeBg: "hsla(210, 94%, 88%, 50%)",
   codeFg: "#ad006f",
   childListBullet: "#0066ff",

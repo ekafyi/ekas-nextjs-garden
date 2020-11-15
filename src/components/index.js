@@ -2,6 +2,7 @@ export ColorModeSelect from "./ColorModeSelect";
 export ErrorPage from "./ErrorPage";
 export Footer from "./Footer";
 export HomePage from "./HomePage";
+export Layout from "./Layout";
 export Nav from "./Nav";
 export NotePage from "./NotePage";
 export NoteSnippet from "./NoteSnippet";

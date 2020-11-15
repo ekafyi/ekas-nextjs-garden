@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useRouter } from "next/router";
-import { SEO, SkipLink, Nav, NoteSnippet } from "components";
+import { SEO, SkipLink, Nav, NoteSnippet, Layout } from "components";
 
 import { getAllTagsStaticPaths, getPostsByTag } from "src/utils/get-mdx";
 import { getTagRealName, getTagData } from "src/utils/get-taxonomy";
@@ -48,7 +48,7 @@ export default function Tag({ tag, tagData, allPosts }) {
         })}
       />
       <SkipLink href="#posts">Skip to posts</SkipLink>
-      <main sx={{ variant: "layout.container" }}>
+      <Layout>
         <Nav curPath={router.asPath} />
         <div id="main" sx={{ variant: "components.notes.container" }}>
           <header sx={{ variant: "components.notes.header" }}>
@@ -77,7 +77,7 @@ export default function Tag({ tag, tagData, allPosts }) {
             ))}
           </div>
         </div>
-      </main>
+      </Layout>
     </>
   );
 }

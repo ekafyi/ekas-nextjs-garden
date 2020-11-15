@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { SEO, SkipLink, Nav } from "components";
+import { SEO, SkipLink, Nav, Layout } from "components";
 import { getAllTags } from "src/utils/get-mdx";
 import { getTagFriendlyName } from "src/utils/get-taxonomy";
 
@@ -26,7 +26,7 @@ export default function Tags({ allTags }) {
     <>
       <SEO title="Tags Archive" path={router.asPath} />
       <SkipLink />
-      <main sx={{ variant: "layout.container" }}>
+      <Layout>
         <Nav curPath={router.asPath} />
         <h1 sx={H_SX}>Tags</h1>
         {allTags && (
@@ -47,7 +47,7 @@ export default function Tags({ allTags }) {
             })}
           </ul>
         )}
-      </main>
+      </Layout>
     </>
   );
 }

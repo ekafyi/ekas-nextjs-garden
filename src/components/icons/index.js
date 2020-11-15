@@ -1,3 +1,4 @@
+export Burger from "./Burger";
 export Gh from "./Gh";
 export Link from "./Link";
 export Dev from "./Dev";
