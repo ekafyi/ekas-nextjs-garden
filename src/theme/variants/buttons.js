@@ -25,12 +25,11 @@ const pill = {
   py: 2,
   mr: 1,
   mb: 1,
-  "&:hover": {
-    color: "background",
-    backgroundColor: "primary",
-  },
   "@media screen and (hover: hover) and (pointer: fine)": {
-    background: "limegreen",
+    "&:hover": {
+      color: "background",
+      backgroundColor: "primary",
+    },
   },
   "&.is-active": {
     color: "background",
