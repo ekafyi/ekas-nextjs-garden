@@ -48,7 +48,7 @@ export default {
   },
   byline: {
     mt: [8],
-    mb: [4, null, 0],
+    // mb: [4, null, 0],
     display: "flex",
     alignItems: "center",
   },

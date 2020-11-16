@@ -181,12 +181,12 @@ export default {
   // Used on entry page, eg. a single note/post
   entryHeading: {
     variant: "text.heading",
-    fontSize: [9, 10, null, 11, 12],
+    fontSize: [9, 11, null, 11, 12],
     letterSpacing: "-0.005em",
     lineHeight: [
-      getLhByFontIndex(8),
+      getLhByFontIndex(9),
+      getLhByFontIndex(11),
       null,
-      getLhByFontIndex(10),
       getLhByFontIndex(11),
       getLhByFontIndex(12),
     ],

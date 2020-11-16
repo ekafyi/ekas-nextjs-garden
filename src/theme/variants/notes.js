@@ -64,6 +64,7 @@ export default {
     fontSize: [1, 2, 4],
     lineHeight: ["paragraph", getLhByFontIndex(3), getLhByFontIndex(4)],
     maxWidth: [null, null, "30em", null, "45vw"],
+    letterSpacing: "-0.01em",
   },
   side: {
     ...stickyStuff,

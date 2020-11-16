@@ -21,7 +21,7 @@ export const light = {
   codeBg: "hsla(210, 94%, 88%, 50%)",
   codeFg: "#ad006f",
   childListBullet: "#0066ff",
-  temp_postStatus: "#e6ff98", // green
+  temp_postStatus: "hsla(152, 69%, 45%, 13%)", // green
 };
 
 export const dark = {
@@ -33,7 +33,7 @@ export const dark = {
   codeBg: "hsl(208, 90%, 8%)",
   codeFg: "hsl(221, 100%, 75%)",
   childListBullet: "red",
-  temp_postStatus: "#153316",
+  temp_postStatus: "hsla(213, 43%, 24%, 65%)",
 };
 
 const colors = {

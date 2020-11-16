@@ -29,6 +29,9 @@ const pill = {
     color: "background",
     backgroundColor: "primary",
   },
+  "@media screen and (hover: hover) and (pointer: fine)": {
+    background: "limegreen",
+  },
   "&.is-active": {
     color: "background",
     backgroundColor: "text",
